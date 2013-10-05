@@ -15,45 +15,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/blank.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/insideheart30.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/insideheart35.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/insideheart40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/insideheart45.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/insideheart50.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/outsideheart100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/outsideheart60.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/outsideheart70.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/outsideheart80.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/outsideheart90.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/data/Calculate.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Datepicker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/FavoritesEmpty.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/RelationshipZoom.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/border.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/layout/datepicker.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/layout/favoritesempty.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/layout/relationshipzoom.xml" />
-      <change type="DELETED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\res\drawable-mdpi\heart_32x32.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/AndroidManifest.xml" afterPath="$PROJECT_DIR$/KMKY/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/gen/com/kmky/BuildConfig.java" afterPath="$PROJECT_DIR$/KMKY/gen/com/kmky/BuildConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomArrayAdapter.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomArrayAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/gen/com/kmky/Manifest.java" afterPath="$PROJECT_DIR$/KMKY/gen/com/kmky/Manifest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/gen/com/kmky/R.java" afterPath="$PROJECT_DIR$/KMKY/gen/com/kmky/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/layout/listview_header.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/listview_header.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/layout/listview_row.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/listview_row.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\res\layout\favoritesfragment.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/favorites.xml" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\res\layout\findfragment.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/find.xml" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\res\layout\myrelationships_layout.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/main.xml" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\res\layout\myrelationshipsfragment.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\src\com\kmky\activity\FindContacts.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\src\com\kmky\activity\MyRelationshipsFragment.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" />
-      <change type="MOVED" beforePath="D:\Development\GitHub\KMKY-v2\KMKY\src\com\kmky\activity\Relations.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/data/Relations.java" />
     </list>
     <ignored path="KMKYAPP.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,7 +82,7 @@
       <file leaf-file-name="Main.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="7" selection-start="7038" selection-end="7038" vertical-scroll-proportion="0.65217394" vertical-offset="2465" max-vertical-offset="3247">
+            <state line="190" column="13" selection-start="7013" selection-end="7013" vertical-scroll-proportion="0.5652174" vertical-offset="2465" max-vertical-offset="3247">
               <folding />
             </state>
           </provider>
@@ -519,6 +481,11 @@
       <created>1380867847591</created>
       <updated>1380867847591</updated>
     </task>
+    <task id="LOCAL-00001" summary="2.1">
+      <created>1380954990157</created>
+      <updated>1380954990157</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -537,7 +504,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08165548" sideWeight="0.83214283" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08165548" sideWeight="0.83214283" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -560,6 +527,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="2.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -706,7 +675,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="7" selection-start="7038" selection-end="7038" vertical-scroll-proportion="0.65217394" vertical-offset="2465" max-vertical-offset="3247">
+        <state line="190" column="13" selection-start="7013" selection-end="7013" vertical-scroll-proportion="0.5652174" vertical-offset="2465" max-vertical-offset="3247">
           <folding />
         </state>
       </provider>
