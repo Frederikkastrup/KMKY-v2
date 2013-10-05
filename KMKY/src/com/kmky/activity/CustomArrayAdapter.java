@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmky.R;
+import com.kmky.data.Relations;
 
 /**
  * Created by W520 on 21-09-13.
@@ -17,63 +18,69 @@ import com.kmky.R;
 public class CustomArrayAdapter extends ArrayAdapter<Relations>
 {
 	private Context mContext;
-	private int layoutResourceID;
-	private Relations data[] = null;
+	private int mlayoutresourceid;
+	private Relations mdata[] = null;
 
 	/**
-	 * fgdfghdggdf
+	 * Instantiates the adapter object when created.
 	 * 
-	 * @param context
-	 * @param layoutResourceID
-	 * @param data
+	 * @param mContext
+	 * @param mlayoutresourceid
+	 * @param mdata
 	 */
-	public CustomArrayAdapter(Context context, int layoutResourceID, Relations[] data) {
-		super(context, layoutResourceID, data);
-		this.layoutResourceID = layoutResourceID;
-		this.mContext = context;
-		this.data = data;
+	public CustomArrayAdapter(Context mContext, int mlayoutresourceid, Relations[] mdata) {
+		super(mContext, mlayoutresourceid, mdata);
+		this.mlayoutresourceid = mlayoutresourceid;
+		this.mContext = mContext;
+		this.mdata = mdata;
 	}
 
 	/**
-	 * English please :-)
+	 * Overrides the adapter view and defines the new views to be used in the list.
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-
 		View row = convertView;
 		RelationsHolder holder = null;
 
-		if (row == null)
-		{
+		if (row == null) {
 			LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
-			row = inflater.inflate(layoutResourceID, parent, false);
+			row = inflater.inflate(mlayoutresourceid, parent, false);
 
-			holder = new RelationsHolder();
-			holder.pic1 = (ImageView) row.findViewById(R.id.pic1);
-			holder.txt = (TextView) row.findViewById(R.id.textview2);
-			holder.pic2 = (ImageView) row.findViewById(R.id.pic2);
+            holder = new RelationsHolder();
+
+            holder.outsideheart1 = (ImageView)row.findViewById(R.id.outsideheart1);
+            holder.insideheart1 = (ImageView)row.findViewById(R.id.insideheart1);
+            holder.outsideheart2 = (ImageView)row.findViewById(R.id.outsideheart2);
+            holder.insideheart2 = (ImageView)row.findViewById(R.id.insideheart2);
+            holder.name = (TextView)row.findViewById(R.id.textview2);
 
 			row.setTag(holder);
-		} else
-		{
+		}
+
+        else {
 			holder = (RelationsHolder) row.getTag();
 		}
 
-		Relations relation = data[position];
+		Relations relation = mdata[position];
 
-		holder.txt.setText(relation.name);
-		holder.pic1.setImageResource(relation.icon1);
-		holder.pic2.setImageResource(relation.icon2);
+        holder.outsideheart1.setImageResource(relation.outsideheart1);
+        holder.insideheart1.setImageResource(relation.insideheart1);
+        holder.outsideheart2.setImageResource(relation.outsideheart2);
+        holder.insideheart2.setImageResource(relation.insideheart2);
+        holder.name.setText(relation.name);
 
 		return row;
 	}
 
-	static class RelationsHolder
-	{
-		ImageView pic1;
-		ImageView pic2;
-		TextView txt;
+    // The holder is used to increase performance when scrolling through the listview. Instead of finding view by id in repeated use, the adapter can retrieve the views from a holder.
+	static class RelationsHolder {
+        ImageView outsideheart1;
+        ImageView insideheart1;
+        ImageView outsideheart2;
+        ImageView insideheart2;
+        TextView name;
 	}
 
 }

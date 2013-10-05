@@ -4,30 +4,48 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:gravity="center_vertical"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentLeft = "true"
-        android:id="@+id/pic1"/>
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true">
 
-     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:gravity="center_vertical"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_alignParentRight = "true"
-        android:id="@+id/pic2"/>
-
-        <TextView
-            android:layout_height="wrap_content"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/textview2"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/outsideheart1"/>
 
-    </RelativeLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/insideheart1"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textview2"/>
+
+    <FrameLayout
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_alignParentRight="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/outsideheart2"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/insideheart2"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+</RelativeLayout>
