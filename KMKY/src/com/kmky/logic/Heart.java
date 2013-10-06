@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import com.kmky.R;
 import com.kmky.data.Calculate;
 import com.kmky.data.DataModel;
 import com.kmky.data.LogEntry;
@@ -62,15 +63,18 @@ public class Heart {
                     smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
 
-                    
+                    try {
+
                     smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
                     callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
                     smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
                     callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
 
-
                     relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
-
+                    }
+                    catch (NullPointerException e){
+                        Log.i(Constants.TAG, "Heart: heartSize ", e);
+                    }
                 }
 
                 break;
@@ -82,12 +86,18 @@ public class Heart {
                     smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
 
-                    smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                    callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                    smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                    callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                    try {
 
-                    relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                        smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
+                        callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
+                        smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
+                        callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                    }
+                    catch (NullPointerException e){
+                        Log.i(Constants.TAG, "Heart: heartSize ", e);
+                    }
 
                 }
 
@@ -100,12 +110,18 @@ public class Heart {
                     smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
 
-                    smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                    callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                    smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                    callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                    try {
 
-                    relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                        smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
+                        callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
+                        smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
+                        callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                    }
+                    catch (NullPointerException e){
+                        Log.i(Constants.TAG, "Heart: heartSize ", e);
+                    }
 
                 }
 
@@ -118,12 +134,18 @@ public class Heart {
                     smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
 
-                    smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                    callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                    smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                    callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                    try {
 
-                    relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                        smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
+                        callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
+                        smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
+                        callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                    }
+                    catch (NullPointerException e){
+                        Log.i(Constants.TAG, "Heart: heartSize ", e);
+                    }
 
                 }
 
