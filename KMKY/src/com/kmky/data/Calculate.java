@@ -6,7 +6,7 @@ import android.graphics.drawable.Drawable;
 import com.kmky.R;
 
 /**
- * Created by W520 on 05-10-13.
+ * Created by W520 on 05-10-13..
  */
 public class Calculate {
 
