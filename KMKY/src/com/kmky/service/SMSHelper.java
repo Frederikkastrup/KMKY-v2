@@ -113,6 +113,9 @@ public class SMSHelper
 
 			String outgoingSMS = null;
 
+            if (cur != null && cur.moveToFirst())
+            {
+
 			try
 			{
 				// Moves cursor to address
@@ -150,6 +153,7 @@ public class SMSHelper
 				DataModel.getInstance(mContext).addLog(outgoingSMS, "sms", timeInMillisecond, 0, 1);
 			}
 		}
+        }
 
 	}
 
