@@ -16,11 +16,11 @@ public class LogEntry
 	/**
 	 * Constructor for incoming sms or call
 	 * 
-	 * @param Phonenumber
-	 * @param Type
-	 * @param Date
-	 * @param Incoming
-	 * @param Outgoing
+	 * @param phoneNumber
+	 * @param type
+	 * @param timeStamp
+	 * @param incoming
+	 * @param outgoing
 	 */
 	public LogEntry(String phoneNumber, String type, long timeStamp, int incoming, int outgoing) {
 

@@ -3,6 +3,7 @@ package com.kmky.data;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import android.content.Context;
@@ -33,10 +34,10 @@ public class DataModel
 		// load data into logs
 		mLogs = mDbHelper.getLogs();
 
-        for (LogEntry logEntry : mLogs)
-        {
-            Log.i(Constants.TAG, "Datamodel: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getDate());
-        }
+//        for (LogEntry logEntry : mLogs)
+//        {
+//            Log.i(Constants.TAG, "Datamodel: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getDate());
+//        }
 	}
 
 	/**
@@ -211,16 +212,22 @@ public class DataModel
 		int incoming = 0;
 		int outgoing = 0;
 		String type = "sms";
+//      int counter = 0;
 
 		for (LogEntry log : mLogs)
 		{
+
+
 			if (log.getPhonenumber().equals(phonenumber) && log.getType().equals("sms"))
 			{
-				incoming = incoming + log.getIncoming();
+                incoming = incoming + log.getIncoming();
                 Log.i(Constants.TAG, "Datamodel: fetchSMSLogsForPersonToDate incoming " + incoming);
 				outgoing = outgoing + log.getOutgoing();
                 Log.i(Constants.TAG, "Datamodel: fetchSMSLogsForPersonToDate outgoing " + outgoing);
 			}
+
+//            Log.d(Constants.TAG, "Datamodel: fetcSMSLogsForPersonToDate: " + counter);
+//            counter++;
 		}
 
 		LogEntry logToDate = new LogEntry(phonenumber, type, date, incoming, outgoing);
@@ -333,7 +340,7 @@ public class DataModel
 			int totalCommunication = outgoingCall + outgoingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-            Log.d(Constants.TAG, "Datamodel: fetchNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
+//            Log.d(Constants.TAG, "Datamodel: fetchNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
 
 		}
 

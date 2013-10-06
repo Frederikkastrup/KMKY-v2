@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.kmky.data.DataModel;
+import com.kmky.util.Constants;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -50,9 +51,12 @@ public class CallHelper
 					incomingNumber = incomingNumber.substring(3, incomingNumber.length());
 				}
 
+                Log.d(Constants.TAG, "CallHelper: incomingCalls substring" + subString);
+
 				long timeInMilliseconds = getTime();
 
 				DataModel.getInstance(mContext).addLog(incomingNumber, "call", timeInMilliseconds, 1, 0);
+                Log.d(Constants.TAG, "CallHelper: incomingCall: " + incomingNumber);
 
 				break;
 			}
@@ -76,13 +80,15 @@ public class CallHelper
 			// Sorting away 0
 			String subString = outgoingNumber.substring(0, 3);
 
+            Log.d(Constants.TAG, "CallHelper: outgoingCalls substring" + subString);
 
 			if (subString.equals("+61"))
 			{
 				outgoingNumber = outgoingNumber.substring(3, outgoingNumber.length());
 			}
 
-			DataModel.getInstance(mContext).addLog(outgoingNumber, "call", timeMilliseconds, 0, 1);
+			DataModel.getInstance(mContext).addLog("0".concat(outgoingNumber), "call", timeMilliseconds, 0, 1);
+            Log.d(Constants.TAG, "CallHelper: outgoingCalls: " + outgoingNumber);
 
 		}
 

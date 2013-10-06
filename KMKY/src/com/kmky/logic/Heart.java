@@ -5,8 +5,6 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
-import com.kmky.R;
-import com.kmky.data.Calculate;
 import com.kmky.data.DataModel;
 import com.kmky.data.LogEntry;
 import com.kmky.data.Relations;
@@ -51,7 +49,7 @@ public class Heart {
     {
 
         List<Relations> relations = new ArrayList<Relations>();
-        Calculate cal = null;
+        Calculate cal = new Calculate(mContext);
         long timeStamp = getTime();
         Drawable smsHeartMe;
         Drawable callHeartMe;
@@ -66,23 +64,21 @@ public class Heart {
 
                 mMostContacted = mDM.fetchNumbersForMostContacted();
 
-                Log.d(Constants.TAG, "Heart: heartSize: case 0");
-
                 for (String number : mMostContacted){
 
 
                     smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
 
-                    Log.d(Constants.TAG, smsLog.getPhonenumber() + " incoming: " + smsLog.getIncoming() + " outgoing: " + smsLog.getOutgoing());
-                    Log.d(Constants.TAG, callLog.getPhonenumber() + " incoming: " + callLog.getIncoming() + " outgoing: " + callLog.getOutgoing());
+                    Log.d(Constants.TAG, "Heart: heartSize: SMS: " + smsLog.getPhonenumber() + " incoming: " + smsLog.getIncoming() + " outgoing: " + smsLog.getOutgoing());
+                    Log.d(Constants.TAG, "Heart: heartSize: Call: " + callLog.getPhonenumber() + " incoming: " + callLog.getIncoming() + " outgoing: " + callLog.getOutgoing());
 
                     try {
 
-                    smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                    callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                    smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                    callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                    smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
+                    callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
+                    smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
+                    callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
                     relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
                     }
@@ -103,10 +99,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                        callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                        smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                        callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                        smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
+                        callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
                         relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
                     }
@@ -129,10 +125,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                        callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                        smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                        callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                        smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
+                        callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
                         relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
                     }
@@ -155,10 +151,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = cal.my_sms(smsLog.getOutgoing(), smsLog.getIncoming(), mContext);
-                        callHeartMe = cal.my_calls(callLog.getOutgoing(), callLog.getIncoming(), mContext);
-                        smsHeartYou = cal.your_sms(smsLog.getIncoming(),smsLog.getOutgoing(), mContext);
-                        callHeartYou = cal.your_calls(callLog.getIncoming(), callLog.getOutgoing(), mContext);
+                        smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
+                        callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
                         relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
                     }

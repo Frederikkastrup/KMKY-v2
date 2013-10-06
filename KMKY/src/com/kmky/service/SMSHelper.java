@@ -72,7 +72,9 @@ public class SMSHelper
 
 						long timeInMillisecond = getTime();
 
-						DataModel.getInstance(context).addLog(incomingSMS, "sms", timeInMillisecond, 1, 0);
+                        Log.d(Constants.TAG, "SMSHelper: incomingSms: " + "0".concat(incomingSMS));
+
+						DataModel.getInstance(context).addLog("0".concat(incomingSMS), "sms", timeInMillisecond, 1, 0);
 
 
 					} // end for loop
@@ -81,7 +83,6 @@ public class SMSHelper
 			} catch (Exception e)
 			{
 				Log.e(Constants.TAG, "SMSHelper: incomingSMS ", e);
-
 			}
 
 		}
@@ -127,6 +128,8 @@ public class SMSHelper
 					outgoingSMS = outgoingSMS.substring(3, outgoingSMS.length());
 				}
 
+                Log.d(Constants.TAG, "CallHelper: outgoingSMS substring" + subString);
+
 			} catch (CursorIndexOutOfBoundsException e)
 			{
 				Log.e(Constants.TAG, "SMSHelper: outgoingSMS", e);
@@ -143,7 +146,9 @@ public class SMSHelper
 				// Getting the number
 				long timeInMillisecond = getTime();
 
-				DataModel.getInstance(mContext).addLog(outgoingSMS, "sms", timeInMillisecond, 0, 1);
+				DataModel.getInstance(mContext).addLog("0".concat(outgoingSMS), "sms", timeInMillisecond, 0, 1);
+
+                Log.d(Constants.TAG, "SMSHelper: outgoingSMS: " + outgoingSMS);
 			}
 		}
         }

@@ -117,14 +117,16 @@ public class KMKYSQLiteHelper extends SQLiteOpenHelper
 		try
 		{
 			// Checks to see whether to increment incoming or outgoing
-			if (incoming != 0)
+			if (incoming == 1)
 			{
 				database.execSQL("UPDATE logs SET incoming = incoming + 1 WHERE _id = " + id);
-				Log.i(Constants.TAG, "Updating incoming log");
-			} else
-			{
-				database.execSQL("UPDATE logs SET outgoing = outgoing + 1 WHERE _id = " + id);
-				Log.i(Constants.TAG, "Updating outgoing log");
+				Log.i(Constants.TAG, "KMKYSQLiteHelper: updateLog: Updating incoming log");
+			}
+            else if (outgoing == 1)
+            {
+
+                database.execSQL("UPDATE logs SET outgoing = outgoing + 1 WHERE _id = " + id);
+				Log.i(Constants.TAG, "KMKYSQLiteHelper: updateLog:Updating outgoing log");
 			}
 		} catch (android.database.SQLException e)
 		{
