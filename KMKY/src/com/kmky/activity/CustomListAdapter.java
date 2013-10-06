@@ -12,14 +12,16 @@ import android.widget.TextView;
 import com.kmky.R;
 import com.kmky.data.Relations;
 
+import java.util.List;
+
 /**
  * Created by W520 on 21-09-13.
  */
-public class CustomArrayAdapter extends ArrayAdapter<Relations>
+public class CustomListAdapter extends ArrayAdapter<Relations>
 {
 	private Context mContext;
 	private int mlayoutresourceid;
-	private Relations mdata[] = null;
+	private List<Relations> mdata = null;
 
 	/**
 	 * Instantiates the adapter object when created.
@@ -28,7 +30,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Relations>
 	 * @param mlayoutresourceid
 	 * @param mdata
 	 */
-	public CustomArrayAdapter(Context mContext, int mlayoutresourceid, Relations[] mdata) {
+	public CustomListAdapter(Context mContext, int mlayoutresourceid, List<Relations> mdata) {
 		super(mContext, mlayoutresourceid, mdata);
 		this.mlayoutresourceid = mlayoutresourceid;
 		this.mContext = mContext;
@@ -63,7 +65,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Relations>
 			holder = (RelationsHolder) row.getTag();
 		}
 
-		Relations relation = mdata[position];
+		Relations relation = mdata.get(position);
 
         holder.outsideheart1.setImageDrawable(relation.outsideheart1);
         holder.insideheart1.setImageDrawable(relation.insideheart1);
