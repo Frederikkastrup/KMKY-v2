@@ -1,4 +1,4 @@
-package com.kmky.data;
+package com.kmky.logic;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -32,7 +32,7 @@ public class Calculate {
         try{
         outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
         }
-        catch (NullPointerException e)
+        catch (ArithmeticException e)
         {
             outgoing_treshold = 0;
         }
@@ -82,7 +82,7 @@ public class Calculate {
         try{
             outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
         }
-        catch (NullPointerException e)
+        catch (ArithmeticException e)
         {
             outgoing_treshold = 0;
         }
@@ -134,7 +134,7 @@ public class Calculate {
         try{
             outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
         }
-        catch (NullPointerException e)
+        catch (ArithmeticException e)
         {
             outgoing_treshold = 0;
         }
@@ -184,7 +184,7 @@ public class Calculate {
         try{
             outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
         }
-        catch (NullPointerException e)
+        catch (ArithmeticException e)
         {
             outgoing_treshold = 0;
         }
