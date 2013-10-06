@@ -10,10 +10,11 @@ import com.kmky.R;
  */
 public class Calculate {
 
-    Context mContext;
+    private Context mContext;
 
-    Calculate()
+    Calculate(Context context)
     {
+        this.mContext = context;
     }
 
     public Context getmContext() {
@@ -26,14 +27,16 @@ public class Calculate {
 
     public Drawable my_calls(int outgoing, int incoming, Context context)
     {
-
+        int outgoing_treshold = 0;
         Drawable drawable = null;
+        try{
+        outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
+        }
+        catch (NullPointerException e)
+        {
+            outgoing_treshold = 0;
+        }
 
-        int outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
-
-//        if ((outgoing_treshold < 1)){
-//            drawable = context.getResources().getDrawable(R.drawable.blank);
-//        }
 
         if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
         {
@@ -73,9 +76,16 @@ public class Calculate {
     public Drawable my_sms(int outgoing, int incoming, Context context)
     {
         // My treshold
+        int outgoing_treshold = 0;
         Drawable drawable = null;
 
-        int outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
+        try{
+            outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
+        }
+        catch (NullPointerException e)
+        {
+            outgoing_treshold = 0;
+        }
 
         if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
         {
@@ -118,9 +128,16 @@ public class Calculate {
     //
     public Drawable your_calls(int incoming, int outgoing, Context context)
     {
+        int outgoing_treshold = 0;
         Drawable drawable = null;
 
-        int outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
+        try{
+            outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
+        }
+        catch (NullPointerException e)
+        {
+            outgoing_treshold = 0;
+        }
 
         if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
         {
@@ -161,9 +178,16 @@ public class Calculate {
 
     public Drawable your_sms(int incoming, int outgoing, Context context)
     {
+        int outgoing_treshold = 0;
         Drawable drawable = null;
 
-        int outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
+        try{
+            outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
+        }
+        catch (NullPointerException e)
+        {
+            outgoing_treshold = 0;
+        }
 
         if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
         {

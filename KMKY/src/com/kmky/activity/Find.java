@@ -22,9 +22,15 @@ public class Find extends Fragment
         super.onActivityCreated(savedInstanceState);
     }
 
+    /**
+     * Whenever the container for the Find Fragment is created, the bundled arguments set in the Main activity
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View v = inflater.inflate(R.layout.find, container, false);
 

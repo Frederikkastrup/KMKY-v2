@@ -59,8 +59,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
     }
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
@@ -95,22 +94,16 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 		actionbar.addTab(MyRelationshipTab);
 		actionbar.addTab(FavoritesTab);
 		actionbar.addTab(FindTab);
-
-        //Listener for spinner
-        
-
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_main, menu);
 		return true;
 	}
 
-	public class MyTabsListener implements ActionBar.TabListener
-	{
+	public class MyTabsListener implements ActionBar.TabListener {
 		public Fragment fragment;
 
 		public MyTabsListener(Fragment fragment) {
@@ -118,24 +111,20 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 		}
 
 		@Override
-		public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft)
-		{
+		public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 			// Toast.makeText(MyRelationships_Activity.appContext,
 			// "Reselected!", Toast.LENGTH_LONG).show();
 		}
 
 		@Override
-		public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft)
-		{
+		public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 			ft.replace(R.id.fragment_container, fragment);
 		}
 
 		@Override
-		public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft)
-		{
+		public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
 			ft.remove(fragment);
 		}
-
 	}
 
     @Override
@@ -143,8 +132,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         // Check which request we're responding to
         if (requestCode == PICK_CONTACT_REQUEST) {
             // Make sure the request was successful
-
-            // If the back button is pressed, data equals null, and therefore we can't se the uri in the next scope. Therefore this if loop checks which case is true.
+            // If the back button is pressed, data equals null, and therefore we can't se the uri in the next scope. Therefore this if sentence checks which case is true.
             if (data != null){
 
             Uri contactUri = data.getData();
@@ -152,9 +140,6 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
             // Defines the columns to return for each row
             String[] projection_number = {ContactsContract.CommonDataKinds.Phone.NUMBER};
             String[] projection_name = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME};
-
-
-
 
             if (resultCode == Activity.RESULT_OK) {
                 // The user picked a contact.
@@ -185,11 +170,10 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
                     // Replace whatever is in the fragment_container view with this fragment,
-                    // and add the transaction to the back stack so the user can navigate back
+                    // and add the transaction to the back stack so the user can navigate back.
                     transaction.replace(R.id.fragment_container, fragment);
                     transaction.addToBackStack(null);
 
-                    // Commit the transaction
                     transaction.commit();
                 }
                 catch(CursorIndexOutOfBoundsException e){
@@ -208,13 +192,9 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
      * starts the native peoples activity when the button in 'view' is clicked and broadcasts the result (the name and number of the person clicked)
      * @param view
      */
-    public void findContact(View view)
-    {
-
+    public void findContact(View view) {
         Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
         startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
-
-
     }
 }

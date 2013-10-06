@@ -5,17 +5,22 @@ import android.app.ListFragment;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kmky.R;
 import com.kmky.data.Relations;
+import com.kmky.logic.Heart;
+import com.kmky.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +28,37 @@ import java.util.List;
 /**
  * Created by W520 on 18-09-13.
  */
-public class MyRelationships extends ListFragment
+public class MyRelationships extends ListFragment implements  AdapterView.OnItemSelectedListener
 {
 
     OnRowSelectedListener mCallback;
+    public int mstate = 0;
 
-    //Interface that can be implemented by the container activity
+    /**
+     * Implements the interface from AdapterView.OnItemSelectedListener to get access to methods that listen for onClicks in the spinner adapterview. In onItemSelected we check the position of the spinner and assigns this to a class variable.
+     * @param parent
+     * @param view
+     * @param pos
+     * @param id
+     */
+
+    public void onItemSelected(AdapterView<?> parent, View view,
+                               int pos, long id) {
+        // An item was selected. You can retrieve the selected item using
+        // parent.getItemAtPosition(pos)
+        Log.d(Constants.TAG, "Sort " + pos);
+
+        mstate = pos;
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
+    }
+
+    /**
+     *  Interface that can be implemented by the container activity and hereby allows the transfer of data from this fragment to the parent activity.
+      */
+
     public interface OnRowSelectedListener
     {
         public void sendName(String name);
@@ -53,55 +83,85 @@ public class MyRelationships extends ListFragment
         super.onActivityCreated(savedInstanceState);
 
         Spinner spinner = (Spinner) getView().findViewById(R.id.spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
+
+        // Set listener to spinner
+        spinner.setOnItemSelectedListener(this);
+
+        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.sort_array, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
+
+        // Specify the layout to use when the list of choices appears
         spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
+
+        // Apply the adapter to the spinner
         spinner.setAdapter(spinneradapter);
 
 
 /*-------------------------------------- Listadapter------------------------------------*/
 
-        Drawable drawable1 = getResources().getDrawable(R.drawable.outsideheart90);
-        Drawable drawable2 = getResources().getDrawable(R.drawable.insideheart50);
-        Drawable drawable3 = getResources().getDrawable(R.drawable.outsideheart90);
-        Drawable drawable4 = getResources().getDrawable(R.drawable.insideheart50);
-        String name = "Frederik";
+//        Drawable drawable1 = getResources().getDrawable(R.drawable.outsideheart90);
+//        Drawable drawable2 = getResources().getDrawable(R.drawable.insideheart50);
+//        Drawable drawable3 = getResources().getDrawable(R.drawable.outsideheart90);
+//        Drawable drawable4 = getResources().getDrawable(R.drawable.insideheart50);
+//        String name = "Frederik";
+//
+//        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
+//
+//        List<Relations> list = new ArrayList<Relations>();
+//        list.add(one);
 
-        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
+        Heart heart = new Heart(getActivity());
 
-        List<Relations> list = new ArrayList<Relations>();
-        list.add(one);
+        List<Relations> list = heart.heartSizes(1);
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
         CustomListAdapter adapter = new CustomListAdapter(getActivity(), R.layout.listview_row, list);
 
         View header = (View)inflater.inflate(R.layout.listview_header, null);
-        setListAdapter(null); // Saettes saa headeren ikke gentagende bliver tilfoejet efter setListAdapter er aktiveret - For det bliver den hver gang fragmentet bliver inflated.
+
+        setListAdapter(null); // We assign null to the listadapter because, the header is assigned every time the fragment is inflated. The header can't be assigned twice, so we reset the adapter.
         getListView().addHeaderView(header);
 
         setListAdapter(adapter);
 
     }
-/*---------------------------------------------------------------------------------------*/
 
+    /**
+     * Inflates the fragment when the container view (main.xml) is created.
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.myrelationships, container, false);
     }
 
+    /**
+     * Finds TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
+     * When this interface is implemented by the main activity, the name can be bundled and inflated into the RelationshipZoom fragment.
+     * Instead - if the ListView header is clicked, the listener will also react. But View v won't match up with the view that we try to assign and this will cause and exception.
+     * Therefore, if this happens, a try catch handles the exception.
+     * @param l
+     * @param v
+     * @param position
+     * @param id
+     */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+        try{
 
-        // Finder textview i row der blev clicket
         TextView tv = (TextView) v.findViewById(R.id.textview2);
         String name = tv.getText().toString();
 
-        // Sender navnet til interfacet - Det ryger derefter videre til vores main activity der implementerer dette interface og inflater det relationshipzoomfragment
         mCallback.sendName(name);
+        }
+        catch (NullPointerException e){
+            Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
+        }
     }
 }
