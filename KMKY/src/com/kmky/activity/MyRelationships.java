@@ -3,6 +3,7 @@ package com.kmky.activity;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,9 @@ import android.widget.TextView;
 
 import com.kmky.R;
 import com.kmky.data.Relations;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by W520 on 18-09-13.
@@ -58,16 +62,22 @@ public class MyRelationships extends ListFragment
         spinner.setAdapter(spinneradapter);
 
 
-/*-------------------------------------- Arrayadapter------------------------------------*/
-        Relations relations_data[] = new Relations[]
-                {
+/*-------------------------------------- Listadapter------------------------------------*/
 
-                };
+        Drawable drawable1 = getResources().getDrawable(R.drawable.outsideheart90);
+        Drawable drawable2 = getResources().getDrawable(R.drawable.insideheart50);
+        Drawable drawable3 = getResources().getDrawable(R.drawable.outsideheart90);
+        Drawable drawable4 = getResources().getDrawable(R.drawable.insideheart50);
+        String name = "Frederik";
 
+        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
+
+        List<Relations> list = new ArrayList<Relations>();
+        list.add(one);
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
-        CustomArrayAdapter adapter = new CustomArrayAdapter(getActivity(), R.layout.listview_row, relations_data);
+        CustomListAdapter adapter = new CustomListAdapter(getActivity(), R.layout.listview_row, list);
 
         View header = (View)inflater.inflate(R.layout.listview_header, null);
         setListAdapter(null); // Saettes saa headeren ikke gentagende bliver tilfoejet efter setListAdapter er aktiveret - For det bliver den hver gang fragmentet bliver inflated.
