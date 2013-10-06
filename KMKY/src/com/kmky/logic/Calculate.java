@@ -25,205 +25,110 @@ public class Calculate {
         this.mContext = mContext;
     }
 
-    public Drawable my_calls(int outgoing, int incoming, Context context)
+    private Drawable getCallHeart(int treshold, Context context)
     {
-        int outgoing_treshold = 0;
         Drawable drawable = null;
-        try{
-        outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
-        }
-        catch (ArithmeticException e)
-        {
-            outgoing_treshold = 0;
-        }
 
-
-        if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
-        {
+        if (treshold == 0){
+            drawable = context.getResources().getDrawable(R.drawable.blank);
+        }
+        else if ((treshold > 1) && (treshold <= 20)) {
             drawable = context.getResources().getDrawable(R.drawable.insideheart30);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 20) && (outgoing_treshold <= 40))
-        {
+        else if ((treshold > 20) && (treshold <= 40)) {
             drawable = context.getResources().getDrawable(R.drawable.insideheart35);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 40) && (outgoing_treshold <= 60))
-        {
+        else if ((treshold > 40) && (treshold <= 60)) {
             drawable = context.getResources().getDrawable(R.drawable.insideheart40);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 60) && (outgoing_treshold <= 80))
-        {
+        else if ((treshold > 60) && (treshold <= 80)) {
             drawable = context.getResources().getDrawable(R.drawable.insideheart45);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 80) && (outgoing_treshold <= 100))
-        {
+        else {
             drawable = context.getResources().getDrawable(R.drawable.insideheart50);
-            return  drawable;
         }
-
-        else { drawable = context.getResources().getDrawable(R.drawable.blank);
-            return drawable;}
-
+        return drawable;
     }
 
-    public Drawable my_sms(int outgoing, int incoming, Context context)
+    private Drawable getSmsHeart(int treshold, Context context)
     {
-        // My treshold
-        int outgoing_treshold = 0;
         Drawable drawable = null;
 
-        try{
-            outgoing_treshold = (outgoing/(outgoing + incoming)) * 100;
+        if (treshold == 0){
+            drawable = context.getResources().getDrawable(R.drawable.blank);
         }
-        catch (ArithmeticException e)
-        {
-            outgoing_treshold = 0;
-        }
-
-        if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
-        {
+        else if ((treshold > 1) && (treshold <= 20)) {
             drawable = context.getResources().getDrawable(R.drawable.outsideheart60);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 20) && (outgoing_treshold <= 40))
-        {
+        else if ((treshold > 20) && (treshold <= 40)) {
             drawable = context.getResources().getDrawable(R.drawable.outsideheart70);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 40) && (outgoing_treshold <= 60))
-        {
+        else if ((treshold > 40) && (treshold <= 60)) {
             drawable = context.getResources().getDrawable(R.drawable.outsideheart80);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 60) && (outgoing_treshold <= 80))
-        {
+        else if ((treshold > 60) && (treshold <= 80)) {
             drawable = context.getResources().getDrawable(R.drawable.outsideheart90);
-            return  drawable;
         }
 
-        else if ((outgoing_treshold > 80) && (outgoing_treshold <= 100))
-        {
+        else {
             drawable = context.getResources().getDrawable(R.drawable.outsideheart100);
-            return  drawable;
         }
-
-        else {
-            drawable = context.getResources().getDrawable(R.drawable.blank);
-            return drawable;
-        }
+        return drawable;
     }
 
-
-
-    //
-    public Drawable your_calls(int incoming, int outgoing, Context context)
+    Drawable calculateHeart(int outgoing, int incoming, int state, Context context)
     {
-        int outgoing_treshold = 0;
+        int treshold = 0;
         Drawable drawable = null;
 
-        try{
-            outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
-        }
-        catch (ArithmeticException e)
+        switch (state)
         {
-            outgoing_treshold = 0;
+            case 1: // smsheartme
+                try{
+                    treshold = (outgoing/(outgoing + incoming)) * 100;
+                }
+                catch (ArithmeticException e) {
+                    treshold = 0;
+                }
+                drawable = getSmsHeart(treshold, context);
+                break;
+
+            case 2: // callheartme
+                try{ treshold = (outgoing/(outgoing + incoming)) * 100;
+                }
+                catch (ArithmeticException e)
+                {
+                    treshold = 0;
+                }
+                drawable = getCallHeart(treshold, context);
+                break;
+
+            case 3: // smshearyou
+                try{ treshold = (incoming/(outgoing + incoming)) * 100;
+                }
+                catch (ArithmeticException e) {
+                    treshold = 0;
+                }
+                getSmsHeart(treshold, context);
+                break;
+
+            case 4: // callheart you
+                try{ treshold = (incoming/(outgoing + incoming)) * 100;
+                }
+                catch (ArithmeticException e) {
+                    treshold = 0;
+                }
+                drawable = getCallHeart(treshold, context);
+                break;
         }
-
-        if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart30);
-            return  drawable;
-        }
-
-        else if ((outgoing_treshold > 20) && (outgoing_treshold <= 40))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart35);
-            return  drawable;
-        }
-
-        else if ((outgoing_treshold > 40) && (outgoing_treshold <= 60))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart40);
-            return  drawable;
-        }
-
-        else if ((outgoing_treshold > 60) && (outgoing_treshold <= 80))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart45);
-            return  drawable;
-        }
-
-        else if ((outgoing_treshold > 80) && (outgoing_treshold <= 100))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart50);
-            return  drawable;
-        }
-
-        else {
-            drawable = context.getResources().getDrawable(R.drawable.blank);
-            return drawable;
-        }
-
-    }
-
-    public Drawable your_sms(int incoming, int outgoing, Context context)
-    {
-        int outgoing_treshold = 0;
-        Drawable drawable = null;
-
-        try{
-            outgoing_treshold = (incoming/(outgoing + incoming)) * 100;
-        }
-        catch (ArithmeticException e)
-        {
-            outgoing_treshold = 0;
-        }
-
-        if ((outgoing_treshold > 1) && (outgoing_treshold <= 20))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart60);
-            return drawable;
-        }
-
-        else if ((outgoing_treshold > 20) && (outgoing_treshold <= 40))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart70);
-            return drawable;
-        }
-
-        else if ((outgoing_treshold > 40) && (outgoing_treshold <= 60))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart80);
-            return drawable;
-        }
-
-        else if ((outgoing_treshold > 60) && (outgoing_treshold <= 80))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart90);
-            return drawable;
-        }
-
-        else if ((outgoing_treshold > 80) && (outgoing_treshold <= 100))
-        {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart90);
-            return drawable;
-        }
-
-        else {
-            drawable = context.getResources().getDrawable(R.drawable.blank);
-            return drawable;
-        }
-
+        return drawable;
     }
 
 }
