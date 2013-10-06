@@ -64,7 +64,6 @@ public class SMSHelper
 
 						String subString = incomingSMS.substring(0, 3);
 
-						Log.i(Constants.TAG, "incoming SMS substring: " + subString);
 
 						if (subString.equals("+61"))
 						{
@@ -75,15 +74,13 @@ public class SMSHelper
 
 						DataModel.getInstance(context).addLog(incomingSMS, "sms", timeInMillisecond, 1, 0);
 
-						// Log message
-						Log.i(Constants.TAG, "incoming SMS from " + incomingSMS);
 
 					} // end for loop
 				} // bundle is null
 
 			} catch (Exception e)
 			{
-				Log.e("SMS", "Exception smsReceiver" + e);
+				Log.e(Constants.TAG, "SMSHelper: incomingSMS ", e);
 
 			}
 
@@ -125,8 +122,6 @@ public class SMSHelper
 
 				String subString = outgoingSMS.substring(0, 3);
 
-				Log.i(Constants.TAG, "Outgoing SMS substring: " + subString);
-
 				if (subString.equals("+61"))
 				{
 					outgoingSMS = outgoingSMS.substring(3, outgoingSMS.length());
@@ -134,7 +129,7 @@ public class SMSHelper
 
 			} catch (CursorIndexOutOfBoundsException e)
 			{
-				Log.i(Constants.TAG, "Outgoing Exception");
+				Log.e(Constants.TAG, "SMSHelper: outgoingSMS", e);
 			}
 
 			finally
@@ -147,8 +142,6 @@ public class SMSHelper
 			{
 				// Getting the number
 				long timeInMillisecond = getTime();
-
-				Log.i(Constants.TAG, "Outgoing SMS to" + outgoingSMS);
 
 				DataModel.getInstance(mContext).addLog(outgoingSMS, "sms", timeInMillisecond, 0, 1);
 			}
@@ -189,7 +182,6 @@ public class SMSHelper
 		}
 
 		long timeMilliseconds = date.getTime();
-		Log.i("CallHelper", String.valueOf(timeMilliseconds));
 
 		return timeMilliseconds;
 

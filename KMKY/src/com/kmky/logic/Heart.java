@@ -30,16 +30,22 @@ public class Heart {
     private Context mContext;
     private DataModel mDM;
 
+    /**
+     * Constructor for Heart class
+     * @param context
+     */
 
     public Heart(Context context)
     {
         this.mContext = context;
         mDM = DataModel.getInstance(mContext);
-        mMostContacted = mDM.fetchNumbersForMostContacted();
-        mLeastContacted = mDM.fetchNumbersForLeastContacted();
-        mMostContactedYou = mDM.fetchNumbersForMostContactedYou();
-        mLeastContactedYou = mDM.fetchNumbersForLeastContactedYou();
     }
+
+    /**
+     * Returns lists of Relations depending on the chosen state
+     * @param state
+     * @return
+     */
 
     public List<Relations> heartSizes(int state)
     {
@@ -56,12 +62,20 @@ public class Heart {
 
         switch (state)
         {
-            case 1:
+            case 0:
+
+                mMostContacted = mDM.fetchNumbersForMostContacted();
+
+                Log.d(Constants.TAG, "Heart: heartSize: case 0");
 
                 for (String number : mMostContacted){
 
+
                     smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
+
+                    Log.d(Constants.TAG, smsLog.getPhonenumber() + " incoming: " + smsLog.getIncoming() + " outgoing: " + smsLog.getOutgoing());
+                    Log.d(Constants.TAG, callLog.getPhonenumber() + " incoming: " + callLog.getIncoming() + " outgoing: " + callLog.getOutgoing());
 
                     try {
 
@@ -73,13 +87,14 @@ public class Heart {
                     relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
-                        Log.i(Constants.TAG, "Heart: heartSize ", e);
+                        Log.d(Constants.TAG, "Heart: heartSize ", e);
                     }
                 }
 
                 break;
 
-            case 2:
+            case 1:
+                mLeastContacted = mDM.fetchNumbersForLeastContacted();
 
                 for (String number : mLeastContacted){
 
@@ -103,7 +118,9 @@ public class Heart {
 
                 break;
 
-            case 3:
+            case 2:
+
+                mMostContactedYou = mDM.fetchNumbersForMostContactedYou();
 
                 for (String number : mMostContactedYou){
 
@@ -127,7 +144,9 @@ public class Heart {
 
                 break;
 
-            case 4:
+            case 3:
+
+                mLeastContactedYou = mDM.fetchNumbersForLeastContactedYou();
 
                 for (String number : mLeastContactedYou){
 
@@ -157,6 +176,11 @@ public class Heart {
 
     }
 
+    /**
+     * Method for returning the time as a long
+     * @return
+     */
+
     private long getTime()
     {
         Date now = new Date();
@@ -175,8 +199,6 @@ public class Heart {
         }
 
         long timeMilliseconds = date.getTime();
-        Log.i("CallHelper", String.valueOf(timeMilliseconds));
-
         return timeMilliseconds;
 
     }

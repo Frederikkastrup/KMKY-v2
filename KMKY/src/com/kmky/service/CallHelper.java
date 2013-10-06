@@ -45,14 +45,10 @@ public class CallHelper
 
 				String subString = incomingNumber.substring(0, 3);
 
-				Log.i("CallHelper", "Calling: " + subString);
-
 				if (subString.equals("+61"))
 				{
 					incomingNumber = incomingNumber.substring(3, incomingNumber.length());
 				}
-
-				Log.i("CallHelper", "Caller: " + incomingNumber);
 
 				long timeInMilliseconds = getTime();
 
@@ -80,14 +76,11 @@ public class CallHelper
 			// Sorting away 0
 			String subString = outgoingNumber.substring(0, 3);
 
-			Log.i("CallHelper", "Calling: " + subString);
 
 			if (subString.equals("+61"))
 			{
 				outgoingNumber = outgoingNumber.substring(3, outgoingNumber.length());
 			}
-
-			Log.i("CallHelper", "Calling: " + outgoingNumber);
 
 			DataModel.getInstance(mContext).addLog(outgoingNumber, "call", timeMilliseconds, 0, 1);
 
@@ -116,14 +109,13 @@ public class CallHelper
 
 		try
 		{
-			date = dateFormat.parse(timeStamp);
+	        date = dateFormat.parse(timeStamp);
 		} catch (ParseException e)
 		{
 			e.printStackTrace();
 		}
 
 		long timeMilliseconds = date.getTime();
-		Log.i("CallHelper", String.valueOf(timeMilliseconds));
 
 		return timeMilliseconds;
 

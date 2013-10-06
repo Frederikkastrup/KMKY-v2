@@ -173,7 +173,7 @@ public class KMKYSQLiteHelper extends SQLiteOpenHelper
 			cursor.close();
 		} catch (SQLException e)
 		{
-			Log.e(Constants.TAG, "Loading log exception", e);
+			Log.e(Constants.TAG, "KMKYSQLiteHelper: getLogs: ", e);
 		} finally
 		{
 			database.close();

@@ -32,6 +32,11 @@ public class DataModel
 
 		// load data into logs
 		mLogs = mDbHelper.getLogs();
+
+        for (LogEntry logEntry : mLogs)
+        {
+            Log.i(Constants.TAG, "Datamodel: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getDate());
+        }
 	}
 
 	/**
@@ -60,15 +65,11 @@ public class DataModel
 
 		for (LogEntry log : mLogs)
 		{
-			if (phonenumberList.contains(log.getPhonenumber()))
+			if (!phonenumberList.contains(log.getPhonenumber()))
 			{
-				// this is weird
-			} else
-			{
-				phonenumberList.add(log.getPhonenumber());
+                phonenumberList.add(log.getPhonenumber());
 			}
 		}
-
 		return phonenumberList;
 	}
 
@@ -96,7 +97,6 @@ public class DataModel
 		// Checks if logs is empty
 		if (mLogs.size() == 0)
 		{
-			Log.i(Constants.TAG, "Logs is empty");
 			mLogs.add(newLog);
 			mDbHelper.addLog(phonenumber, type, date, incoming, outgoing);
 
@@ -128,14 +128,13 @@ public class DataModel
 
 			if (update)
 			{
-
-				android.util.Log.i(Constants.TAG, "Updating log");
 				updateLog(newLog, oldLog, id);
 
 			} else
 			{
-				android.util.Log.i(Constants.TAG, "Adding log");
+				Log.d(Constants.TAG, "Datamodel: addLog: adding logEntry");
 				mLogs.add(newLog);
+                mDbHelper.addLog(phonenumber, type, date, incoming, outgoing);
             }
 		}
 	}
@@ -161,15 +160,15 @@ public class DataModel
 			mLogs.remove(oldLog);
 			incoming++;
             mDbHelper.updateLog(oldLog.getId(), 1, 0);
+            Log.d(Constants.TAG, "Datamodel: updateLog: updating incoming logEntry");
 
 		} else
 		{
 			mLogs.remove(oldLog);
 			outgoing++;
             mDbHelper.updateLog(oldLog.getId(), 0, 1);
+            Log.d(Constants.TAG, "Datamodel: updateLog: updating outgoing logEntry");
 		}
-
-		Log.i(Constants.TAG, "Adding new update");
 		
 		mLogs.add(new LogEntry(phonenumber, type, date, incoming, outgoing));
 	}
@@ -181,7 +180,7 @@ public class DataModel
 
 		for (LogEntry log : mLogs)
 		{
-			if (log.getPhonenumber() == phonenumber && log.getDate() == date && log.getType() == "sms")
+			if (log.getPhonenumber().equals(phonenumber) && log.getDate() == date && log.getType().equals("sms"))
 			{
 				return log;
 			}
@@ -196,7 +195,7 @@ public class DataModel
 
 		for (LogEntry log : mLogs)
 		{
-			if (log.getPhonenumber() == phonenumber && log.getDate() == date && log.getType() == "sms")
+			if (log.getPhonenumber().equals(phonenumber) && log.getDate() == date && log.getType().equals("sms"))
 			{
 				return log;
 			}
@@ -215,10 +214,12 @@ public class DataModel
 
 		for (LogEntry log : mLogs)
 		{
-			if (log.getPhonenumber() == phonenumber && log.getType() == "sms")
+			if (log.getPhonenumber().equals(phonenumber) && log.getType().equals("sms"))
 			{
 				incoming = incoming + log.getIncoming();
+                Log.i(Constants.TAG, "Datamodel: fetchSMSLogsForPersonToDate incoming " + incoming);
 				outgoing = outgoing + log.getOutgoing();
+                Log.i(Constants.TAG, "Datamodel: fetchSMSLogsForPersonToDate outgoing " + outgoing);
 			}
 		}
 
@@ -235,10 +236,12 @@ public class DataModel
 
 		for (LogEntry log : mLogs)
 		{
-			if (log.getPhonenumber() == phonenumber && log.getType() == "call")
+			if (log.getPhonenumber().equals(phonenumber) && log.getType().equals("call"))
 			{
 				incoming = incoming + log.getIncoming();
+                Log.i(Constants.TAG, "Datamodel: fetchCallLogsForPersonToDate incoming " + incoming);
 				outgoing = outgoing + log.getOutgoing();
+                Log.i(Constants.TAG, "Datamodel: fetchCallLogsForPersonToDate outgoing " + outgoing);
 			}
 		}
 
@@ -269,7 +272,7 @@ public class DataModel
 			int totalCommunication = outgoingCall + outgoingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-			android.util.Log.i(Constants.TAG, Integer.toString(totalCommunication));
+			Log.d(Constants.TAG, "Datamodel: fetchPhonenumbersForLeastContacted: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
 
 		}
 
@@ -303,11 +306,6 @@ public class DataModel
 				phonenumberList.add(topTen.getPhonenumber());
 			}
 
-		}
-
-		for (String number : phonenumberList)
-		{
-			android.util.Log.i(Constants.TAG, number);
 		}
 
 		// Returns the top ten least contacted numbers
@@ -335,6 +333,7 @@ public class DataModel
 			int totalCommunication = outgoingCall + outgoingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
+            Log.d(Constants.TAG, "Datamodel: fetchNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
 
 		}
 
@@ -357,22 +356,15 @@ public class DataModel
 
 				phonenumberList.add(phonenumber);
 			}
+		}
+        else{
 
-		} else
-		{
+			for (TopTen topTen : SortList){
 
-			for (TopTen topTen : SortList)
-			{
-				String phonenumner = null;
-
+                String phonenumner = null;
 				phonenumberList.add(topTen.getPhonenumber());
 			}
 
-		}
-
-		for (String number : phonenumberList)
-		{
-			android.util.Log.i(Constants.TAG, number);
 		}
 
 		// Returns the top ten least contacted numbers
@@ -400,6 +392,7 @@ public class DataModel
 			int totalCommunication = incomingCall + incomingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
+            Log.d(Constants.TAG, "Datamodel: fetchNumbersForLeastContactedYou: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
 
 		}
 
@@ -423,8 +416,8 @@ public class DataModel
 				phonenumberList.add(phonenumber);
 			}
 
-		} else
-		{
+		}
+        else{
 
 			for (TopTen topTen : SortList)
 			{
@@ -433,11 +426,6 @@ public class DataModel
 				phonenumberList.add(topTen.getPhonenumber());
 			}
 
-		}
-
-		for (String number : phonenumberList)
-		{
-			android.util.Log.i(Constants.TAG, number);
 		}
 
 		// Returns the top ten least contacted numbers
@@ -465,6 +453,8 @@ public class DataModel
 			int totalCommunication = incomingCall + incomingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
+            Log.d(Constants.TAG, "Datamodel: fetchNumbersForMostContactedYou: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
+
 
 		}
 
@@ -498,11 +488,6 @@ public class DataModel
 				phonenumberList.add(topTen.getPhonenumber());
 			}
 
-		}
-
-		for (String number : phonenumberList)
-		{
-			android.util.Log.i(Constants.TAG, number);
 		}
 
 		// Returns the top ten least contacted numbers
