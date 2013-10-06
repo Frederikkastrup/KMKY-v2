@@ -143,13 +143,20 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         // Check which request we're responding to
         if (requestCode == PICK_CONTACT_REQUEST) {
             // Make sure the request was successful
+
+            // If the back button is pressed, data equals null, and therefore we can't se the uri in the next scope. Therefore this if loop checks which case is true.
+            if (data != null){
+
             Uri contactUri = data.getData();
 
             // Defines the columns to return for each row
             String[] projection_number = {ContactsContract.CommonDataKinds.Phone.NUMBER};
             String[] projection_name = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME};
 
-            if (resultCode == RESULT_OK) {
+
+
+
+            if (resultCode == Activity.RESULT_OK) {
                 // The user picked a contact.
                 // The Intent's data Uri identifies which contact was selected.
                 Cursor cursor_number = null;
@@ -195,6 +202,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
             }
         }
     }
+}
 
     /**
      * starts the native peoples activity when the button in 'view' is clicked and broadcasts the result (the name and number of the person clicked)
