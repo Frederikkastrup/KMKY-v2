@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.kmky.R;
@@ -45,17 +48,20 @@ public class MyRelationships extends ListFragment
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        Spinner spinner = (Spinner) getView().findViewById(R.id.spinner);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.sort_array, android.R.layout.simple_spinner_item);
+// Specify the layout to use when the list of choices appears
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner
+        spinner.setAdapter(spinneradapter);
+
 
 /*-------------------------------------- Arrayadapter------------------------------------*/
         Relations relations_data[] = new Relations[]
                 {
-                        new Relations(R.drawable.outsideheart100, R.drawable.insideheart50, "Frederik", R.drawable.outsideheart70, R.drawable.insideheart30),
-                        new Relations(R.drawable.outsideheart90, R.drawable.insideheart40, "Frederik", R.drawable.outsideheart100, R.drawable.insideheart40),
-                        new Relations(R.drawable.outsideheart80, R.drawable.insideheart40, "Frederik", R.drawable.outsideheart60, R.drawable.insideheart50),
-                        new Relations(R.drawable.outsideheart100, R.drawable.insideheart50, "Frederik", R.drawable.outsideheart60, R.drawable.insideheart30),
-                        new Relations(R.drawable.outsideheart70, R.drawable.insideheart50, "Frederik", R.drawable.outsideheart80, R.drawable.insideheart50),
-                        new Relations(R.drawable.outsideheart60, R.drawable.insideheart35, "Frederik", R.drawable.outsideheart100, R.drawable.insideheart35),
-                        new Relations(R.drawable.outsideheart100, R.drawable.insideheart45, "Frederik", R.drawable.outsideheart70, R.drawable.insideheart35)
+
                 };
 
 

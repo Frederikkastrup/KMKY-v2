@@ -1,5 +1,7 @@
 package com.kmky.data;
 
+import android.graphics.drawable.Drawable;
+
 /**
  * Rubbish :-)
  * @author peter
@@ -8,10 +10,10 @@ package com.kmky.data;
 public class Relations
 {
 
-    public int outsideheart1;
-    public int insideheart1;
-    public int outsideheart2;
-    public int insideheart2;
+    public Drawable outsideheart1;
+    public Drawable insideheart1;
+    public Drawable outsideheart2;
+    public Drawable insideheart2;
     public String name;
 
     public Relations()
@@ -19,7 +21,7 @@ public class Relations
         super();
     }
 
-    public Relations(int outsideheart1,int insideheart1, String name, int outsideheart2, int insideheart2)
+    public Relations(Drawable outsideheart1,Drawable insideheart1, String name, Drawable outsideheart2, Drawable insideheart2)
     {
         super();
         this.outsideheart1 = outsideheart1;

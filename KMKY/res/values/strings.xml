@@ -7,4 +7,11 @@
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_main">MainActivity</string>
 
+    <string-array name="sort_array">
+        <item>Most contact from</item>
+        <item>Least contact from</item>
+        <item>Most contact to</item>
+        <item>Least contact to</item>
+    </string-array>
+
 </resources>

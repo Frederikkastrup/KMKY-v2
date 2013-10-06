@@ -198,8 +198,11 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
      */
     public void findContact(View view)
     {
+
         Intent pickContactIntent = new Intent(Intent.ACTION_PICK, Uri.parse("content://contacts"));
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
         startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
+
+
     }
 }

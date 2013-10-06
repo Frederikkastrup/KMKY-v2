@@ -20,7 +20,6 @@ public class Find extends Fragment
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
     }
 
     @Override
@@ -47,4 +46,5 @@ public class Find extends Fragment
 
         return v;
     }
+
 }

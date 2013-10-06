@@ -65,10 +65,10 @@ public class CustomArrayAdapter extends ArrayAdapter<Relations>
 
 		Relations relation = mdata[position];
 
-        holder.outsideheart1.setImageResource(relation.outsideheart1);
-        holder.insideheart1.setImageResource(relation.insideheart1);
-        holder.outsideheart2.setImageResource(relation.outsideheart2);
-        holder.insideheart2.setImageResource(relation.insideheart2);
+        holder.outsideheart1.setImageDrawable(relation.outsideheart1);
+        holder.insideheart1.setImageDrawable(relation.insideheart1);
+        holder.outsideheart2.setImageDrawable(relation.outsideheart2);
+        holder.insideheart2.setImageDrawable(relation.insideheart2);
         holder.name.setText(relation.name);
 
 		return row;
