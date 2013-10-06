@@ -34,8 +34,6 @@ public class ListenerService extends Service
 	{
 		super.onStartCommand(intent, flags, startId);
 
-		Toast.makeText(this, "Listen for calls", Toast.LENGTH_LONG).show();
-
 		mSmsHelper = new SMSHelper(this);
 		mCallHelper = new CallHelper(this);
 

@@ -95,6 +95,10 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 		actionbar.addTab(MyRelationshipTab);
 		actionbar.addTab(FavoritesTab);
 		actionbar.addTab(FindTab);
+
+        //Listener for spinner
+        
+
 	}
 
 	@Override

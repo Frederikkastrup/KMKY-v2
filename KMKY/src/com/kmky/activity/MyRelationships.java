@@ -59,6 +59,7 @@ public class MyRelationships extends ListFragment
 
 
 /*-------------------------------------- Arrayadapter------------------------------------*/
+
         Relations relations_data[] = new Relations[]
                 {
 

@@ -110,7 +110,7 @@ public class KMKYSQLiteHelper extends SQLiteOpenHelper
 	 * @param incoming
 	 * @param outgoing
 	 */
-	public void updateLog(int id, int incoming, int outgoing)
+	public void updateLog(long id, int incoming, int outgoing)
 	{
 		SQLiteDatabase database = getWritableDatabase();
 
