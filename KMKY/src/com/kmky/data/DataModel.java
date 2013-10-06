@@ -25,17 +25,18 @@ public class DataModel
 	 * Singleton. Initialise the model. Load the data from the database into the
 	 * model
 	 * 
-	 * @param ctx
+	 * @param context
 	 */
-	private DataModel(Context ctx) {
-		mDbHelper = new KMKYSQLiteHelper(ctx);
+	private DataModel(Context context) {
+		mDbHelper = new KMKYSQLiteHelper(context);
 
 		// load data into logs
 		mLogs = mDbHelper.getLogs();
 	}
 
 	/**
-	 * Singleton
+	 * Singleton of data model. Creates new instance of Data model if not exists.
+     * Else returns instance.
 	 * 
 	 * @return
 	 */
@@ -48,7 +49,8 @@ public class DataModel
 	}
 
 	/**
-	 * Get the phone numbers
+	 * Get list of unique the phone numbers in mLogs
+     * Used for the getLogs methods
 	 * 
 	 * @return
 	 */
@@ -69,6 +71,17 @@ public class DataModel
 
 		return phonenumberList;
 	}
+
+    /**
+     * mLogs is empty, creates new LogEntry. Else check if new log already exists then updates that log.\
+     * Else creates new log and adds it to mLogs.
+     *
+     * @param phonenumber
+     * @param type
+     * @param date
+     * @param incoming
+     * @param outgoing
+     */
 
 	public void addLog(String phonenumber, String type, long date, int incoming, int outgoing)
 	{
@@ -104,6 +117,7 @@ public class DataModel
 					update = true;
 					id = log.getId();
 					oldLog = new LogEntry(log.getPhonenumber(), log.getType(), log.getDate(), log.getIncoming(), log.getOutgoing());
+
 				} else
 				{
 					update = false;
@@ -117,16 +131,18 @@ public class DataModel
 
 				android.util.Log.i(Constants.TAG, "Updating log");
 				updateLog(newLog, oldLog, id);
+
 			} else
 			{
 				android.util.Log.i(Constants.TAG, "Adding log");
 				mLogs.add(newLog);
-			}
+            }
 		}
 	}
 
 	/**
 	 * Remove old log from the list and replace it with a new log
+     * Then updates in database
 	 * 
 	 * @param newLog
 	 * @param oldLog
@@ -144,15 +160,18 @@ public class DataModel
 		{
 			mLogs.remove(oldLog);
 			incoming++;
+            mDbHelper.updateLog(oldLog.getId(), 1, 0);
+
 		} else
 		{
 			mLogs.remove(oldLog);
 			outgoing++;
+            mDbHelper.updateLog(oldLog.getId(), 0, 1);
 		}
 
 		Log.i(Constants.TAG, "Adding new update");
 		
-		mLogs.add(newLog);
+		mLogs.add(new LogEntry(phonenumber, type, date, incoming, outgoing));
 	}
 
 	public LogEntry fetchSMSLogsForPeronOnSpecificDate(String phonenumber, long date)
