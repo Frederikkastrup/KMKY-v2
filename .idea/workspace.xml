@@ -14,14 +14,7 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="2.1">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomArrayAdapter.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomArrayAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/data/Relations.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/data/Relations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml" afterPath="$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/values/strings.xml" afterPath="$PROJECT_DIR$/KMKY/res/values/strings.xml" />
+    <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KMKYAPP.iws" />
@@ -576,7 +569,11 @@
       <created>1380955129126</created>
       <updated>1380955129126</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="2.2">
+      <created>1381019197114</created>
+      <updated>1381019197115</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -590,7 +587,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.05704698" sideWeight="0.16785714" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.16785714" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -619,7 +616,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="2.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.1" />
+    <MESSAGE value="2.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
