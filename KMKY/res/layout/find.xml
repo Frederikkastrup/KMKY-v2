@@ -27,6 +27,7 @@
         android:textAlignment="center"
         android:id="@+id/addtofavorites_button"
         android:visibility="invisible"
+        android:onClick="addToFavorites"
         />
 
     <Button

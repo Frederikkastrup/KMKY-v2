@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.kmky.R;
@@ -117,6 +119,8 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 		actionbar.addTab(MyRelationshipTab);
 		actionbar.addTab(FavoritesTab);
 		actionbar.addTab(FindTab);
+
+
 	}
 
 	@Override
@@ -128,6 +132,8 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 
 	public class MyTabsListener implements ActionBar.TabListener {
 		public Fragment fragment;
+
+
 
 		public MyTabsListener(Fragment fragment) {
 			this.fragment = fragment;
@@ -141,6 +147,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 
 		@Override
 		public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+
 			ft.replace(R.id.fragment_container, fragment);
 		}
 
@@ -220,4 +227,26 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
         startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
     }
+
+    public void addToFavorites(View view){
+        EditText et = (EditText) this.findViewById(R.id.find_edittext);
+        String name;
+        Log.i(Constants.TAG, "Main: addToFavorites: EditText value: " + et.getText().toString());
+
+            name = et.getText().toString();
+
+            Bundle bundle = new Bundle();
+            bundle.putString("name", name);
+
+            Favorites fragment = new Favorites();
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            transaction.add(R.id.fragment_container, fragment);
+            transaction.hide(fragment);
+            transaction.commit();
+
+        Toast.makeText(getApplicationContext(), name + " added to favorites!", Toast.LENGTH_SHORT).show();
+        }
 }

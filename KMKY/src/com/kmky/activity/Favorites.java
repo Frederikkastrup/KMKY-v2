@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -88,7 +89,33 @@ public class Favorites extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.favorites, container, false);
+        View v = inflater.inflate(R.layout.favorites, container, false);
+        Bundle bundle = this.getArguments();
+        TextView tw = (TextView) v.findViewById(R.id.nametest);
+
+        // Retrives the Favorite names from Sharedpreferences and sets them into the TextView
+        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
+        tw.setText(preferences.getString("name",""));
+        Log.i(Constants.TAG, "Favorites: onCreateView: Name: " + preferences.getString("name", "") + " has been retrieved from SharedPreferences and set to TextField");
+
+        if (bundle != null) {
+
+            // Appends name from bundle into textview
+            String namefromfind = bundle.getString("name");
+            tw.append(namefromfind);
+            Log.i(Constants.TAG, "Favorites: onCreateView: Name has been set to TextView");
+
+            // Saves the name from the textview into SharedPreferences
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("name", tw.getText().toString());
+            editor.commit();
+
+            Log.i(Constants.TAG, "Favorites: onCreateView: Name: " + tw.getText().toString() + " has been committed to SharedPreferences");
+        }
+
+        else {Log.i(Constants.TAG, "Favorites: onCreateView: Bundle empty");
+        }
+        return v;
     }
 
     /**
@@ -101,7 +128,6 @@ public class Favorites extends ListFragment
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         try{
-
             TextView tv = (TextView) v.findViewById(R.id.rowname);
             String name = tv.getText().toString();
 

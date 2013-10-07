@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.kmky.R;
+import com.kmky.util.Constants;
 
 /**
  * Created by W520 on 18-09-13.
@@ -49,7 +50,8 @@ public class Find extends Fragment
             addtofavorites.setVisibility(View.VISIBLE);
             seerelationship.setVisibility(View.VISIBLE);
         }
-        Log.i("datadata", "Bundle empty");
+        else {Log.i(Constants.TAG, "Find: onCreateView: Bundle empty");
+        }
 
         return v;
     }
