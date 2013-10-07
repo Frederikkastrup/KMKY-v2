@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kmky.R;
+import com.kmky.util.Constants;
 
 /**
  * Created by W520 on 05-10-13.
@@ -22,66 +23,57 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        EditText dato1 = (EditText) getView().findViewById(R.id.editText);
-        EditText dato2 = (EditText) getView().findViewById(R.id.editText2);
-
-        ImageView myoutsideheart = (ImageView) getView().findViewById(R.id.myoutsideheart);
-        ImageView myinsideheart = (ImageView) getView().findViewById(R.id.myinsideheart);
-        ImageView youroutsideheart = (ImageView) getView().findViewById(R.id.youroutsideheart);
-        ImageView yourinsideheart = (ImageView) getView().findViewById(R.id.yourinsideheart);
-
-        myoutsideheart.setImageResource(R.drawable.outsideheart100);
-        myinsideheart.setImageResource(R.drawable.insideheart50);
-        youroutsideheart.setImageResource(R.drawable.outsideheart70);
-        yourinsideheart.setImageResource(R.drawable.insideheart35);
-
-        dato1.setText("Start Date");
-        dato2.setText("End Date");
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.relationshipzoom, container, false);
 
-        EditText dato1 = (EditText) v.findViewById(R.id.editText);
-        EditText dato2 = (EditText) v.findViewById(R.id.editText2);
+        EditText date1 = (EditText) v.findViewById(R.id.start_date);
+        EditText date2 = (EditText) v.findViewById(R.id.end_date);
 
-        dato1.setOnClickListener(this);
-        dato2.setOnClickListener(this);
+        // ImageViews are instantiated so the appropriate heart sizes can be assigned to them.
+        ImageView mysmsheart = (ImageView) v.findViewById(R.id.mysmsheart);
+        ImageView mycallheart = (ImageView) v.findViewById(R.id.mycallheart);
+        ImageView yoursmsheart = (ImageView) v.findViewById(R.id.yoursmsheart);
+        ImageView yourcallheart = (ImageView) v.findViewById(R.id.yourcallheart);
 
+        date1.setText("Start Date");
+        date2.setText("End Date");
+
+        date1.setOnClickListener(this);
+        date2.setOnClickListener(this);
+
+        // If the RelationshipZoom Fragment is inflated with a bundle, the data will be set to a textview in the Fragment Layout.
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-
             String name = bundle.getString("name");
-            Log.i("datadata", name);
-            TextView text = (TextView) v.findViewById(R.id.textviewyourheart);
+            Log.i(Constants.TAG, "RelationshipZoom: onCreateView: " + name);
+            TextView text = (TextView) v.findViewById(R.id.yourname_textview);
             text.setText(name);
-
-            Log.i("textdata", (String)text.getText());
         }
-
-        Log.i("datadata", "Bundle empty");
+        Log.i(Constants.TAG, "RelationshipZoom: Bundle empty");
 
         return v;
     }
 
+    /**
+     * onClickListener for the datepicker.
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.editText:
+            case R.id.start_date:
 
-                final EditText dato1 = (EditText) v.findViewById(R.id.editText);
+                final EditText date1 = (EditText) v.findViewById(R.id.start_date);
 
                 DialogFragment newFragment = new Datepicker()
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        dato1.setText("" + day + "/" + month + "/" + year);
+                        date1.setText("" + day + "/" + month + "/" + year);
                     }
                 };
 
@@ -89,15 +81,15 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
                 break;
 
-            case R.id.editText2:
+            case R.id.end_date:
 
-                final EditText dato2 = (EditText) v.findViewById(R.id.editText2);
+                final EditText date2 = (EditText) v.findViewById(R.id.end_date);
 
                 DialogFragment newFragment2 = new Datepicker()
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        dato2.setText("" + day + "/" + month + "/" + year);
+                        date2.setText("" + day + "/" + month + "/" + year);
                     }
                 };
                 newFragment2.show(getFragmentManager(), "datepicker");

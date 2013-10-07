@@ -9,17 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kmky.R;
 import com.kmky.data.Relations;
-import com.kmky.logic.Heart;
 import com.kmky.util.Constants;
 
 import java.util.ArrayList;
@@ -31,24 +28,18 @@ import java.util.List;
 public class MyRelationships extends ListFragment implements  AdapterView.OnItemSelectedListener
 {
 
-    OnRowSelectedListener mCallback;
+    private OnRowSelectedListener mCallback;
     public int mstate = 0;
 
     /**
      * Implements the interface from AdapterView.OnItemSelectedListener to get access to methods that listen for onClicks in the spinner adapterview. In onItemSelected we check the position of the spinner and assigns this to a class variable.
-     * @param parent
-     * @param view
-     * @param pos
-     * @param id
      */
-
-    public void onItemSelected(AdapterView<?> parent, View view,
-                               int pos, long id) {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
-        Log.d(Constants.TAG, "Sort " + pos);
 
         mstate = pos;
+        Log.i(Constants.TAG, "MyRelationships: onItemSelected " + mstate);
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
@@ -56,12 +47,11 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     }
 
     /**
-     *  Interface that can be implemented by the container activity and hereby allows the transfer of data from this fragment to the parent activity.
+     *  Interface that can be implemented by the container activity and hereby allow the transfer of data from this fragment to the parent activity.
       */
-
     public interface OnRowSelectedListener
     {
-        public void sendName(String name);
+        public void sendNameFromMyRelations(String name);
     }
 
     @Override
@@ -78,42 +68,26 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         }
     }
 
+    /**
+     * When the Activity is created, a listadapter is set to this ListFragment (MyRelationships).
+     */
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Spinner spinner = (Spinner) getView().findViewById(R.id.spinner);
+        Drawable drawable1 = getResources().getDrawable(R.drawable.smsheart80);
+        Drawable drawable2 = getResources().getDrawable(R.drawable.callheart100);
+        Drawable drawable3 = getResources().getDrawable(R.drawable.smsheart80);
+        Drawable drawable4 = getResources().getDrawable(R.drawable.callheart100);
+        String name = "Frederik";
 
-        // Set listener to spinner
-        spinner.setOnItemSelectedListener(this);
+        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
 
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.sort_array, android.R.layout.simple_spinner_item);
+        List<Relations> list = new ArrayList<Relations>();
+        list.add(one);
 
-        // Specify the layout to use when the list of choices appears
-        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Apply the adapter to the spinner
-        spinner.setAdapter(spinneradapter);
-
-
-/*-------------------------------------- Listadapter------------------------------------*/
-
-//        Drawable drawable1 = getResources().getDrawable(R.drawable.outsideheart90);
-//        Drawable drawable2 = getResources().getDrawable(R.drawable.insideheart50);
-//        Drawable drawable3 = getResources().getDrawable(R.drawable.outsideheart90);
-//        Drawable drawable4 = getResources().getDrawable(R.drawable.insideheart50);
-//        String name = "Frederik";
-//
-//        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
-//
-//        List<Relations> list = new ArrayList<Relations>();
-//        list.add(one);
-
-        Heart heart = new Heart(getActivity());
-
-        List<Relations> list = heart.heartSizes(1);
+//        Heart heart = new Heart(getActivity());
+//        List<Relations> list = heart.heartSizes(1);
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
@@ -123,13 +97,11 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
 
         setListAdapter(null); // We assign null to the listadapter because, the header is assigned every time the fragment is inflated. The header can't be assigned twice, so we reset the adapter.
         getListView().addHeaderView(header);
-
         setListAdapter(adapter);
-
     }
 
     /**
-     * Inflates the fragment when the container view (main.xml) is created.
+     * Inflates the MyRelationships fragment when the container view (main.xml) is created and sets a listener to the spinner inside it.
      * @param inflater
      * @param container
      * @param savedInstanceState
@@ -138,30 +110,39 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.myrelationships, container, false);
+        View v = inflater.inflate(R.layout.myrelationships, container, false);
+        Spinner spinner = (Spinner) v.findViewById(R.id.spinner);
+
+        // Set listener to spinner
+        spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.sort_array, android.R.layout.simple_spinner_item);
+
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinneradapter);
+
+        return v;
     }
 
     /**
-     * Finds TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
+     * onListItemClick finds the TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
      * When this interface is implemented by the main activity, the name can be bundled and inflated into the RelationshipZoom fragment.
-     * Instead - if the ListView header is clicked, the listener will also react. But View v won't match up with the view that we try to assign and this will cause and exception.
+     * Since this listener is shared between the headerview and the rowview - if the ListView header is clicked, the listener will also react.
+     * But View v won't match up with the view that we try to assign and this will cause and exception.
      * Therefore, if this happens, a try catch handles the exception.
-     * @param l
-     * @param v
-     * @param position
-     * @param id
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         try{
 
-        TextView tv = (TextView) v.findViewById(R.id.textview2);
+        TextView tv = (TextView) v.findViewById(R.id.rowname);
         String name = tv.getText().toString();
 
-        mCallback.sendName(name);
+        mCallback.sendNameFromMyRelations(name);
         }
         catch (NullPointerException e){
-            Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
+            Log.i(Constants.TAG, "Favorites: HeaderOnClick", e);
         }
     }
 }

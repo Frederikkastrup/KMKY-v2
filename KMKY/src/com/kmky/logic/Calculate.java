@@ -25,6 +25,12 @@ public class Calculate {
         this.mContext = mContext;
     }
 
+    /**
+     * getCallHeart returns the appropriate heart drawable according to the treshold passed to it.
+     * @param treshold
+     * @param context
+     * @return
+     */
     private Drawable getCallHeart(int treshold, Context context)
     {
         Drawable drawable = null;
@@ -33,27 +39,33 @@ public class Calculate {
             drawable = context.getResources().getDrawable(R.drawable.blank);
         }
         else if ((treshold > 1) && (treshold <= 20)) {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart30);
+            drawable = context.getResources().getDrawable(R.drawable.callheart20);
         }
 
         else if ((treshold > 20) && (treshold <= 40)) {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart35);
+            drawable = context.getResources().getDrawable(R.drawable.callheart40);
         }
 
         else if ((treshold > 40) && (treshold <= 60)) {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart40);
+            drawable = context.getResources().getDrawable(R.drawable.callheart60);
         }
 
         else if ((treshold > 60) && (treshold <= 80)) {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart45);
+            drawable = context.getResources().getDrawable(R.drawable.callheart80);
         }
 
         else {
-            drawable = context.getResources().getDrawable(R.drawable.insideheart50);
+            drawable = context.getResources().getDrawable(R.drawable.callheart100);
         }
         return drawable;
     }
 
+    /**
+     * getSmsHeart returns the appropriate heart drawable according to the treshold passed to it
+     * @param treshold
+     * @param context
+     * @return
+     */
     private Drawable getSmsHeart(int treshold, Context context)
     {
         Drawable drawable = null;
@@ -62,27 +74,36 @@ public class Calculate {
             drawable = context.getResources().getDrawable(R.drawable.blank);
         }
         else if ((treshold > 1) && (treshold <= 20)) {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart60);
+            drawable = context.getResources().getDrawable(R.drawable.smsheart20);
         }
 
         else if ((treshold > 20) && (treshold <= 40)) {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart70);
+            drawable = context.getResources().getDrawable(R.drawable.smsheart40);
         }
 
         else if ((treshold > 40) && (treshold <= 60)) {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart80);
+            drawable = context.getResources().getDrawable(R.drawable.smsheart60);
         }
 
         else if ((treshold > 60) && (treshold <= 80)) {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart90);
+            drawable = context.getResources().getDrawable(R.drawable.smsheart80);
         }
 
         else {
-            drawable = context.getResources().getDrawable(R.drawable.outsideheart100);
+            drawable = context.getResources().getDrawable(R.drawable.smsheart100);
         }
         return drawable;
     }
 
+    /**
+     * calculate heart returns the appropriate heart drawable according to the amount of outgoing and incoming message retrieved from the database. The state argument
+     * passed determine which heart type is needed and who it is referring too.
+     * @param outgoing
+     * @param incoming
+     * @param state
+     * @param context
+     * @return
+     */
     Drawable calculateHeart(int outgoing, int incoming, int state, Context context)
     {
         int treshold = 0;

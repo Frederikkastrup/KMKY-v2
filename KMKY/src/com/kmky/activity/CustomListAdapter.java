@@ -52,11 +52,11 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
             holder = new RelationsHolder();
 
-            holder.outsideheart1 = (ImageView)row.findViewById(R.id.outsideheart1);
-            holder.insideheart1 = (ImageView)row.findViewById(R.id.insideheart1);
-            holder.outsideheart2 = (ImageView)row.findViewById(R.id.outsideheart2);
-            holder.insideheart2 = (ImageView)row.findViewById(R.id.insideheart2);
-            holder.name = (TextView)row.findViewById(R.id.textview2);
+            holder.mysmsheart = (ImageView)row.findViewById(R.id.mysmsheart);
+            holder.mycallheart = (ImageView)row.findViewById(R.id.mycallheart);
+            holder.yoursmsheart = (ImageView)row.findViewById(R.id.yoursmsheart);
+            holder.yourcallheart = (ImageView)row.findViewById(R.id.yourcallheart);
+            holder.name = (TextView)row.findViewById(R.id.rowname);
 
 			row.setTag(holder);
 		}
@@ -67,10 +67,10 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
 		Relations relation = mdata.get(position);
 
-        holder.outsideheart1.setImageDrawable(relation.outsideheart1);
-        holder.insideheart1.setImageDrawable(relation.insideheart1);
-        holder.outsideheart2.setImageDrawable(relation.outsideheart2);
-        holder.insideheart2.setImageDrawable(relation.insideheart2);
+        holder.mysmsheart.setImageDrawable(relation.mysmsheart);
+        holder.mycallheart.setImageDrawable(relation.mycallheart);
+        holder.yoursmsheart.setImageDrawable(relation.yoursmsheart);
+        holder.yourcallheart.setImageDrawable(relation.yourcallheart);
         holder.name.setText(relation.name);
 
 		return row;
@@ -78,10 +78,10 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
     // The holder is used to increase performance when scrolling through the listview. Instead of finding view by id in repeated use, the adapter can retrieve the views from a holder.
 	static class RelationsHolder {
-        ImageView outsideheart1;
-        ImageView insideheart1;
-        ImageView outsideheart2;
-        ImageView insideheart2;
+        ImageView mysmsheart;
+        ImageView mycallheart;
+        ImageView yoursmsheart;
+        ImageView yourcallheart;
         TextView name;
 	}
 

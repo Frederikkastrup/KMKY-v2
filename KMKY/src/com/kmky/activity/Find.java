@@ -23,7 +23,8 @@ public class Find extends Fragment
     }
 
     /**
-     * Whenever the container for the Find Fragment is created, the bundled arguments set in the Main activity
+     * Whenever the container for the Find Fragment is created, the Find Fragment inflates together with any bundled data.
+     * If the bundle contains data (a name), buttons in the Find Fragment Layout will become visible to perform actions on this name.
      * @param inflater
      * @param container
      * @param savedInstanceState

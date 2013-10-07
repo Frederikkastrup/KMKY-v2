@@ -21,7 +21,7 @@
         android:layout_marginTop="15dp"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/start_date"
         android:layout_alignParentLeft="true"
         android:focusableInTouchMode="false"
         />
@@ -32,7 +32,7 @@
         android:layout_marginTop="15dp"
         android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/end_date"
         android:layout_alignParentRight="true"
         android:focusableInTouchMode="false"
         />
@@ -46,19 +46,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/myoutsideheart"/>
+            android:id="@+id/mysmsheart"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/myinsideheart"/>
+            android:id="@+id/mycallheart"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Me"
-            android:id="@+id/textviewmyheart"
+            android:id="@+id/myname_textview"
             android:textStyle="bold"
             android:layout_gravity="bottom|center"
             />
@@ -75,18 +75,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/youroutsideheart"/>
+            android:id="@+id/yoursmsheart"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/yourinsideheart"/>
+            android:id="@+id/yourcallheart"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textviewyourheart"
+            android:id="@+id/yourname_textview"
             android:textStyle="bold"
             android:layout_gravity="bottom|center"
             />
