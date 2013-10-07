@@ -15,6 +15,9 @@ import android.widget.TextView;
 import com.kmky.R;
 import com.kmky.util.Constants;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by W520 on 05-10-13.
  */
@@ -73,7 +76,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date1.setText("" + day + "/" + month + "/" + year);
+                        date1.setText("" + month + "." + day + "." + year);
                     }
                 };
 
@@ -89,7 +92,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date2.setText("" + day + "/" + month + "/" + year);
+                        date2.setText("" + month+ "." + day + "." + year);
                     }
                 };
                 newFragment2.show(getFragmentManager(), "datepicker");

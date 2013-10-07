@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -22,6 +23,10 @@ import com.kmky.R;
 import com.kmky.data.DataModel;
 import com.kmky.service.ListenerService;
 import com.kmky.util.Constants;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * The Main activity:
@@ -249,4 +254,60 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 
         Toast.makeText(getApplicationContext(), name + " added to favorites!", Toast.LENGTH_SHORT).show();
         }
+
+    public long getStartDate(){
+        EditText et = (EditText)this.findViewById(R.id.start_date);
+        String startdate = "05.10.2011";
+        long result = 0;
+
+        if (!et.getText().toString().equals("Start Date")) {
+            startdate = et.getText().toString();
+        }
+        else {
+            Log.i(Constants.TAG, "RelationshipZoom: getStartDate: The user has not picked a date yet!");
+        }
+
+        try{
+        SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
+        Date date = sdf.parse(startdate);
+        result = date.getTime();
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public long getEndDate(){
+        EditText et = (EditText)this.findViewById(R.id.end_date);
+        String startdate = "05.10.2011";
+        long result = 0;
+
+        if (!et.getText().toString().equals("Start Date")) {
+            startdate = et.getText().toString();
+        }
+        else {
+            Log.i(Constants.TAG, "RelationshipZoom: getStartDate: The user has not picked a date yet!");
+        }
+
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
+            Date date = sdf.parse(startdate);
+            result = date.getTime();
+        }
+        catch (ParseException e){
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public void testMili(View view){
+        long startdatemili = getStartDate();
+        long enddatemili = getEndDate();
+
+        String startdatemilistring = String.valueOf(startdatemili);
+        String enddatemilistring = String.valueOf(enddatemili);
+
+        Toast.makeText(getApplicationContext(), startdatemilistring + " TO " + enddatemilistring, Toast.LENGTH_LONG).show();
+    }
 }
