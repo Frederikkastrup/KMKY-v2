@@ -112,8 +112,7 @@ public class Calculate {
         switch (state)
         {
             case 1: // smsheartme
-                try{
-                    treshold = (outgoing/(outgoing + incoming)) * 100;
+                try{ treshold = (outgoing/(outgoing + incoming)) * 100;
                 }
                 catch (ArithmeticException e) {
                     treshold = 0;
@@ -131,16 +130,16 @@ public class Calculate {
                 drawable = getCallHeart(treshold, context);
                 break;
 
-            case 3: // smshearyou
+            case 3: // smsheartyou
                 try{ treshold = (incoming/(outgoing + incoming)) * 100;
                 }
                 catch (ArithmeticException e) {
                     treshold = 0;
                 }
-                getSmsHeart(treshold, context);
+                drawable = getSmsHeart(treshold, context);
                 break;
 
-            case 4: // callheart you
+            case 4: // callheartyou
                 try{ treshold = (incoming/(outgoing + incoming)) * 100;
                 }
                 catch (ArithmeticException e) {

@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.kmky.R;
 import com.kmky.data.Relations;
+import com.kmky.logic.Calculate;
 import com.kmky.util.Constants;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +74,8 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
 
         Drawable drawable1 = getResources().getDrawable(R.drawable.smsheart80);
         Drawable drawable2 = getResources().getDrawable(R.drawable.callheart100);
