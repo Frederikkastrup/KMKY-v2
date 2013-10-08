@@ -97,10 +97,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
+        android:text="Show change"
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/frameLayout"
-        android:onClick="showDates"/>
+        android:onClick="showDates"
+        android:layout_below="@+id/start_date"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/end_date" />
 
 </RelativeLayout>
