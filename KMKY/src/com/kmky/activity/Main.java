@@ -24,9 +24,14 @@ import com.kmky.data.DataModel;
 import com.kmky.service.ListenerService;
 import com.kmky.util.Constants;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * The Main activity:
@@ -257,7 +262,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 
     public long getStartDate(){
         EditText et = (EditText)this.findViewById(R.id.start_date);
-        String startdate = "05.10.2011";
+        String startdate = "0000-00-00";
         long result = 0;
 
         if (!et.getText().toString().equals("Start Date")) {
@@ -268,7 +273,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         }
 
         try{
-        SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse(startdate);
         result = date.getTime();
         }
@@ -301,13 +306,53 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         return result;
     }
 
-    public void testMili(View view){
-        long startdatemili = getStartDate();
-        long enddatemili = getEndDate();
+    /**
+     * Method that takes startdate and enddate strings as arguments, passes them to floats. Passes these floats to calendar objects, and uses a method in these objects to pass date values to a list object.
+     * @return
+     */
+    public List<Date> getDates(){
 
-        String startdatemilistring = String.valueOf(startdatemili);
-        String enddatemilistring = String.valueOf(enddatemili);
+        EditText sd = (EditText)this.findViewById(R.id.start_date);
+        EditText ed = (EditText)this.findViewById(R.id.end_date);
+        String startdate = sd.getText().toString();
+        String enddate = ed.getText().toString();
 
-        Toast.makeText(getApplicationContext(), startdatemilistring + " TO " + enddatemilistring, Toast.LENGTH_LONG).show();
+        // Create List of dates
+        ArrayList<Date> dates = new ArrayList<Date>();
+        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date1 = null;
+        Date date2 = null;
+
+        // Passes the date Strings into SimpleDateFormats
+        try {
+            date1 = df1.parse(startdate);
+            date2 = df1.parse(enddate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        // Create date objects, pass them the SimpleDateFormats..
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(date1);
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date2);
+
+        while(!cal1.after(cal2)) {
+            dates.add(cal1.getTime());
+            cal1.add(Calendar.DATE, 1);
+        }
+
+        return dates; //Returns ArrayList with the inbetween dates.
     }
+
+    public void showDates(View view){
+        List dates = getDates();
+
+        for (int i = 0; i< dates.size(); i++ ){
+            Log.i(Constants.TAG, " " + dates.get(i) + "");
+        }
+    }
+
 }
