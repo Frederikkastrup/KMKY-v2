@@ -37,8 +37,7 @@ public class Heart {
      * @param context
      */
 
-    public Heart(Context context)
-    {
+    public Heart(Context context) {
         this.mContext = context;
         mDM = DataModel.getInstance(mContext);
     }
@@ -77,10 +76,12 @@ public class Heart {
 
                         smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
                         callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
-                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
+                        callHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
+//                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
+                        //Reversed
+                        relations.add(new Relations(smsHeartYou, callHeartYou , getContactNameFromNumber(number), smsHeartMe, callHeartMe ));
                     }
                     catch (NullPointerException e){
                         Log.e(Constants.TAG, "Heart: heartSize nullpointerexception", e);

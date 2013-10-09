@@ -32,7 +32,7 @@ public class DataModel{
 
         for (LogEntry logEntry : mLogs)
         {
-            Log.i(Constants.TAG, "Datamodel: Constructor: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getDate() + " Incoming " + logEntry.getIncoming() + " Outgoing " + logEntry.getOutgoing());
+            Log.i(Constants.TAG, "Datamodel: Constructor: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getTimestamp() + " Incoming " + logEntry.getIncoming() + " Outgoing " + logEntry.getOutgoing());
         }
 	}
 
@@ -71,24 +71,24 @@ public class DataModel{
      * Else creates new log and adds it to mLogs.
      * @param phonenumber
      * @param type
-     * @param date
+     * @param timestamp
      * @param incoming
      * @param outgoing
      */
-	public void addLog(String phonenumber, String type, long date, int incoming, int outgoing){
+	public void addLog(String phonenumber, String type, long timestamp, int incoming, int outgoing){
 
 		// Removes spacing in phonenumber
 		phonenumber = phonenumber.replace(" ", "");
 
 		// Check if log exists or else create it.
-		LogEntry newLog = new LogEntry(0, phonenumber, type, date, incoming, outgoing);
+		LogEntry newLog = new LogEntry(0, phonenumber, type, timestamp, incoming, outgoing);
 		LogEntry existingLog = null;
 
 		// Checks if logs is empty
 		if (mLogs.size() == 0){
 
             Log.d(Constants.TAG, "Datamodel: addLog: List is empty");
-            mDbHelper.addLog(phonenumber, type, date, incoming, outgoing);
+            mDbHelper.addLog(phonenumber, type, timestamp, incoming, outgoing);
             reloadLog();
 
 		}
@@ -98,18 +98,13 @@ public class DataModel{
 			// Id for the log.
 			long logEntryId = 0;
 
-			Log.i(Constants.TAG, phonenumber + " " + type + " " + date);
+			for (LogEntry logEntry : mLogs){
 
-			for (LogEntry log : mLogs){
-
-				if (log.getPhonenumber().equals(phonenumber) && log.getType().equals(type) && log.getDate() == date){
+				if (logEntry.getPhonenumber().equals(phonenumber) && logEntry.getType().equals(type) && logEntry.getTimestamp() == timestamp){
 
                     update = true;
-					logEntryId = log.getId();
-					existingLog = new LogEntry(log.getId(), log.getPhonenumber(), log.getType(), log.getDate(), log.getIncoming(), log.getOutgoing());
-				}
-                else{
-					update = false;
+					logEntryId = logEntry.getId();
+					existingLog = new LogEntry(logEntry.getId(), logEntry.getPhonenumber(), logEntry.getType(), logEntry.getTimestamp(), logEntry.getIncoming(), logEntry.getOutgoing());
 				}
 			}
 			if (update){
@@ -119,7 +114,7 @@ public class DataModel{
 			} else if (!update){
 
 //				Log.d(Constants.TAG, "Datamodel: addLog: adding logEntry");
-                mDbHelper.addLog(phonenumber, type, date, incoming, outgoing);
+                mDbHelper.addLog(phonenumber, type, timestamp, incoming, outgoing);
                 reloadLog();
             }
 		}
@@ -136,7 +131,7 @@ public class DataModel{
 
         String phonenumber = existingLog.getPhonenumber();
 		String type = existingLog.getType();
-		long date = existingLog.getDate();
+		long date = existingLog.getTimestamp();
 		int incoming = existingLog.getIncoming();
 		int outgoing = existingLog.getOutgoing();
 
@@ -164,7 +159,7 @@ public class DataModel{
 
 		for (LogEntry log : mLogs)
 		{
-			if (log.getPhonenumber().equals(phonenumber) && log.getDate() == date && log.getType().equals("sms"))
+			if (log.getPhonenumber().equals(phonenumber) && log.getTimestamp() == date && log.getType().equals("sms"))
 			{
 				return log;
 			}
@@ -178,7 +173,7 @@ public class DataModel{
 
 		for (LogEntry log : mLogs)
 		{
-			if (log.getPhonenumber().equals(phonenumber) && log.getDate() == date && log.getType().equals("sms"))
+			if (log.getPhonenumber().equals(phonenumber) && log.getTimestamp() == date && log.getType().equals("sms"))
 			{
 				return log;
 			}
@@ -195,9 +190,9 @@ public class DataModel{
 
 			if (log.getPhonenumber().equals(phonenumber) && log.getType().equals("sms")){
                 incoming = incoming + log.getIncoming();
-                Log.i(Constants.TAG, "Datamodel: getSmsLogsForPersonToDate incoming " + incoming);
+//                Log.i(Constants.TAG, "Datamodel: getSmsLogsForPersonToDate incoming " + incoming);
 				outgoing = outgoing + log.getOutgoing();
-                Log.i(Constants.TAG, "Datamodel: getSmsLogsForPersonToDate outgoing " + outgoing);
+//                Log.i(Constants.TAG, "Datamodel: getSmsLogsForPersonToDate outgoing " + outgoing);
 			}
 		}
 		LogEntry logToDate = new LogEntry(0, phonenumber, type, date, incoming, outgoing);
@@ -220,9 +215,9 @@ public class DataModel{
             if (log.getPhonenumber().equals(phonenumber) && log.getType().equals("call")){
 
                 incoming = incoming + log.getIncoming();
-                Log.i(Constants.TAG, "Datamodel: getCallLogsForPersonToDate incoming " + incoming);
+//                Log.i(Constants.TAG, "Datamodel: getCallLogsForPersonToDate incoming " + incoming);
 				outgoing = outgoing + log.getOutgoing();
-                Log.i(Constants.TAG, "Datamodel: getCallLogsForPersonToDate outgoing " + outgoing);
+//                Log.i(Constants.TAG, "Datamodel: getCallLogsForPersonToDate outgoing " + outgoing);
 			}
 		}
 		LogEntry logToDate = new LogEntry(0, phonenumber, type, date, incoming, outgoing);
@@ -250,7 +245,7 @@ public class DataModel{
 			int totalCommunication = outgoingCall + outgoingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-			Log.d(Constants.TAG, "Datamodel: fetchPhonenumbersForLeastContacted: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
+			Log.d(Constants.TAG, "Datamodel: getPhonenumbersForLeastContacted: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
 		}
 
 		// Sort the list
@@ -299,6 +294,7 @@ public class DataModel{
 			int totalCommunication = outgoingCall + outgoingSMS;
 
 			SortList.add(new TopTen(phonenumber, totalCommunication, 0));
+            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
 //            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
 		}
 

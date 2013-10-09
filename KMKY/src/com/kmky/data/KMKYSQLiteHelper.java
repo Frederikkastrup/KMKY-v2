@@ -152,14 +152,14 @@ public class KMKYSQLiteHelper extends SQLiteOpenHelper{
                 do{
                     String phonenumber = cursor.getString(cursor.getColumnIndex(COLUMN_PHONENUMBER));
                     String type = cursor.getString(cursor.getColumnIndex(COLUMN_TYPE));
-                    long date = cursor.getLong(cursor.getColumnIndex(COLUMN_DATE));
+                    long timestamp = cursor.getLong(cursor.getColumnIndex(COLUMN_DATE));
                     int incoming = cursor.getInt(cursor.getColumnIndex(COLUMN_INCOMING));
                     int outgoing = cursor.getInt(cursor.getColumnIndex(COLUMN_OUTGOING));
                     long id = cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID));
 
-                    LogEntry newLog = new LogEntry(id, phonenumber, type, date, incoming, outgoing);
+                    LogEntry newLog = new LogEntry(id, phonenumber, type, timestamp, incoming, outgoing);
 
-                    Log.d(Constants.TAG, "KMKYSQLiteHelper: getLogs: id: " + newLog.getId() + " type: " + newLog.getType() + " incoming: " + newLog.getIncoming() + " outgoing " + newLog.getOutgoing());
+                    Log.d(Constants.TAG, "KMKYSQLiteHelper: getLogs: id: " + newLog.getId() + " type: " + newLog.getType() + " Date: " + newLog.getTimestamp() + " incoming: " + newLog.getIncoming() + " outgoing " + newLog.getOutgoing());
 
                     result.add(newLog);
 

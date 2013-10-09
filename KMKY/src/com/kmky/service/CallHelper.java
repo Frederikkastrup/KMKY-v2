@@ -41,8 +41,7 @@ public class CallHelper
 		mContext.registerReceiver(mOutgoingReceiver, intentFilter);
 	}
 
-	public long getTime()
-	{
+	public long getTime(){
 		Date now = new Date();
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(now);
 
@@ -50,18 +49,14 @@ public class CallHelper
 
 		Date date = null;
 
-		try
-		{
+		try{
 	      date = dateFormat.parse(timeStamp);
-		} catch (ParseException e)
-		{
+		}
+        catch (ParseException e){
 			e.printStackTrace();
 		}
-
 		long timeMilliseconds = date.getTime();
-
 		return timeMilliseconds;
-
 	}
 
     /**
@@ -70,24 +65,25 @@ public class CallHelper
 	private class IncomingCalls extends PhoneStateListener
 	{
 		@Override
-		public void onCallStateChanged(int state, String incomingNumber)
+		public void onCallStateChanged(int state, String phonenumber)
 		{
-			switch (state)
-			{
+			switch (state){
 			case TelephonyManager.CALL_STATE_RINGING:
 
-				String subString = incomingNumber.substring(0, 3);
+//                Log.d(Constants.TAG, "CallHelper: incomingCalls: onCallStateChanged");
 
-				if (subString.equals("+61"))
-				{
-					incomingNumber = incomingNumber.substring(3, incomingNumber.length());
+				String subString = phonenumber.substring(0, 3);
+
+				if (subString.equals("+61")){
+					phonenumber = phonenumber.substring(3, phonenumber.length());
+                    phonenumber = "0".concat(phonenumber);
 				}
 
                 Log.d(Constants.TAG, "CallHelper: incomingCalls substring" + subString);
 				long timeInMilliseconds = getTime();
 
-				DataModel.getInstance(mContext).addLog(incomingNumber, "call", timeInMilliseconds, 1, 0);
-                Log.d(Constants.TAG, "CallHelper: incomingCall: " + incomingNumber);
+				DataModel.getInstance(mContext).addLog(phonenumber, "call", timeInMilliseconds, 1, 0);
+                Log.d(Constants.TAG, "CallHelper: incomingCall: " + phonenumber);
 				break;
 			}
 		}
@@ -102,25 +98,24 @@ public class CallHelper
 		}
 
 		@Override
-		public void onReceive(Context context, Intent intent)
-		{
-			String outgoingNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
+		public void onReceive(Context context, Intent intent){
+			String phonenumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
 
 			// Getting the time
 			long timeMilliseconds = getTime();
 
 			// Sorting away 0
-			String subString = outgoingNumber.substring(0, 3);
+			String subString = phonenumber.substring(0, 3);
 
             Log.d(Constants.TAG, "CallHelper: outgoingCalls substring" + subString);
 
-			if (subString.equals("+61"))
-			{
-				outgoingNumber = outgoingNumber.substring(3, outgoingNumber.length());
+			if (subString.equals("+61")){
+				phonenumber = phonenumber.substring(3, phonenumber.length());
+                phonenumber = "0".concat(phonenumber);
 			}
 
-			DataModel.getInstance(mContext).addLog((outgoingNumber), "call", timeMilliseconds, 0, 1);
-            Log.d(Constants.TAG, "CallHelper: outgoingCalls: " + outgoingNumber);
+			DataModel.getInstance(mContext).addLog((phonenumber), "call", timeMilliseconds, 0, 1);
+            Log.d(Constants.TAG, "CallHelper: outgoingCalls: " + phonenumber);
 		}
 	}
 }

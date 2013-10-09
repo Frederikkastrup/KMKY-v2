@@ -21,14 +21,6 @@ public class Calculate {
         this.mContext = context;
     }
 
-    public Context getmContext() {
-        return mContext;
-    }
-
-    public void setmContext(Context mContext) {
-        this.mContext = mContext;
-    }
-
     /**
      * getCallHeart returns the appropriate heart drawable according to the threshold passed to it.
      * @param threshold
@@ -37,29 +29,36 @@ public class Calculate {
      */
     private Drawable getCallHeart(int threshold, Context context)
     {
+        Log.d(Constants.TAG, "Calculate: getCallHeart: Threshold: " + threshold);
         Drawable callHeart = null;
 
         if (threshold == 0){
             callHeart = context.getResources().getDrawable(R.drawable.blank);
+//            Log.d(Constants.TAG, "Calculate: getCallHeart: Blank");
         }
         else if ((threshold > 1) && (threshold <= 20)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart20);
+//            Log.d(Constants.TAG, "Calculate: getCallHeart: 20%");
         }
 
         else if ((threshold > 20) && (threshold <= 40)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart40);
+//            Log.d(Constants.TAG, "Calculate: getCallHeart: 40%");
         }
 
         else if ((threshold > 40) && (threshold <= 60)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart60);
+//            Log.d(Constants.TAG, "Calculate: getCallHeart: 60%");
         }
 
         else if ((threshold > 60) && (threshold <= 80)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart80);
+//            Log.d(Constants.TAG, "Calculate: getCallHeart: 80%");
         }
 
         else {
             callHeart = context.getResources().getDrawable(R.drawable.callheart100);
+//            Log.d(Constants.TAG, "Calculate: getCallHeart: 100%");
         }
         return callHeart;
     }
@@ -73,34 +72,35 @@ public class Calculate {
     private Drawable getSmsHeart(int threshold, Context context)
     {
         Drawable smsHeart = null;
+//        Log.d(Constants.TAG, "Calculate: getSmsHeart: Threshold: " + threshold);
 
         if (threshold == 0){
             smsHeart = context.getResources().getDrawable(R.drawable.blank);
-            Log.d(Constants.TAG, "Calculate: getSmsHeart: Blank");
+//            Log.d(Constants.TAG, "Calculate: getSmsHeart: Blank");
         }
         else if ((threshold > 1) && (threshold <= 20)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart20);
-            Log.d(Constants.TAG, "Calculate: getSmsHeart: 20%");
+//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 20%");
         }
 
         else if ((threshold > 20) && (threshold <= 40)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart40);
-            Log.d(Constants.TAG, "Calculate: getSmsHeart: 40%");
+//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 40%");
         }
 
         else if ((threshold > 40) && (threshold <= 60)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart60);
-            Log.d(Constants.TAG, "Calculate: getSmsHeart: 60%");
+//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 60%");
         }
 
         else if ((threshold > 60) && (threshold <= 80)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart80);
-            Log.d(Constants.TAG, "Calculate: getSmsHeart: 80%");
+//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 80%");
         }
 
         else {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart100);
-            Log.d(Constants.TAG, "Calculate: getSmsHeart: 100%");
+//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 100%");
         }
         return smsHeart;
     }
@@ -116,88 +116,71 @@ public class Calculate {
      */
     Drawable calculateHeart(int outgoing, int incoming, int state, Context context){
 
-        int threshold = 0;
+        int incomingThreshold = 0;
+        int outgoingThreshold = 0;
         Drawable drawable = null;
-
-//        if ((outgoing + incoming) * 100 != 0)
-//        {
-//            Log.d(Constants.TAG, " Threshold smsHeartMe "+ (int)(((double)incoming/((double)outgoing + (double)incoming)) * 100));
-//        }
 
         switch (state)
         {
             case 1: // smsheartme
 
-                if ((outgoing + incoming) * 100 != 0){
-                    try{
-                        threshold = (int)(((double)outgoing/((double)outgoing + (double)incoming)) * 100);
-                        Log.d(Constants.TAG, "Calculate: calculateHeart: smsHeartMe: threshold: " + threshold);
-                    }
-                    catch (ArithmeticException e) {
-                        threshold = 0;
-                        Log.e(Constants.TAG, "Calculate: calculateHeart exception: ", e);
-                    }
-                    drawable = getSmsHeart(threshold, context);
-                }
-                else{
-                    drawable = getSmsHeart(0, context);
-                }
+                incomingThreshold = getIncomingThreshold(incoming, outgoing);
+                drawable = getSmsHeart(incomingThreshold, context);
+
                 break;
 
             case 2: // callheartme
 
-                if ((outgoing + incoming) * 100 != 0){
+                incomingThreshold = getIncomingThreshold(incoming, outgoing);
+                drawable = getCallHeart(incomingThreshold, context);
 
-                    try{
-                        threshold = (int)(((double)outgoing/((double)outgoing + (double)incoming)) * 100);
-                        Log.d(Constants.TAG, "Calculate: calculateHeart: callHeartMe: threshold: " + threshold);
-                    }
-                    catch (ArithmeticException e) {
-                        threshold = 0;
-                        Log.e(Constants.TAG, "Calculate: calculateHeart exception: ", e);
-                    }
-                    drawable = getCallHeart(threshold, context);
-                }
-                else{
-                    drawable = getCallHeart(0, context);
-                }
                 break;
 
             case 3: // smshearyou
 
-                if ((outgoing + incoming) * 100 != 0){
+                outgoingThreshold = getOutgoingThreshold(incoming, outgoing);
+                drawable = getSmsHeart(outgoingThreshold, context);
 
-                    try{
-                        threshold = (int)(((double)incoming/((double)outgoing + (double)incoming)) * 100);
-                        Log.d(Constants.TAG, "Calculate: calculateHeart: smsHeartYou: threshold: " + threshold);
-                    }
-                    catch (ArithmeticException e) {
-                        threshold = 0;
-                        Log.e(Constants.TAG, "Calculate: calculateHeart exception: ", e);
-                    }
-                    getSmsHeart(threshold, context);
-                }
-                else drawable = getSmsHeart(0, context);
                 break;
 
             case 4: // callheart you
 
-                if ((outgoing + incoming) * 100 != 0){
+                 outgoingThreshold = getOutgoingThreshold(incoming, outgoing);
+                 drawable = getCallHeart(outgoingThreshold, context);
 
-                    try{
-                        threshold = (int)(((double)incoming/((double)outgoing + (double)incoming)) * 100);
-                        Log.d(Constants.TAG, "Calculate: calculateHeart: callHeartYou: threshold: " + threshold);
-                    }
-                    catch (ArithmeticException e) {
-                        threshold = 0;
-                        Log.e(Constants.TAG, "Calculate: calculateHeartYou exception: ", e);
-                    }
-                    drawable = getCallHeart(threshold, context);
-                }
-                else drawable = getCallHeart(0, context);
                 break;
         }
         return drawable;
+    }
+
+    private int getIncomingThreshold(int incoming, int outgoing)
+    {
+        int incomingThreshold = 0;
+
+        if ((outgoing + incoming) * 100 != 0)
+        {
+                int totalCommunication = incoming + outgoing;
+                incomingThreshold = (int) (((double)incoming/(double)totalCommunication * 100));
+//                Log.d(Constants.TAG, "Calculate: calculateHeart: incomingThreshold: " + incomingThreshold);
+        }
+
+        return incomingThreshold;
+    }
+
+    private int getOutgoingThreshold(int incoming, int outgoing)
+    {
+//        Log.d(Constants.TAG, "Calculate: outgoingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
+        int outgoingThreshold = 0;
+
+        if ((outgoing + incoming) * 100 != 0)
+        {
+                int totalCommunication = incoming + outgoing;
+//                Log.d(Constants.TAG, "Calculate: outgoingThreshold: total communication: " + totalCommunication);
+                outgoingThreshold = (int) (((double)outgoing/(double)totalCommunication) * 100);
+//                Log.d(Constants.TAG, "Calculate: calculateHeart: outgoingThreshold: " + outgoingThreshold);
+        }
+
+        return outgoingThreshold;
     }
  }
 

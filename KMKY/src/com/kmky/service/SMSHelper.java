@@ -111,11 +111,12 @@ public class SMSHelper{
 
                         if (subString.equals("+61")){
                             phonenumber = phonenumber.substring(3, phonenumber.length());
+                            phonenumber = "0".concat(phonenumber);
                         }
                         Log.e(Constants.TAG, "SMSHelper: incoming sms: number " + phonenumber);
 
                         long timeInMillisecond = getTime();
-                        DataModel.getInstance(context).addLog("0".concat(phonenumber), "sms", timeInMillisecond, 1, 0);
+                        DataModel.getInstance(context).addLog(phonenumber, "sms", timeInMillisecond, 1, 0);
                     }
                 }
             }
@@ -164,7 +165,7 @@ public class SMSHelper{
                             long messageId = cursor.getLong(cursor.getColumnIndex("_id"));
                             String timeStamp = cursor.getString(cursor.getColumnIndex("date"));
                             String body = cursor.getString(cursor.getColumnIndex("body"));
-                            String md5 = md5(timeStamp + body);
+                            String md5 = md5(timeStamp + body + messageId);
 
 //                            Log.d(Constants.TAG, "SMSHelper: OutgoingSMS: id: " + messageId);
 //                            Log.d(Constants.TAG, "SMSHelper: OutgoingSMS: timestamp: " + timeStamp);
@@ -177,8 +178,10 @@ public class SMSHelper{
                                     phonenumber = cursor.getString(cursor.getColumnIndex("address"));
                                     String subString = phonenumber.substring(0, 3);
 
+                                    //Trimming phone number to get 0xxxxxxxxx
                                     if (subString.equals("+61")){
                                         phonenumber = phonenumber.substring(3, phonenumber.length());
+                                        phonenumber = "0".concat(phonenumber);
                                     }
 
                                     if (phonenumber != null ){

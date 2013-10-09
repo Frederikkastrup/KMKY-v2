@@ -60,7 +60,7 @@ public class LogEntry
         this.type = type;
     }
 
-    public long getDate(){
+    public long getTimestamp(){
         return timeStamp;
     }
 
