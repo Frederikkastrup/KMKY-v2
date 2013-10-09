@@ -20,20 +20,53 @@ import android.util.Log;
  */
 public class CallHelper
 {
-
 	private Context mContext;
-	private TelephonyManager tm;
-	private IncomingCalls callStateListener;
-	private outGoingCalls outgoingReceiver;
+	private TelephonyManager mtelephonyManager;
+	private IncomingCalls mCallStateListener;
+	private OutgoingCalls mOutgoingReceiver;
 
-	public CallHelper(Context ctx) {
-		this.mContext = ctx;
-
-		callStateListener = new IncomingCalls();
-		outgoingReceiver = new outGoingCalls();
+	public CallHelper(Context context) {
+		this.mContext = context;
+		mCallStateListener = new IncomingCalls();
+		mOutgoingReceiver = new OutgoingCalls();
 	}
 
-	// Listens for incoming calls
+	// Sets the BroadcastReciever and Telephonymanager
+	public void start()
+	{
+		mtelephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+		mtelephonyManager.listen(mCallStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+
+		IntentFilter intentFilter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
+		mContext.registerReceiver(mOutgoingReceiver, intentFilter);
+	}
+
+	public long getTime()
+	{
+		Date now = new Date();
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(now);
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date date = null;
+
+		try
+		{
+	      date = dateFormat.parse(timeStamp);
+		} catch (ParseException e)
+		{
+			e.printStackTrace();
+		}
+
+		long timeMilliseconds = date.getTime();
+
+		return timeMilliseconds;
+
+	}
+
+    /**
+     * PhoneStateListner for incoming calls
+     */
 	private class IncomingCalls extends PhoneStateListener
 	{
 		@Override
@@ -42,7 +75,6 @@ public class CallHelper
 			switch (state)
 			{
 			case TelephonyManager.CALL_STATE_RINGING:
-				// called when someone is calling this phone
 
 				String subString = incomingNumber.substring(0, 3);
 
@@ -52,21 +84,21 @@ public class CallHelper
 				}
 
                 Log.d(Constants.TAG, "CallHelper: incomingCalls substring" + subString);
-
 				long timeInMilliseconds = getTime();
 
 				DataModel.getInstance(mContext).addLog(incomingNumber, "call", timeInMilliseconds, 1, 0);
                 Log.d(Constants.TAG, "CallHelper: incomingCall: " + incomingNumber);
-
 				break;
 			}
 		}
 	}
 
-	// Listens for outgoing calls
-	public class outGoingCalls extends BroadcastReceiver
-	{
-		public outGoingCalls() {
+    /**
+     * BroadcastReciever for outgoing calls
+     */
+	public class OutgoingCalls extends BroadcastReceiver{
+
+        public OutgoingCalls() {
 		}
 
 		@Override
@@ -87,44 +119,8 @@ public class CallHelper
 				outgoingNumber = outgoingNumber.substring(3, outgoingNumber.length());
 			}
 
-			DataModel.getInstance(mContext).addLog("0".concat(outgoingNumber), "call", timeMilliseconds, 0, 1);
+			DataModel.getInstance(mContext).addLog((outgoingNumber), "call", timeMilliseconds, 0, 1);
             Log.d(Constants.TAG, "CallHelper: outgoingCalls: " + outgoingNumber);
-
 		}
-
 	}
-
-	// Sets the BroadcastReciever and Telephonymanager
-	public void start()
-	{
-		tm = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
-		tm.listen(callStateListener, PhoneStateListener.LISTEN_CALL_STATE);
-
-		IntentFilter intentFilter = new IntentFilter(Intent.ACTION_NEW_OUTGOING_CALL);
-		mContext.registerReceiver(outgoingReceiver, intentFilter);
-	}
-
-	public long getTime()
-	{
-		Date now = new Date();
-		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(now);
-
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-		Date date = null;
-
-		try
-		{
-	        date = dateFormat.parse(timeStamp);
-		} catch (ParseException e)
-		{
-			e.printStackTrace();
-		}
-
-		long timeMilliseconds = date.getTime();
-
-		return timeMilliseconds;
-
-	}
-
 }

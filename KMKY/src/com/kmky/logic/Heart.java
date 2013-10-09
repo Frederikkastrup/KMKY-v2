@@ -2,7 +2,11 @@ package com.kmky.logic;
 
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.provider.Contacts;
+import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.kmky.data.DataModel;
@@ -51,51 +55,23 @@ public class Heart {
         List<Relations> relations = new ArrayList<Relations>();
         Calculate cal = new Calculate(mContext);
         long timeStamp = getTime();
-        Drawable smsHeartMe;
-        Drawable callHeartMe;
-        Drawable smsHeartYou;
-        Drawable callHeartYou;
-        LogEntry smsLog;
-        LogEntry callLog;
+        Drawable smsHeartMe, callHeartMe, smsHeartYou, callHeartYou;
+        LogEntry smsLog, callLog;
 
         switch (state)
         {
             case 0:
 
-                mMostContacted = mDM.fetchNumbersForMostContacted();
+                mMostContacted = mDM.getNumbersForMostContacted();
 
                 for (String number : mMostContacted){
 
 
-                    smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
-                    callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
+                    smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
+                    callLog = mDM.getCallLogsForPersonToDate(number, timeStamp);
 
-                    Log.d(Constants.TAG, "Heart: heartSize: SMS: " + smsLog.getPhonenumber() + " incoming: " + smsLog.getIncoming() + " outgoing: " + smsLog.getOutgoing());
-                    Log.d(Constants.TAG, "Heart: heartSize: Call: " + callLog.getPhonenumber() + " incoming: " + callLog.getIncoming() + " outgoing: " + callLog.getOutgoing());
-
-                    try {
-
-                    smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
-                    callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                    smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
-                    callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
-
-                    relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
-                    }
-                    catch (NullPointerException e){
-                        Log.d(Constants.TAG, "Heart: heartSize ", e);
-                    }
-                }
-
-                break;
-
-            case 1:
-                mLeastContacted = mDM.fetchNumbersForLeastContacted();
-
-                for (String number : mLeastContacted){
-
-                    smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
-                    callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
+//                    Log.d(Constants.TAG, "Heart: heartSize: SMS: " + smsLog.getPhonenumber() + " incoming: " + smsLog.getIncoming() + " outgoing: " + smsLog.getOutgoing());
+//                    Log.d(Constants.TAG, "Heart: heartSize: Call: " + callLog.getPhonenumber() + " incoming: " + callLog.getIncoming() + " outgoing: " + callLog.getOutgoing());
 
                     try {
 
@@ -104,24 +80,45 @@ public class Heart {
                         smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
                         callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
+                    }
+                    catch (NullPointerException e){
+                        Log.e(Constants.TAG, "Heart: heartSize nullpointerexception", e);
+                    }
+                }
+                break;
+
+            case 1:
+                mLeastContacted = mDM.getNumbersForLeastContacted();
+
+                for (String number : mLeastContacted){
+
+                    smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
+                    callLog = mDM.getCallLogsForPersonToDate(number, timeStamp);
+
+                    try {
+
+                        smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
+                        callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.i(Constants.TAG, "Heart: heartSize ", e);
                     }
-
                 }
-
                 break;
 
             case 2:
 
-                mMostContactedYou = mDM.fetchNumbersForMostContactedYou();
+                mMostContactedYou = mDM.getNumbersForMostContactedYou();
 
                 for (String number : mMostContactedYou){
 
-                    smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
-                    callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
+                    smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
+                    callLog = mDM.getCallLogsForPersonToDate(number, timeStamp);
 
                     try {
 
@@ -130,24 +127,22 @@ public class Heart {
                         smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
                         callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.i(Constants.TAG, "Heart: heartSize ", e);
                     }
-
                 }
-
                 break;
 
             case 3:
 
-                mLeastContactedYou = mDM.fetchNumbersForLeastContactedYou();
+                mLeastContactedYou = mDM.getNumbersForLeastContactedYou();
 
                 for (String number : mLeastContactedYou){
 
-                    smsLog = mDM.fetchSMSLogsForPersonToDate(number, timeStamp);
-                    callLog = mDM.fetchCallLogsForPersonToDate(number, timeStamp);
+                    smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
+                    callLog = mDM.getCallLogsForPersonToDate(number, timeStamp);
 
                     try {
 
@@ -156,29 +151,22 @@ public class Heart {
                         smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
                         callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou));
+                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.i(Constants.TAG, "Heart: heartSize ", e);
                     }
-
                 }
-
                 break;
         }
-
         return relations;
-
-
     }
 
     /**
      * Method for returning the time as a long
      * @return
      */
-
-    private long getTime()
-    {
+    private long getTime() {
         Date now = new Date();
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(now);
 
@@ -186,17 +174,32 @@ public class Heart {
 
         Date date = null;
 
-        try
-        {
+        try  {
             date = dateFormat.parse(timeStamp);
-        } catch (ParseException e)
-        {
+        }
+        catch (ParseException e) {
             e.printStackTrace();
         }
 
         long timeMilliseconds = date.getTime();
         return timeMilliseconds;
+    }
 
+    private String getContactNameFromNumber(String number) {
+
+        String name = "";
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
+        Cursor cursor = mContext.getContentResolver().query(uri, new String[]{ContactsContract.PhoneLookup.DISPLAY_NAME},null,null,null);
+        if (cursor.moveToFirst()) {
+           name = cursor.getString(cursor.getColumnIndex(ContactsContract.PhoneLookup.DISPLAY_NAME));
+        }
+
+        if (name == ""){
+            return number;
+        }
+        else {
+        return name;
+        }
     }
 
 
