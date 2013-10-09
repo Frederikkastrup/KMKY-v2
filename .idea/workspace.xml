@@ -15,9 +15,7 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="2.6&#10;Frederik">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" />
+    <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="2.0 (Mikkel)">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KMKYAPP.iws" />
@@ -36,6 +34,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -72,7 +71,6 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -85,89 +83,38 @@
       <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="0" selection-start="3575" selection-end="3575" vertical-scroll-proportion="0.0" vertical-offset="1666" max-vertical-offset="3808">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListenerService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/ListenerService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="0" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="952">
-              <folding />
+            <state line="310" column="83" selection-start="11447" selection-end="11447" vertical-scroll-proportion="0.0" vertical-offset="2302" max-vertical-offset="3298">
+              <folding>
+                <element signature="method#sendNameFromMyRelations#0;class#Main#0" expanded="false" />
+                <element signature="method#sendNameFromFavorites#0;class#Main#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#Main#0" expanded="false" />
+                <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
+                <element signature="method#findContact#0;class#Main#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Calculate.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/Calculate.java">
+        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="25" selection-start="1415" selection-end="1432" vertical-scroll-proportion="0.0" vertical-offset="969" max-vertical-offset="2924">
+            <state line="122" column="32" selection-start="3605" selection-end="3605" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2686">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/DataModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="7" selection-start="3268" selection-end="3268" vertical-scroll-proportion="0.0" vertical-offset="2533" max-vertical-offset="8806">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyRelationships.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MyRelationships.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="0" selection-start="2037" selection-end="2697" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1921">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CallHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/CallHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="46" selection-start="2977" selection-end="2977" vertical-scroll-proportion="0.0" vertical-offset="2108" max-vertical-offset="2346">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SMSHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/SMSHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="0" selection-start="2758" selection-end="2758" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3128">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KMKYSQLiteHelper.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/KMKYSQLiteHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="114" column="56" selection-start="2987" selection-end="2987" vertical-scroll-proportion="0.0" vertical-offset="1938" max-vertical-offset="3281">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Heart.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="20" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.2739965" vertical-offset="693" max-vertical-offset="2635">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CallAndSMSHistory.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/CallAndSMSHistory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1071">
-              <folding />
+            <state line="68" column="5" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.3457627" vertical-offset="714" max-vertical-offset="2261">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#onItemSelected#0;class#MyRelationships#0" expanded="false" />
+                <element signature="method#onNothingSelected#0;class#MyRelationships#0" expanded="false" />
+                <element signature="e#3033#3044#0" expanded="true" />
+                <element signature="method#onCreateView#0;class#MyRelationships#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,6 +127,7 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitLogSettings">
@@ -190,30 +138,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/RelationshipZoom.java" />
-        <option value="$PROJECT_DIR$/KMKY/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java" />
-        <option value="$PROJECT_DIR$/KMKY/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/KMKY/res/layout/listview_header.xml" />
-        <option value="$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml" />
+        <option value="$PROJECT_DIR$/KMKY/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/data/Calculate.java" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/FavoritesEmpty.java" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomListAdapter.java" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/data/Relations.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomArrayAdapter.java" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/find.xml" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/data/KMKYSQLiteHelper.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/data/DataModel.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/service/ListenerService.java" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/favorites.xml" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/RelationshipZoom.java" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/relationshipzoom.xml" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/service/SMSHelper.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -241,6 +189,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -274,28 +224,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kmky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KMKY-v2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KMKY" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kmky" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -417,8 +345,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -473,6 +399,19 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -498,19 +437,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -595,6 +521,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -610,7 +541,7 @@
     <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
     <option name="FORCE_UPDATE" value="false" />
     <option name="IGNORE_EXTERNALS" value="false" />
-    <configuration useDefault="false">C:\Users\W520\AppData\Roaming\Subversion</configuration>
+    <configuration useDefault="false">C:\Users\FrederikKastrup\AppData\Roaming\Subversion</configuration>
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
   </component>
   <component name="TaskManager">
@@ -631,44 +562,108 @@
       <created>1381019197114</created>
       <updated>1381019197115</updated>
     </task>
-    <task id="LOCAL-00004" summary="2.5&#10;Frederik">
-      <created>1381029609336</created>
-      <updated>1381029609336</updated>
+    <task id="LOCAL-00004" summary="2.6 (Mikkel)">
+      <created>1381029758792</created>
+      <updated>1381029758792</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="2.6 (Mikkel)">
+      <created>1381030169053</created>
+      <updated>1381030169053</updated>
+    </task>
+    <task id="LOCAL-00006" summary="2.6 (Mikkel)">
+      <created>1381050338501</created>
+      <updated>1381050338501</updated>
+    </task>
+    <task id="LOCAL-00007" summary="3.0 (Mikkel)">
+      <created>1381050462099</created>
+      <updated>1381050462099</updated>
+    </task>
+    <task id="LOCAL-00008" summary="2.0 (Mikkel)">
+      <created>1381050957090</created>
+      <updated>1381050957090</updated>
+    </task>
+    <task id="LOCAL-00009" summary="2.0 (Mikkel)">
+      <created>1381058880284</created>
+      <updated>1381058880285</updated>
+    </task>
+    <task id="LOCAL-00010" summary="4.0 total refactoring.">
+      <created>1381111148869</created>
+      <updated>1381111148869</updated>
+    </task>
+    <task id="LOCAL-00011" summary="2.0 (Mikkel)">
+      <created>1381131878075</created>
+      <updated>1381131878075</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Milisec metode added">
+      <created>1381142712392</created>
+      <updated>1381142712392</updated>
+    </task>
+    <task id="LOCAL-00013" summary="2.0 (Mikkel)">
+      <created>1381146298070</created>
+      <updated>1381146298070</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18541667" sideWeight="0.79545456" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.16785714" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07494407" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07278835" sideWeight="0.83214283" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20454545" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.83214283" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22619048" sideWeight="0.6707727" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27404922" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1625" sideWeight="0.98917747" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5378788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18571429" sideWeight="0.94400895" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.16785714" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07494407" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22604166" sideWeight="0.8948546" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10514542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18571429" sideWeight="0.8948546" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.83214283" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -679,26 +674,20 @@
     </option>
     <MESSAGE value="2.1" />
     <MESSAGE value="2.2" />
-    <MESSAGE value="2.5&#10;Frederik" />
-    <MESSAGE value="2.6&#10;Frederik" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.6&#10;Frederik" />
+    <MESSAGE value="2.6 (Mikkel)" />
+    <MESSAGE value="3.0 (Mikkel)" />
+    <MESSAGE value="4.0 total refactoring." />
+    <MESSAGE value="Milisec metode added" />
+    <MESSAGE value="2.0 (Mikkel)" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.0 (Mikkel)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/CallAndSMSHistory.java">
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/FavoritesEmpty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="1071">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="29" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <folding />
-        </state>
+        <state line="14" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.17106918" vertical-offset="0" max-vertical-offset="795" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/res/layout/listview_header.xml">
@@ -706,99 +695,142 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="435" selection-end="435" vertical-scroll-proportion="-8.16" vertical-offset="0" max-vertical-offset="323">
+        <state line="11" column="24" selection-start="431" selection-end="431" vertical-scroll-proportion="-7.48" vertical-offset="0" max-vertical-offset="323">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/listview_row.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="42" selection-start="1491" selection-end="1491" vertical-scroll-proportion="-23.32" vertical-offset="182" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="770">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/favoritesempty.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="757">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/datepicker.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="187">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/favorites.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="44" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="442">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="62" selection-start="4282" selection-end="4282" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2482">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/find.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="0" selection-start="721" selection-end="721" vertical-scroll-proportion="0.4089347" vertical-offset="0" max-vertical-offset="873">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1423" selection-end="1423" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+        <state line="54" column="0" selection-start="1789" selection-end="1789" vertical-scroll-proportion="0.7917595" vertical-offset="37" max-vertical-offset="935">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/Relations.java">
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="15" selection-start="102" selection-end="102" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
+        <state line="15" column="44" selection-start="599" selection-end="599" vertical-scroll-proportion="0.29209623" vertical-offset="0" max-vertical-offset="873">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/TopTen.java">
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/RelationshipZoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1904">
+        <state line="40" column="71" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="1411">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/Calculate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="25" selection-start="1415" selection-end="1432" vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2924">
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/relationshipzoom.xml">
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/ListenerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="0" selection-start="757" selection-end="757" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/KMKYSQLiteHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="56" selection-start="2987" selection-end="2987" vertical-scroll-proportion="0.0" vertical-offset="1360" max-vertical-offset="3111">
+        <state line="104" column="33" selection-start="3395" selection-end="3395" vertical-scroll-proportion="-22.6" vertical-offset="1203" max-vertical-offset="1904">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="0" selection-start="3575" selection-end="3575" vertical-scroll-proportion="0.0" vertical-offset="556" max-vertical-offset="3349">
+        <state line="310" column="83" selection-start="11447" selection-end="11447" vertical-scroll-proportion="0.0" vertical-offset="2302" max-vertical-offset="3298">
+          <folding>
+            <element signature="method#sendNameFromMyRelations#0;class#Main#0" expanded="false" />
+            <element signature="method#sendNameFromFavorites#0;class#Main#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#Main#0" expanded="false" />
+            <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
+            <element signature="method#findContact#0;class#Main#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="32" selection-start="3605" selection-end="3605" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="2686">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="2037" selection-end="2697" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1921">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/data/DataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="7" selection-start="3268" selection-end="3268" vertical-scroll-proportion="0.0" vertical-offset="902" max-vertical-offset="7106">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/CallAndSMSHistory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="234" selection-end="234" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/CallHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="46" selection-start="2977" selection-end="2977" vertical-scroll-proportion="0.0" vertical-offset="834" max-vertical-offset="2142">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/SMSHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="2758" selection-end="2758" vertical-scroll-proportion="0.0" vertical-offset="1428" max-vertical-offset="3128">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="20" selection-start="1772" selection-end="1772" vertical-scroll-proportion="0.2739965" vertical-offset="693" max-vertical-offset="2635">
-          <folding />
+        <state line="68" column="5" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.3457627" vertical-offset="714" max-vertical-offset="2261">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#onItemSelected#0;class#MyRelationships#0" expanded="false" />
+            <element signature="method#onNothingSelected#0;class#MyRelationships#0" expanded="false" />
+            <element signature="e#3033#3044#0" expanded="true" />
+            <element signature="method#onCreateView#0;class#MyRelationships#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

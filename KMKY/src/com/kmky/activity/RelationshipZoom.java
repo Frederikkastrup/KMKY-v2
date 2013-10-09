@@ -16,6 +16,7 @@ import com.kmky.R;
 import com.kmky.util.Constants;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -43,8 +44,14 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
         ImageView yoursmsheart = (ImageView) v.findViewById(R.id.yoursmsheart);
         ImageView yourcallheart = (ImageView) v.findViewById(R.id.yourcallheart);
 
-        date1.setText("Start Date");
-        date2.setText("End Date");
+
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
+
+        date1.setText("" + year + "-" + month + "-" + day);
+        date2.setText("" + year + "-" + month + "-" + day);
 
         date1.setOnClickListener(this);
         date2.setOnClickListener(this);
@@ -76,7 +83,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date1.setText("" + month + "." + day + "." + year);
+                        date1.setText("" + year+ "-" + month + "-" + day);
                     }
                 };
 
@@ -92,7 +99,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date2.setText("" + month+ "." + day + "." + year);
+                        date2.setText("" + year+ "-" + month + "-" + day);
                     }
                 };
                 newFragment2.show(getFragmentManager(), "datepicker");
