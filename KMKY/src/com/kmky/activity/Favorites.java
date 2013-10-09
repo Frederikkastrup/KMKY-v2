@@ -20,6 +20,7 @@ import com.kmky.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Favorites extends ListFragment
 {
@@ -89,32 +90,39 @@ public class Favorites extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
         View v = inflater.inflate(R.layout.favorites, container, false);
         Bundle bundle = this.getArguments();
-        TextView tw = (TextView) v.findViewById(R.id.nametest);
-
-        // Retrives the Favorite names from Sharedpreferences and sets them into the TextView
-        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
-        tw.setText(preferences.getString("name",""));
-        Log.i(Constants.TAG, "Favorites: onCreateView: Name: " + preferences.getString("name", "") + " has been retrieved from SharedPreferences and set to TextField");
 
         if (bundle != null) {
 
-            // Appends name from bundle into textview
-            String namefromfind = bundle.getString("name");
-            tw.append(namefromfind);
-            Log.i(Constants.TAG, "Favorites: onCreateView: Name has been set to TextView");
+            // Declares the name from the bundle into a variable
+            String numberfromfind = bundle.getString("number");
 
-            // Saves the name from the textview into SharedPreferences
+            // Saves the number variable into SharedPreferences
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("name", tw.getText().toString());
+            editor.putString(numberfromfind, numberfromfind);
             editor.commit();
-
-            Log.i(Constants.TAG, "Favorites: onCreateView: Name: " + tw.getText().toString() + " has been committed to SharedPreferences");
+            Log.i(Constants.TAG, "Favorites: onCreateView: " + numberfromfind + " has been saved to SharedPreferences");
+        }
+        else { Log.i(Constants.TAG, "Favorites: onCreateView: Bundle empty");
         }
 
-        else {Log.i(Constants.TAG, "Favorites: onCreateView: Bundle empty");
+        // Creates Map of all the values in SharedPreferences and inserts them into a list
+        Map<String,?> keys = preferences.getAll();
+        List numberslist = new ArrayList();
+
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+
+            numberslist.add(entry.getValue().toString().replace(" ", ""));
         }
+
+        // Goes through the list with numbers to perform operations on them
+        for (int i = 0; i< numberslist.size(); i++ ){
+            Log.i(Constants.TAG, "Favorites: onCreate: Numbers in list: " + numberslist.get(i) + " ");
+            // TODO: Query hearts and name, create relations objects from these, add objects to list. It should do this every time onCreate is run.
+        }
+
         return v;
     }
 

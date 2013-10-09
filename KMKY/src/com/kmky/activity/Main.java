@@ -239,14 +239,19 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
     }
 
     public void addToFavorites(View view){
-        EditText et = (EditText) this.findViewById(R.id.find_edittext);
-        String name;
-        Log.i(Constants.TAG, "Main: addToFavorites: EditText value: " + et.getText().toString());
 
-            name = et.getText().toString();
+        EditText et = (EditText) this.findViewById(R.id.find_edittext);
+
+        // Gets name and number from EditText
+        String nameandnumber = et.getText().toString();
+
+        // Splits name and number up into two strings
+        StringTokenizer tokens = new StringTokenizer(nameandnumber, "-");
+        String name = tokens.nextToken();// this will contain "Fruit"
+        String number = tokens.nextToken();// this will contain " they taste good"
 
             Bundle bundle = new Bundle();
-            bundle.putString("name", name);
+            bundle.putString("number", number);
 
             Favorites fragment = new Favorites();
             fragment.setArguments(bundle);
@@ -257,7 +262,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
             transaction.hide(fragment);
             transaction.commit();
 
-        Toast.makeText(getApplicationContext(), name + " added to favorites!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), nameandnumber + " added to favorites!", Toast.LENGTH_SHORT).show();
         }
 
     public long getStartDate(){
