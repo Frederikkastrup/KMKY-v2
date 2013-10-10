@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.kmky.R;
 import com.kmky.data.Relations;
 import com.kmky.logic.Calculate;
+import com.kmky.logic.Heart;
 import com.kmky.util.Constants;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,22 +75,13 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
 
-
-        Drawable drawable1 = getResources().getDrawable(R.drawable.smsheart80);
-        Drawable drawable2 = getResources().getDrawable(R.drawable.callheart100);
-        Drawable drawable3 = getResources().getDrawable(R.drawable.smsheart80);
-        Drawable drawable4 = getResources().getDrawable(R.drawable.callheart100);
-        String name = "Frederik";
-
-        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
-
-        List<Relations> list = new ArrayList<Relations>();
-        list.add(one);
-
-//        Heart heart = new Heart(getActivity());
-//        List<Relations> list = heart.heartSizes(1);
+        Heart heart = new Heart(getActivity());
+        List<Relations> list = heart.heartSizes(mstate);
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
@@ -125,6 +117,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         spinner.setAdapter(spinneradapter);
 
         return v;
+
     }
 
     /**

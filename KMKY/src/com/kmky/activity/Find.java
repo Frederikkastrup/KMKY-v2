@@ -1,6 +1,8 @@
 package com.kmky.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,8 +48,19 @@ public class Find extends Fragment
 
             Button addtofavorites = (Button)v.findViewById(R.id.addtofavorites_button);
             Button seerelationship = (Button)v.findViewById(R.id.seerelationship_button);
+            Button removefromfravorites = (Button)v.findViewById(R.id.removefromfavorites_button);
 
-            addtofavorites.setVisibility(View.VISIBLE);
+            // Checks if the name searched is already added to favorites. e.g in SharedPreferences. Shows appropriate
+            SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
+
+            String value = preferences.getString(number.replace(" ", ""),null);
+            Log.i(Constants.TAG, "Find: onCreateView: Person checked for in SharedPreferences:" + value);
+            if (value == null) {
+                addtofavorites.setVisibility(View.VISIBLE);
+            } else {
+                removefromfravorites.setVisibility(View.VISIBLE);
+            }
+
             seerelationship.setVisibility(View.VISIBLE);
         }
         else {Log.i(Constants.TAG, "Find: onCreateView: Bundle empty");
