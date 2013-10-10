@@ -1,6 +1,7 @@
 package com.kmky.activity;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -30,7 +31,6 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
 {
 
     private OnRowSelectedListener mCallback;
-    public int mstate = 0;
 
     /**
      * Implements the interface from AdapterView.OnItemSelectedListener to get access to methods that listen for onClicks in the spinner adapterview. In onItemSelected we check the position of the spinner and assigns this to a class variable.
@@ -39,12 +39,79 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
 
-        mstate = pos;
-        Log.i(Constants.TAG, "MyRelationships: onItemSelected " + mstate);
+        Log.i(Constants.TAG, "MyRelationship: onItemSelected: " + pos);
+
+        if (parent.getItemAtPosition(pos).equals("Least contacted")){
+
+            MyRelationships fragment = new MyRelationships();
+            Bundle bundle = new Bundle();
+            bundle.putInt("mstate", pos);
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            transaction.replace(R.id.fragment_container, fragment);
+
+            transaction.commit();
+            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
+        }
+        if (parent.getItemAtPosition(pos).equals("Most contact from")){
+
+            MyRelationships fragment = new MyRelationships();
+            Bundle bundle = new Bundle();
+            bundle.putInt("mstate", pos);
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            transaction.replace(R.id.fragment_container, fragment);
+
+            transaction.commit();
+            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
+        }
+        if (parent.getItemAtPosition(pos).equals("Lest contact from")){
+
+            MyRelationships fragment = new MyRelationships();
+            Bundle bundle = new Bundle();
+            bundle.putInt("mstate", pos);
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            transaction.replace(R.id.fragment_container, fragment);
+
+            transaction.commit();
+            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
+        }
+        if ((parent.getItemAtPosition(pos).equals("Most contacted"))) {
+
+            MyRelationships fragment = new MyRelationships();
+            Bundle bundle = new Bundle();
+            bundle.putInt("mstate", pos);
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            transaction.replace(R.id.fragment_container, fragment);
+
+            transaction.commit();
+            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
+        }
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
+
+        MyRelationships fragment = new MyRelationships();
+        Bundle bundle = new Bundle();
+        bundle.putInt("mstate", 0);
+        fragment.setArguments(bundle);
+
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.replace(R.id.fragment_container, fragment);
+
+        transaction.commit();
+        Log.i(Constants.TAG, "MyRelationships: onItemSelected " + 0);
     }
 
     /**
@@ -75,10 +142,29 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner);
+
+        // Set listener to spinner
+        spinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.sort_array, android.R.layout.simple_spinner_item);
+
+        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinneradapter);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        int mstate = 0;
+
+        Bundle bundle = this.getArguments();
+
+        if (bundle != null) {
+            mstate = bundle.getInt("mstate");
+        }
 
         Heart heart = new Heart(getActivity());
         List<Relations> list = heart.heartSizes(mstate);
@@ -105,16 +191,6 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.myrelationships, container, false);
-        Spinner spinner = (Spinner) v.findViewById(R.id.spinner);
-
-        // Set listener to spinner
-        spinner.setOnItemSelectedListener(this);
-
-        ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.sort_array, android.R.layout.simple_spinner_item);
-
-        spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spinneradapter);
 
         return v;
 

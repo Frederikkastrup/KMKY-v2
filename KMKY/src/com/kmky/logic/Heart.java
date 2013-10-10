@@ -65,23 +65,18 @@ public class Heart {
 
                 for (String number : mMostContacted){
 
-
                     smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
                     callLog = mDM.getCallLogsForPersonToDate(number, timeStamp);
-
-//                    Log.d(Constants.TAG, "Heart: heartSize: SMS: " + smsLog.getPhonenumber() + " incoming: " + smsLog.getIncoming() + " outgoing: " + smsLog.getOutgoing());
-//                    Log.d(Constants.TAG, "Heart: heartSize: Call: " + callLog.getPhonenumber() + " incoming: " + callLog.getIncoming() + " outgoing: " + callLog.getOutgoing());
 
                     try {
 
                         smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
                         callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
                         smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
-                        callHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),4,mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
 
-//                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
-                        //Reversed
-                        relations.add(new Relations(smsHeartYou, callHeartYou , getContactNameFromNumber(number), smsHeartMe, callHeartMe ));
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.e(Constants.TAG, "Heart: heartSize nullpointerexception", e);
@@ -101,10 +96,11 @@ public class Heart {
 
                         smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
                         callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
-                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.i(Constants.TAG, "Heart: heartSize ", e);
@@ -125,10 +121,11 @@ public class Heart {
 
                         smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
                         callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
-                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.i(Constants.TAG, "Heart: heartSize ", e);
@@ -149,10 +146,11 @@ public class Heart {
 
                         smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
                         callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = cal.calculateHeart(smsLog.getIncoming(),smsLog.getOutgoing(),3, mContext);
-                        callHeartYou = cal.calculateHeart(callLog.getIncoming(), callLog.getOutgoing(),4,mContext);
+                        smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
+                        callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
 
-                        relations.add(new Relations(smsHeartMe, callHeartMe, getContactNameFromNumber(number), smsHeartYou, callHeartYou));
+
+                        relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
                         Log.i(Constants.TAG, "Heart: heartSize ", e);
@@ -202,6 +200,4 @@ public class Heart {
         return name;
         }
     }
-
-
 }

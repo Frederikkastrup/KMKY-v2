@@ -34,31 +34,31 @@ public class Calculate {
 
         if (threshold == 0){
             callHeart = context.getResources().getDrawable(R.drawable.blank);
-//            Log.d(Constants.TAG, "Calculate: getCallHeart: Blank");
+            Log.d(Constants.TAG, "Calculate: getCallHeart: Blank");
         }
         else if ((threshold > 1) && (threshold <= 20)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart20);
-//            Log.d(Constants.TAG, "Calculate: getCallHeart: 20%");
+            Log.d(Constants.TAG, "Calculate: getCallHeart: 20%");
         }
 
         else if ((threshold > 20) && (threshold <= 40)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart40);
-//            Log.d(Constants.TAG, "Calculate: getCallHeart: 40%");
+            Log.d(Constants.TAG, "Calculate: getCallHeart: 40%");
         }
 
         else if ((threshold > 40) && (threshold <= 60)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart60);
-//            Log.d(Constants.TAG, "Calculate: getCallHeart: 60%");
+            Log.d(Constants.TAG, "Calculate: getCallHeart: 60%");
         }
 
         else if ((threshold > 60) && (threshold <= 80)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart80);
-//            Log.d(Constants.TAG, "Calculate: getCallHeart: 80%");
+            Log.d(Constants.TAG, "Calculate: getCallHeart: 80%");
         }
 
         else {
             callHeart = context.getResources().getDrawable(R.drawable.callheart100);
-//            Log.d(Constants.TAG, "Calculate: getCallHeart: 100%");
+            Log.d(Constants.TAG, "Calculate: getCallHeart: 100%");
         }
         return callHeart;
     }
@@ -132,6 +132,7 @@ public class Calculate {
             case 2: // callheartme
 
                 incomingThreshold = getIncomingThreshold(incoming, outgoing);
+//                Log.d(Constants.TAG, "Calculate: calculateHeart: callHeartMe Threshold: " + incomingThreshold);
                 drawable = getCallHeart(incomingThreshold, context);
 
                 break;
@@ -146,6 +147,7 @@ public class Calculate {
             case 4: // callheart you
 
                  outgoingThreshold = getOutgoingThreshold(incoming, outgoing);
+//                 Log.d(Constants.TAG, "Calculate: calculateHeart: callHeartYou Threshold: " + outgoingThreshold);
                  drawable = getCallHeart(outgoingThreshold, context);
 
                 break;
@@ -153,33 +155,28 @@ public class Calculate {
         return drawable;
     }
 
-    private int getIncomingThreshold(int incoming, int outgoing)
-    {
+    private int getIncomingThreshold(int incoming, int outgoing) {
         int incomingThreshold = 0;
 
-        if ((outgoing + incoming) * 100 != 0)
-        {
+        Log.d(Constants.TAG, "Calculate: incomingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
+        if ((outgoing + incoming) * 100 != 0) {
                 int totalCommunication = incoming + outgoing;
-                incomingThreshold = (int) (((double)incoming/(double)totalCommunication * 100));
-//                Log.d(Constants.TAG, "Calculate: calculateHeart: incomingThreshold: " + incomingThreshold);
+                incomingThreshold = (int) (((double)incoming/(double)totalCommunication) * 100);
+              Log.d(Constants.TAG, "Calculate: calculateHeart: incomingThreshold: " + incomingThreshold);
         }
-
         return incomingThreshold;
     }
 
-    private int getOutgoingThreshold(int incoming, int outgoing)
-    {
-//        Log.d(Constants.TAG, "Calculate: outgoingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
+    private int getOutgoingThreshold(int incoming, int outgoing) {
+        Log.d(Constants.TAG, "Calculate: outgoingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
         int outgoingThreshold = 0;
 
-        if ((outgoing + incoming) * 100 != 0)
-        {
+        if ((outgoing + incoming) * 100 != 0) {
                 int totalCommunication = incoming + outgoing;
-//                Log.d(Constants.TAG, "Calculate: outgoingThreshold: total communication: " + totalCommunication);
+                Log.d(Constants.TAG, "Calculate: outgoingThreshold: total communication: " + totalCommunication);
                 outgoingThreshold = (int) (((double)outgoing/(double)totalCommunication) * 100);
-//                Log.d(Constants.TAG, "Calculate: calculateHeart: outgoingThreshold: " + outgoingThreshold);
+                Log.d(Constants.TAG, "Calculate: calculateHeart: outgoingThreshold: " + outgoingThreshold);
         }
-
         return outgoingThreshold;
     }
  }

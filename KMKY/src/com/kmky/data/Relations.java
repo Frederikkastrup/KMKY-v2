@@ -8,10 +8,10 @@ import android.graphics.drawable.Drawable;
 public class Relations
 {
 
-    public Drawable mysmsheart;
-    public Drawable mycallheart;
-    public Drawable yoursmsheart;
-    public Drawable yourcallheart;
+    public Drawable smsHeartYou;
+    public Drawable callHeartYou;
+    public Drawable smsHeartMe;
+    public Drawable callHeartMe;
     public String name;
 
     public Relations()
@@ -19,14 +19,13 @@ public class Relations
         super();
     }
 
-    public Relations(Drawable mysmsheart,Drawable mycallheart, String name, Drawable yoursmsheart, Drawable yourcallheart)
+    public Relations(Drawable smsHeartMe,Drawable callHeartMe, String name, Drawable smsHeartYou, Drawable callHeartYou)
     {
         super();
-        this.mysmsheart = mysmsheart;
-        this.mycallheart = mycallheart;
-        this.yoursmsheart = yoursmsheart;
-        this.yourcallheart = yourcallheart;
-
+        this.smsHeartMe = smsHeartMe;
+        this.callHeartMe = callHeartMe;
+        this.smsHeartYou = smsHeartYou;
+        this.callHeartYou = callHeartYou;
         this.name = name;
     }
 

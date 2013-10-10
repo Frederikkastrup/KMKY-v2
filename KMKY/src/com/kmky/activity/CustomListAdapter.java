@@ -67,10 +67,10 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
 		Relations relation = mdata.get(position);
 
-        holder.mysmsheart.setImageDrawable(relation.mysmsheart);
-        holder.mycallheart.setImageDrawable(relation.mycallheart);
-        holder.yoursmsheart.setImageDrawable(relation.yoursmsheart);
-        holder.yourcallheart.setImageDrawable(relation.yourcallheart);
+        holder.mysmsheart.setImageDrawable(relation.smsHeartYou);
+        holder.mycallheart.setImageDrawable(relation.callHeartYou);
+        holder.yoursmsheart.setImageDrawable(relation.smsHeartMe);
+        holder.yourcallheart.setImageDrawable(relation.callHeartMe);
         holder.name.setText(relation.name);
 
 		return row;
