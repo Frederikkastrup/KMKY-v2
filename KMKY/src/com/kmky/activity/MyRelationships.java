@@ -29,6 +29,9 @@ import java.util.List;
  */
 public class MyRelationships extends ListFragment implements  AdapterView.OnItemSelectedListener
 {
+    private int m_intSpinnerInitiCount = 0;
+    private static final int NO_OF_EVENTS = 1;
+    public int mstate;
 
     private OnRowSelectedListener mCallback;
 
@@ -36,82 +39,25 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
      * Implements the interface from AdapterView.OnItemSelectedListener to get access to methods that listen for onClicks in the spinner adapterview. In onItemSelected we check the position of the spinner and assigns this to a class variable.
      */
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-
-        Log.i(Constants.TAG, "MyRelationship: onItemSelected: " + pos);
-
-        if (parent.getItemAtPosition(pos).equals("Least contacted")){
-
-            MyRelationships fragment = new MyRelationships();
-            Bundle bundle = new Bundle();
-            bundle.putInt("mstate", pos);
-            fragment.setArguments(bundle);
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-            transaction.replace(R.id.fragment_container, fragment);
-
-            transaction.commit();
-            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
+        if (m_intSpinnerInitiCount < NO_OF_EVENTS) {
+            m_intSpinnerInitiCount++;
         }
-        if (parent.getItemAtPosition(pos).equals("Most contact from")){
+        else {
+            mstate = pos;
+            Bundle bundle = new Bundle();
+            bundle.putInt("mstate", mstate);
 
             MyRelationships fragment = new MyRelationships();
-            Bundle bundle = new Bundle();
-            bundle.putInt("mstate", pos);
             fragment.setArguments(bundle);
 
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
             transaction.replace(R.id.fragment_container, fragment);
-
             transaction.commit();
-            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
-        }
-        if (parent.getItemAtPosition(pos).equals("Lest contact from")){
-
-            MyRelationships fragment = new MyRelationships();
-            Bundle bundle = new Bundle();
-            bundle.putInt("mstate", pos);
-            fragment.setArguments(bundle);
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-            transaction.replace(R.id.fragment_container, fragment);
-
-            transaction.commit();
-            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
-        }
-        if ((parent.getItemAtPosition(pos).equals("Most contacted"))) {
-
-            MyRelationships fragment = new MyRelationships();
-            Bundle bundle = new Bundle();
-            bundle.putInt("mstate", pos);
-            fragment.setArguments(bundle);
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-            transaction.replace(R.id.fragment_container, fragment);
-
-            transaction.commit();
-            Log.i(Constants.TAG, "MyRelationships: onItemSelected " + pos);
         }
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
 
-        MyRelationships fragment = new MyRelationships();
-        Bundle bundle = new Bundle();
-        bundle.putInt("mstate", 0);
-        fragment.setArguments(bundle);
-
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        transaction.replace(R.id.fragment_container, fragment);
-
-        transaction.commit();
-        Log.i(Constants.TAG, "MyRelationships: onItemSelected " + 0);
     }
 
     /**
@@ -153,15 +99,13 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
 
         spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinneradapter);
+        spinner.setSelection(mstate);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        int mstate = 0;
-
         Bundle bundle = this.getArguments();
-
         if (bundle != null) {
             mstate = bundle.getInt("mstate");
         }
