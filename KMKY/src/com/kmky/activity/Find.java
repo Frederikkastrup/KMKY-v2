@@ -53,7 +53,7 @@ public class Find extends Fragment
             // Checks if the name searched is already added to favorites. e.g in SharedPreferences. Shows appropriate
             SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
 
-            String value = preferences.getString(number.replace(" ", ""),null);
+            String value = preferences.getString(number, null);
             Log.i(Constants.TAG, "Find: onCreateView: Person checked for in SharedPreferences:" + value);
             if (value == null) {
                 addtofavorites.setVisibility(View.VISIBLE);

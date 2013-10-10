@@ -247,8 +247,8 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 
         // Splits name and number up into two strings
         StringTokenizer tokens = new StringTokenizer(nameandnumber, "-");
-        String name = tokens.nextToken();// this will contain "Fruit"
-        String number = tokens.nextToken();// this will contain " they taste good"
+        String name = tokens.nextToken();
+        String number = tokens.nextToken();
 
             Bundle bundle = new Bundle();
             bundle.putString("number", number);
