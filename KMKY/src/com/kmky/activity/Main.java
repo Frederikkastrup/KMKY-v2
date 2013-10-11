@@ -5,26 +5,29 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.net.Uri;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.Tracker;
 import com.kmky.R;
 import com.kmky.data.DataModel;
+import com.kmky.data.Relations;
+import com.kmky.logic.Heart;
 import com.kmky.service.ListenerService;
 import com.kmky.util.Constants;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,6 +35,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import com.google.analytics.tracking.android.EasyTracker;
+
 
 /**
  * The Main activity:
@@ -70,6 +76,19 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         transaction.commit();
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        EasyTracker.getInstance(this).activityStart(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);
+    }
+
     /**
      * The implemented sendNameFromFavorites interface receives a name variable from the Favorites fragment, sets it to a bundle and creates and inflates a new fragment containing this variable.
      * @param name
@@ -100,7 +119,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 
 		// get reference to data model
 		mDataModel = DataModel.getInstance(this);
-	
+
 		// Start service
 		startService(new Intent(this, ListenerService.class));
 
@@ -315,7 +334,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
      * Method that takes startdate and enddate strings as arguments, passes them to floats. Passes these floats to calendar objects, and uses a method in these objects to pass date values to a list object.
      * @return
      */
-    public List<Date> getDates(){
+    public List<Date> getTimestamps(){
 
         EditText sd = (EditText)this.findViewById(R.id.start_date);
         EditText ed = (EditText)this.findViewById(R.id.end_date);
@@ -352,12 +371,35 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         return dates; //Returns ArrayList with the inbetween dates.
     }
 
-    public void showDates(View view){
-        List dates = getDates();
+    public List<Relations> showTimestamps(View view){
 
-        for (int i = 0; i< dates.size(); i++ ){
-            Log.i(Constants.TAG, " " + dates.get(i) + "");
+        List<Relations> relations = new ArrayList<Relations>();
+        List<Date> timestamps  = getTimestamps();
+        TextView tw = (TextView)this.findViewById(R.id.yourname_textview);
+        String number = getPhoneNumber(tw.toString(), this);
+        Heart heart = new Heart(this);
+
+        for (Date timestamp : timestamps ){
+            
+            long milliseconds = timestamp.getTime();
+            relations.add(heart.HeartSizeSingleDay(number, milliseconds));
         }
+        return relations;
+    }
+
+    private String getPhoneNumber(String name, Context context) {
+        String ret = null;
+        String selection = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" like'%" + name +"%'";
+        String[] projection = new String[] { ContactsContract.CommonDataKinds.Phone.NUMBER};
+        Cursor c = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+                projection, selection, null, null);
+        if (c.moveToFirst()) {
+            ret = c.getString(0);
+        }
+        c.close();
+        if(ret==null)
+            ret = "Unsaved";
+        return ret;
     }
 
 }

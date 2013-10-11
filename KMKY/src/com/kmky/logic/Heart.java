@@ -48,7 +48,7 @@ public class Heart {
      * @return
      */
 
-    public List<Relations> heartSizes(int state)
+    public List<Relations> HeartSizesToDate(int state)
     {
 
         List<Relations> relations = new ArrayList<Relations>();
@@ -159,6 +159,25 @@ public class Heart {
                 break;
         }
         return relations;
+    }
+
+    public Relations HeartSizeSingleDay(String number, long timestamp)
+    {
+
+        Calculate cal = new Calculate(mContext);
+        Drawable smsHeartMe, callHeartMe, smsHeartYou, callHeartYou;
+
+        LogEntry smsLog = mDM.getSmsLogsForPeronOnSpecificDate(number, timestamp);
+        LogEntry callLog = mDM.getCallLogsForPeronOnSpecificDate(number, timestamp);
+
+        smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
+        callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
+        smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
+        callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
+
+        Relations relation = new Relations(smsHeartMe, callHeartMe, number, smsHeartYou, callHeartYou);
+
+        return relation;
     }
 
     /**

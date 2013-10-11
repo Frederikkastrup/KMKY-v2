@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,10 +17,9 @@ import android.widget.TextView;
 
 import com.kmky.R;
 import com.kmky.data.Relations;
-import com.kmky.logic.Calculate;
 import com.kmky.logic.Heart;
 import com.kmky.util.Constants;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -111,7 +109,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         }
 
         Heart heart = new Heart(getActivity());
-        List<Relations> list = heart.heartSizes(mstate);
+        List<Relations> list = heart.HeartSizesToDate(mstate);
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
