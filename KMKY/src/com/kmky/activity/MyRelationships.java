@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -63,7 +64,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
       */
     public interface OnRowSelectedListener
     {
-        public void sendNameFromMyRelations(String name);
+        public void sendFromMyRelations(String name);
     }
 
     @Override
@@ -135,7 +136,6 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         View v = inflater.inflate(R.layout.myrelationships, container, false);
 
         return v;
-
     }
 
     /**
@@ -149,10 +149,11 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     public void onListItemClick(ListView l, View v, int position, long id) {
         try{
 
-        TextView tv = (TextView) v.findViewById(R.id.rowname);
-        String name = tv.getText().toString();
+            // Gets name from row
+            TextView tv = (TextView) v.findViewById(R.id.rowname);
+            String name = tv.getText().toString();
 
-        mCallback.sendNameFromMyRelations(name);
+            mCallback.sendFromMyRelations(name);
         }
         catch (NullPointerException e){
             Log.i(Constants.TAG, "Favorites: HeaderOnClick", e);

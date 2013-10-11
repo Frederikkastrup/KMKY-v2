@@ -16,7 +16,7 @@ public class Calculate {
 
     private Context mContext;
 
-    Calculate(Context context)
+    public Calculate(Context context)
     {
         this.mContext = context;
     }
@@ -114,7 +114,7 @@ public class Calculate {
      * @param context
      * @return
      */
-    Drawable calculateHeart(int outgoing, int incoming, int state, Context context){
+    public Drawable calculateHeart(int outgoing, int incoming, int state, Context context){
 
         int incomingThreshold = 0;
         int outgoingThreshold = 0;

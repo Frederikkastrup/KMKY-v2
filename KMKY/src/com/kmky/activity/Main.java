@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -54,10 +55,10 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
     static final int PICK_CONTACT_REQUEST = 1;
 
     /**
-     * The implemented sendNameFromMyRelations interface receives a name variable from the MyRelationships fragment, sets it to a bundle and creates and inflates a new fragment containing this variable.
+     * The implemented sendFromMyRelations interface receives a name variable from the MyRelationships fragment, sets it to a bundle and creates and inflates a new fragment containing this variable.
      * @param name
      */
-    public void sendNameFromMyRelations(String name)
+    public void sendFromMyRelations(String name)
     {
         //set Fragmentclass Arguments
         RelationshipZoom fragment = new RelationshipZoom();
@@ -148,8 +149,6 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
 		actionbar.addTab(MyRelationshipTab);
 		actionbar.addTab(FavoritesTab);
 		actionbar.addTab(FindTab);
-
-
 	}
 
 	@Override
@@ -387,7 +386,7 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         return relations;
     }
 
-    private String getPhoneNumber(String name, Context context) {
+    public String getPhoneNumber(String name, Context context) {
         String ret = null;
         String selection = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+" like'%" + name +"%'";
         String[] projection = new String[] { ContactsContract.CommonDataKinds.Phone.NUMBER};

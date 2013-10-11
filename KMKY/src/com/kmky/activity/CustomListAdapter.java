@@ -52,10 +52,10 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
             holder = new RelationsHolder();
 
-            holder.mysmsheart = (ImageView)row.findViewById(R.id.mysmsheart);
-            holder.mycallheart = (ImageView)row.findViewById(R.id.mycallheart);
-            holder.yoursmsheart = (ImageView)row.findViewById(R.id.yoursmsheart);
-            holder.yourcallheart = (ImageView)row.findViewById(R.id.yourcallheart);
+            holder.mysmsheart = (ImageView)row.findViewById(R.id.smsHeartMe);
+            holder.mycallheart = (ImageView)row.findViewById(R.id.callHeartMe);
+            holder.yoursmsheart = (ImageView)row.findViewById(R.id.smsHeartYou);
+            holder.yourcallheart = (ImageView)row.findViewById(R.id.callHeartYou);
             holder.name = (TextView)row.findViewById(R.id.rowname);
 
 			row.setTag(holder);

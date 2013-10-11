@@ -15,7 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.kmky.R;
+import com.kmky.data.DataModel;
+import com.kmky.data.LogEntry;
 import com.kmky.data.Relations;
+import com.kmky.logic.Calculate;
+import com.kmky.logic.Heart;
 import com.kmky.util.Constants;
 
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ import java.util.Map;
 public class Favorites extends ListFragment
 {
     private OnRowSelectedListener mCallback;
+    private DataModel mDM = DataModel.getInstance(getActivity());
 
     /**
      *  Interface that can be implemented by the container activity and hereby allow the transfer of data from this fragment to the parent activity.
@@ -55,16 +60,8 @@ public class Favorites extends ListFragment
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Drawable drawable1 = getResources().getDrawable(R.drawable.smsheart80);
-        Drawable drawable2 = getResources().getDrawable(R.drawable.callheart100);
-        Drawable drawable3 = getResources().getDrawable(R.drawable.smsheart80);
-        Drawable drawable4 = getResources().getDrawable(R.drawable.callheart100);
-        String name = "Frederik";
 
-        Relations one = new Relations(drawable1, drawable2, name, drawable3, drawable4);
-
-        List<Relations> list = new ArrayList<Relations>();
-        list.add(one);
+        List<Relations> list = getRelations();
 
         if (list.isEmpty()) {
             FavoritesEmpty fragment = new FavoritesEmpty();
@@ -108,9 +105,19 @@ public class Favorites extends ListFragment
         else { Log.i(Constants.TAG, "Favorites: onCreateView: Bundle empty");
         }
 
-        // Creates Map of all the values in SharedPreferences and inserts them into a list
+        return v;
+    }
+
+    private List<Relations> getRelations()
+    {
+        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
         Map<String,?> keys = preferences.getAll();
-        List numberslist = new ArrayList();
+        List<String> numberslist = new ArrayList<String>();
+        List<Relations> relations = new ArrayList<Relations>();
+        Calculate cal = new Calculate(getActivity());
+        Drawable smsHeartMe, callHeartMe, smsHeartYou, callHeartYou;
+        LogEntry smsLog, callLog;
+        Heart heart = new Heart(getActivity());
 
         for(Map.Entry<String,?> entry : keys.entrySet()){
 
@@ -118,31 +125,40 @@ public class Favorites extends ListFragment
         }
 
         // Goes through the list with numbers to perform operations on them
-        for (int i = 0; i< numberslist.size(); i++ ){
-            Log.i(Constants.TAG, "Favorites: onCreate: Numbers in list: " + numberslist.get(i) + " ");
-            // TODO: Query hearts and name, create relations objects from these, add objects to list. It should do this every time onCreate is run.
+        for (String number : numberslist){
+
+
+            smsLog = mDM.getSmsLogsForPersonToDate(number, 0);
+            callLog = mDM.getCallLogsForPersonToDate(number, 0);
+
+
+            smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, getActivity());
+            callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, getActivity());
+            smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, getActivity());
+            callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,getActivity());
+            relations.add(new Relations(smsHeartMe, callHeartMe , heart.getContactNameFromNumber(number), smsHeartYou, callHeartYou));
         }
 
-        return v;
+        return relations;
     }
 
-    /**
-     * onListItemClick finds the TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
-     * When this interface is implemented by the main activity, the name can be bundled and inflated into the RelationshipZoom fragment.
-     * Since this listener is shared between the headerview and the rowview - if the ListView header is clicked, the listener will also react.
-     * But View v won't match up with the view that we try to assign and this will cause and exception.
-     * Therefore, if this happens, a try catch handles the exception.
-     */
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        try{
-            TextView tv = (TextView) v.findViewById(R.id.rowname);
-            String name = tv.getText().toString();
+        /**
+         * onListItemClick finds the TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
+         * When this interface is implemented by the main activity, the name can be bundled and inflated into the RelationshipZoom fragment.
+         * Since this listener is shared between the headerview and the rowview - if the ListView header is clicked, the listener will also react.
+         * But View v won't match up with the view that we try to assign and this will cause and exception.
+         * Therefore, if this happens, a try catch handles the exception.
+         */
+        @Override
+        public void onListItemClick(ListView l, View v, int position, long id) {
+            try{
+                TextView tv = (TextView) v.findViewById(R.id.rowname);
+                String name = tv.getText().toString();
 
-            mCallback.sendNameFromFavorites(name);
-        }
-        catch (NullPointerException e){
-            Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
+                mCallback.sendNameFromFavorites(name);
+            }
+            catch (NullPointerException e){
+                Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
+            }
         }
     }
-}

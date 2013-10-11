@@ -13,12 +13,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/mysmsheart"/>
+            android:id="@+id/smsHeartMe"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/mycallheart"
+            android:id="@+id/callHeartMe"
             android:layout_gravity="center"/>
 
     </FrameLayout>
@@ -40,12 +40,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/yoursmsheart"/>
+            android:id="@+id/smsHeartYou"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/yourcallheart"
+            android:id="@+id/callHeartYou"
             android:layout_gravity="center"/>
 
     </FrameLayout>

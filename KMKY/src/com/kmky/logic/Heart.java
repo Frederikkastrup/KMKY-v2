@@ -203,7 +203,7 @@ public class Heart {
         return timeMilliseconds;
     }
 
-    private String getContactNameFromNumber(String number) {
+    public String getContactNameFromNumber(String number) {
 
         String name = "";
         Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
