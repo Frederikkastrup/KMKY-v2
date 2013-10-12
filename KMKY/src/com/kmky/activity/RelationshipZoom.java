@@ -36,7 +36,8 @@ import java.util.List;
  */
 public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
-    private Heart heart = new Heart(getActivity());
+    private Heart mHeart = new Heart(getActivity());
+
 
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
         EditText date2 = (EditText) v.findViewById(R.id.end_date);
 
 
-        // ImageViews are instantiated so the appropriate heart sizes can be assigned to them.
+        // ImageViews are instantiated so the appropriate mHeart sizes can be assigned to them.
         final ImageView smsHeartYou = (ImageView) v.findViewById(R.id.smsHeartMe);
         final  ImageView callHeartYou = (ImageView) v.findViewById(R.id.callHeartMe);
         final ImageView smsHeartMe = (ImageView) v.findViewById(R.id.smsHeartYou);
@@ -125,13 +126,13 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 String phonenumber =((Main) a).getPhoneNumber(name, getActivity());
                 phonenumber = phonenumber.replace(" ","");
 
-                Relations relation = heart.HeartSizeToDateSinglePerson(phonenumber, getActivity());
+                Relations relation = mHeart.HeartSizeToDateSinglePerson(phonenumber, getActivity());
 
-                final int outgoingsms = heart.SmsAndCallCount(phonenumber, 1).getOutgoing();
-                final int outgoingcall = heart.SmsAndCallCount(phonenumber, 2).getOutgoing();
+                final int outgoingsms = mHeart.SmsAndCallCount(phonenumber, 1).getOutgoing();
+                final int outgoingcall = mHeart.SmsAndCallCount(phonenumber, 2).getOutgoing();
 
-                final int incomingsms = heart.SmsAndCallCount(phonenumber, 1).getIncoming();
-                final int incomingcall = heart.SmsAndCallCount(phonenumber, 2).getIncoming();
+                final int incomingsms = mHeart.SmsAndCallCount(phonenumber, 1).getIncoming();
+                final int incomingcall = mHeart.SmsAndCallCount(phonenumber, 2).getIncoming();
 
                 smsHeartMe.setImageDrawable(relation.getSmsHeartMe());
                 callHeartMe.setImageDrawable(relation.getCallHeartMe());
@@ -244,12 +245,12 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
         List<AnimationHearts> animationhearts = new ArrayList<AnimationHearts>();
         List<Date> timestamps  = getTimestamps();
         TextView tw = (TextView)getView().findViewById(R.id.yourname_textview);
-        String number = heart.getPhoneNumberFromName(tw.toString(), getActivity());
+        String number = mHeart.getPhoneNumberFromName(tw.toString(), getActivity());
 
         for (Date timestamp : timestamps ){
 
             long milliseconds = timestamp.getTime();
-            Relations newRelation = heart.HeartSizeSingleDay(number, milliseconds, getActivity());
+            Relations newRelation = mHeart.HeartSizeSingleDay(number, milliseconds, getActivity());
             Drawable blank = getActivity().getResources().getDrawable(R.drawable.blank);
 
             if (newRelation.getSmsHeartMe() != blank || newRelation.getCallHeartMe() != blank || newRelation.getSmsHeartYou() != blank && newRelation.getCallHeartYou() != blank)

@@ -91,7 +91,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) getActivity().findViewById(R.id.myrelationships_spinner);
 
         // Set listener to spinner
         spinner.setOnItemSelectedListener(this);

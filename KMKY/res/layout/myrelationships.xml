@@ -7,7 +7,7 @@
     android:paddingRight="8dp">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/myrelationships_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
