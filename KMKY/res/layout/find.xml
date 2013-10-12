@@ -18,6 +18,7 @@
         android:textStyle="bold"
         android:textSize="30dp"
         android:gravity="center"
+        android:inputType="textNoSuggestions"
         />
 
     <Button
@@ -34,11 +35,10 @@
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Remove from Favoritesz"
         android:textAlignment="center"
         android:id="@+id/removefromfavorites_button"
         android:visibility="invisible"
-        android:onClick="addToFavorites"
+        android:onClick="removeFromFavorites"
         android:layout_below="@+id/find_edittext"
         android:layout_alignParentLeft="true" />
 

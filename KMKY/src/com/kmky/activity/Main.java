@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.graphics.drawable.Drawable;
@@ -255,33 +256,6 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
         startActivityForResult(pickContactIntent, PICK_CONTACT_REQUEST);
     }
-
-    public void addToFavorites(View view){
-
-        EditText et = (EditText) this.findViewById(R.id.find_edittext);
-
-        // Gets name and number from EditText
-        String nameandnumber = et.getText().toString();
-
-        // Splits name and number up into two strings
-        StringTokenizer tokens = new StringTokenizer(nameandnumber, "-");
-        String name = tokens.nextToken();
-        String number = tokens.nextToken();
-
-            Bundle bundle = new Bundle();
-            bundle.putString("number", number);
-
-            Favorites fragment = new Favorites();
-            fragment.setArguments(bundle);
-
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-            transaction.add(R.id.fragment_container, fragment);
-            transaction.hide(fragment);
-            transaction.commit();
-
-        Toast.makeText(getApplicationContext(), nameandnumber + " added to favorites!", Toast.LENGTH_SHORT).show();
-        }
 
     public long getStartDate(){
         EditText et = (EditText)this.findViewById(R.id.start_date);

@@ -72,6 +72,7 @@ public class Favorites extends ListFragment
         }
 
         else {
+
             LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
             CustomListAdapter adapter = new CustomListAdapter(getActivity(), R.layout.listview_row, list);
@@ -87,23 +88,7 @@ public class Favorites extends ListFragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
         View v = inflater.inflate(R.layout.favorites, container, false);
-        Bundle bundle = this.getArguments();
-
-        if (bundle != null) {
-
-            // Declares the name from the bundle into a variable
-            String numberfromfind = bundle.getString("number");
-
-            // Saves the number variable into SharedPreferences
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(numberfromfind, numberfromfind);
-            editor.commit();
-            Log.i(Constants.TAG, "Favorites: onCreateView: " + numberfromfind + " has been saved to SharedPreferences");
-        }
-        else { Log.i(Constants.TAG, "Favorites: onCreateView: Bundle empty");
-        }
 
         return v;
     }
@@ -120,6 +105,8 @@ public class Favorites extends ListFragment
         Heart heart = new Heart(getActivity());
 
         for(Map.Entry<String,?> entry : keys.entrySet()){
+
+            Log.i(Constants.TAG, "Favorites: getRelations: This is in SharedPreferences when the list for the list adapter is created: " + entry.getValue().toString().replace(" ", ""));
 
             numberslist.add(entry.getValue().toString().replace(" ", ""));
         }
