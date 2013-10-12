@@ -49,34 +49,11 @@ import com.google.analytics.tracking.android.EasyTracker;
  *  - catches results from the startActivityForResult method
  *  - declares public onClick methods for the activity layout
  */
-public class Main extends Activity implements MyRelationships.OnRowSelectedListener, Favorites.OnRowSelectedListener {
+public class Main extends Activity {
 
 	private DataModel mDataModel;
 
     static final int PICK_CONTACT_REQUEST = 1;
-
-    /**
-     * The implemented sendFromMyRelations interface receives a name variable from the MyRelationships fragment, sets it to a bundle and creates and inflates a new fragment containing this variable.
-     * @param name
-     */
-    public void sendFromMyRelations(String name)
-    {
-        //set Fragmentclass Arguments
-        RelationshipZoom fragment = new RelationshipZoom();
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        fragment.setArguments(bundle);
-
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack so the user can navigate back
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-
-        // Commit the transaction
-        transaction.commit();
-    }
 
     @Override
     public void onStart()
@@ -89,29 +66,6 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
     public void onStop() {
         super.onStop();
         EasyTracker.getInstance(this).activityStop(this);
-    }
-
-    /**
-     * The implemented sendNameFromFavorites interface receives a name variable from the Favorites fragment, sets it to a bundle and creates and inflates a new fragment containing this variable.
-     * @param name
-     */
-    public void sendNameFromFavorites(String name)
-    {
-        //set Fragmentclass Arguments
-        RelationshipZoom fragment = new RelationshipZoom();
-        Bundle bundle = new Bundle();
-        bundle.putString("name", name);
-        fragment.setArguments(bundle);
-
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack so the user can navigate back
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-
-        // Commit the transaction
-        transaction.commit();
     }
 
 	@Override

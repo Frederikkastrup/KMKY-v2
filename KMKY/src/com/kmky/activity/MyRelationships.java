@@ -31,8 +31,6 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     private static final int NO_OF_EVENTS = 1;
     private int mstate;
 
-    private OnRowSelectedListener mCallback;
-
     /**
      * Implements the interface from AdapterView.OnItemSelectedListener to get access to methods that listen for onClicks in the spinner adapterview. In onItemSelected we check the position of the spinner and assigns this to a class variable.
      */
@@ -58,36 +56,14 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
 
     }
 
-    /**
-     *  Interface that can be implemented by the container activity and hereby allow the transfer of data from this fragment to the parent activity.
-      */
-    public interface OnRowSelectedListener
-    {
-        public void sendFromMyRelations(String name);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            mCallback = (OnRowSelectedListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnRowSelectedListener");
-        }
-    }
-
-    /**
-     * When the Activity is created, a listadapter is set to this ListFragment (MyRelationships).
-     */
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /**
+     * When the View is created, a listadapter and spinneradapter is created and set to this ListFragment (MyRelationships).
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
@@ -147,12 +123,21 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         try{
-
             // Gets name from row
             TextView tv = (TextView) v.findViewById(R.id.rowname);
             String name = tv.getText().toString();
 
-            mCallback.sendFromMyRelations(name);
+            RelationshipZoom fragment = new RelationshipZoom();
+            Bundle bundle = new Bundle();
+            bundle.putString("name", name);
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.addToBackStack(null);
+
+            transaction.commit();
         }
         catch (NullPointerException e){
             Log.i(Constants.TAG, "Favorites: HeaderOnClick", e);

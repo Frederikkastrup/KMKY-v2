@@ -45,15 +45,33 @@ public class Find extends Fragment
         Bundle bundle = this.getArguments();
         if (bundle != null) {
 
-            String name = bundle.getString("name");
+            final String name = bundle.getString("name");
             final String number = bundle.getString("number").replace(" ","");
             final EditText edittext = (EditText) v.findViewById(R.id.find_edittext);
             edittext.setText(name + " - " + number);
 
 
             Button addtofavorites = (Button)v.findViewById(R.id.addtofavorites_button);
-            Button seerelationship = (Button)v.findViewById(R.id.seerelationship_button);
             Button removefromfravorites = (Button)v.findViewById(R.id.removefromfavorites_button);
+            Button seerelationship = (Button)v.findViewById(R.id.seerelationship_button);
+
+            // Sets listener for the "See Relationships" button. If clicked, inflates RelationshipZoom bundled with the name searched for.
+            seerelationship.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    RelationshipZoom fragment = new RelationshipZoom();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", name);
+                    fragment.setArguments(bundle);
+
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.fragment_container, fragment);
+                    transaction.addToBackStack(null);
+
+                    transaction.commit();
+                }
+            });
 
             // Checks if the name searched is already added to favorites. e.g in SharedPreferences. Shows appropriate
             final SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);

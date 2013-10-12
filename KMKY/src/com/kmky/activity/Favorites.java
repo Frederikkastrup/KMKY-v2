@@ -31,9 +31,6 @@ import java.util.Map;
 
 public class Favorites extends ListFragment implements  AdapterView.OnItemSelectedListener
 {
-    private OnRowSelectedListener mCallback;
-    private DataModel mDM = DataModel.getInstance(getActivity());
-
     private int m_intSpinnerInitiCount = 0;
     private static final int NO_OF_EVENTS = 1;
     private int mstate;
@@ -63,36 +60,15 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
 
     }
 
-    /**
-     *  Interface that can be implemented by the container activity and hereby allow the transfer of data from this fragment to the parent activity.
-     */
-    public interface OnRowSelectedListener {
-        public void sendNameFromFavorites(String name);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            mCallback = (OnRowSelectedListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnRowSelectedListener");
-        }
-    }
-
-    /**
-     * When the activity is created, an if sentence checks if the List in ListFragment is empty or not. Depending on this condition another fragment is inflated.
-     * @param savedInstanceState
-     */
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /**
+     * When the View is created, an if sentence checks if the List in ListFragment is empty or not. Depending on this condition another fragment is inflated.
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
@@ -110,6 +86,8 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
             Log.d(Constants.TAG, "Favorites: onViewCreated: SharedPreferences indeholder: " + entry.getValue().toString().replace(" ", ""));
         }
 
+        Log.d(Constants.TAG, "Favorites: onViewCreated: State: " + mstate);
+
         List<Relations> list = heart.HeartSizeFavorites(mstate, numberslist, getActivity());
 
         if (list.isEmpty()) {
@@ -121,7 +99,6 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
         }
 
         else {
-
             // Create and set spinner
             Spinner spinner = (Spinner) getActivity().findViewById(R.id.favorites_spinner);
 
@@ -151,14 +128,11 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.favorites, container, false);
-
         return v;
     }
 
 
         /**
-         * onListItemClick finds the TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
-         * When this interface is implemented by the main activity, the name can be bundled and inflated into the RelationshipZoom fragment.
          * Since this listener is shared between the headerview and the rowview - if the ListView header is clicked, the listener will also react.
          * But View v won't match up with the view that we try to assign and this will cause and exception.
          * Therefore, if this happens, a try catch handles the exception.
@@ -169,7 +143,17 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
                 TextView tv = (TextView) v.findViewById(R.id.rowname);
                 String name = tv.getText().toString();
 
-                mCallback.sendNameFromFavorites(name);
+                RelationshipZoom fragment = new RelationshipZoom();
+                Bundle bundle = new Bundle();
+                bundle.putString("name", name);
+                fragment.setArguments(bundle);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+                transaction.replace(R.id.fragment_container, fragment);
+                transaction.addToBackStack(null);
+
+                transaction.commit();
             }
             catch (NullPointerException e){
                 Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
