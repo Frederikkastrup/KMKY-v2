@@ -303,62 +303,6 @@ public class Main extends Activity implements MyRelationships.OnRowSelectedListe
         return result;
     }
 
-    /**
-     * Method that takes startdate and enddate strings as arguments, passes them to floats. Passes these floats to calendar objects, and uses a method in these objects to pass date values to a list object.
-     * @return
-     */
-    public List<Date> getTimestamps(){
-
-        EditText sd = (EditText)this.findViewById(R.id.start_date);
-        EditText ed = (EditText)this.findViewById(R.id.end_date);
-        String startdate = sd.getText().toString();
-        String enddate = ed.getText().toString();
-
-        // Create List of dates
-        ArrayList<Date> dates = new ArrayList<Date>();
-        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-
-        Date date1 = null;
-        Date date2 = null;
-
-        // Passes the date Strings into SimpleDateFormats
-        try {
-            date1 = df1.parse(startdate);
-            date2 = df1.parse(enddate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        // Create date objects, pass them the SimpleDateFormats..
-        Calendar cal1 = Calendar.getInstance();
-        cal1.setTime(date1);
-
-        Calendar cal2 = Calendar.getInstance();
-        cal2.setTime(date2);
-
-        while(!cal1.after(cal2)) {
-            dates.add(cal1.getTime());
-            cal1.add(Calendar.DATE, 1);
-        }
-
-        return dates; //Returns ArrayList with the inbetween dates.
-    }
-
-    public List<Relations> showTimestamps(View view){
-
-        List<Relations> relations = new ArrayList<Relations>();
-        List<Date> timestamps  = getTimestamps();
-        TextView tw = (TextView)this.findViewById(R.id.yourname_textview);
-        String number = getPhoneNumber(tw.toString(), this);
-        Heart heart = new Heart(this);
-
-        for (Date timestamp : timestamps ){
-            
-            long milliseconds = timestamp.getTime();
-            relations.add(heart.HeartSizeSingleDay(number, milliseconds));
-        }
-        return relations;
-    }
 
     public String getPhoneNumber(String name, Context context) {
         String ret = null;

@@ -3,8 +3,7 @@ package com.kmky.data;
 /**
  * Created by FrederikKastrup on 28/09/13.
  */
-public class TopTen implements Comparable<TopTen>
-{
+public class TopTen implements Comparable<TopTen> {
 
 	private final int BEFORE = -1;
 	private final int EQUAL = 0;
@@ -59,11 +58,10 @@ public class TopTen implements Comparable<TopTen>
 	}
 
 	/**
-	 * Comment me. what am i doing here?
+	 * Compares two TopTens to each other. Used for sorting.
 	 */
 	@Override
-	public int compareTo(TopTen other)
-	{
+	public int compareTo(TopTen other){
 
 		if (other.getOutgoing() != 0)
 		{

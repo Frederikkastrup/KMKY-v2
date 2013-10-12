@@ -99,8 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show change"
-        android:id="@+id/button"
-        android:onClick="showTimestamps"
+        android:id="@+id/showchange_button"
         android:layout_below="@+id/start_date"
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/end_date" />

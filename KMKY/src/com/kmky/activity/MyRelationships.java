@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,7 +29,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
 {
     private int m_intSpinnerInitiCount = 0;
     private static final int NO_OF_EVENTS = 1;
-    public int mstate;
+    private int mstate;
 
     private OnRowSelectedListener mCallback;
 
@@ -110,7 +109,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         }
 
         Heart heart = new Heart(getActivity());
-        List<Relations> list = heart.HeartSizesToDate(mstate);
+        List<Relations> list = heart.HeartSizesMyRelationships(mstate);
 
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 

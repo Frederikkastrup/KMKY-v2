@@ -52,10 +52,10 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
             holder = new RelationsHolder();
 
-            holder.mysmsheart = (ImageView)row.findViewById(R.id.smsHeartMe);
-            holder.mycallheart = (ImageView)row.findViewById(R.id.callHeartMe);
-            holder.yoursmsheart = (ImageView)row.findViewById(R.id.smsHeartYou);
-            holder.yourcallheart = (ImageView)row.findViewById(R.id.callHeartYou);
+            holder.smsHeartYou = (ImageView)row.findViewById(R.id.smsHeartMe);
+            holder.callHeartYou = (ImageView)row.findViewById(R.id.callHeartMe);
+            holder.smsHeartMe = (ImageView)row.findViewById(R.id.smsHeartYou);
+            holder.callHeartMe = (ImageView)row.findViewById(R.id.callHeartYou);
             holder.name = (TextView)row.findViewById(R.id.rowname);
 
 			row.setTag(holder);
@@ -67,21 +67,21 @@ public class CustomListAdapter extends ArrayAdapter<Relations>
 
 		Relations relation = mdata.get(position);
 
-        holder.mysmsheart.setImageDrawable(relation.smsHeartYou);
-        holder.mycallheart.setImageDrawable(relation.callHeartYou);
-        holder.yoursmsheart.setImageDrawable(relation.smsHeartMe);
-        holder.yourcallheart.setImageDrawable(relation.callHeartMe);
-        holder.name.setText(relation.name);
+        holder.smsHeartMe.setImageDrawable(relation.getSmsHeartMe());
+        holder.callHeartMe.setImageDrawable(relation.getCallHeartMe());
+        holder.smsHeartYou.setImageDrawable(relation.getSmsHeartYou());
+        holder.callHeartYou.setImageDrawable(relation.getCallHeartYou());
+        holder.name.setText(relation.getName());
 
 		return row;
 	}
 
     // The holder is used to increase performance when scrolling through the listview. Instead of finding view by id in repeated use, the adapter can retrieve the views from a holder.
 	static class RelationsHolder {
-        ImageView mysmsheart;
-        ImageView mycallheart;
-        ImageView yoursmsheart;
-        ImageView yourcallheart;
+        ImageView smsHeartMe;
+        ImageView callHeartMe;
+        ImageView smsHeartYou;
+        ImageView callHeartYou;
         TextView name;
 	}
 
