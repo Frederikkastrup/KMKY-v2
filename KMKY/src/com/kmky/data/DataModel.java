@@ -259,9 +259,7 @@ public class DataModel{
             case 1:
 
                 for (TopTen topTen : SortList){
-                    String phonenumner = null;
-                    phonenumberList.add(topTen.getPhonenumber());
-
+                    String phonenumner = topTen.getPhonenumber();
                     phonenumberList.add(phonenumner);
                 }
             break;
@@ -328,9 +326,7 @@ public class DataModel{
             case 1:
 
                 for (TopTen topTen : SortList){
-                    String phonenumner = null;
-                    phonenumberList.add(topTen.getPhonenumber());
-
+                    String phonenumner = topTen.getPhonenumber();
                     phonenumberList.add(phonenumner);
                 }
                 break;
@@ -397,9 +393,7 @@ public class DataModel{
             case 1:
 
                 for (TopTen topTen : SortList){
-                    String phonenumner = null;
-                    phonenumberList.add(topTen.getPhonenumber());
-
+                    String phonenumner = topTen.getPhonenumber();
                     phonenumberList.add(phonenumner);
                 }
                 break;
@@ -468,7 +462,6 @@ public class DataModel{
                 for (TopTen topTen : SortList){
                     String phonenumner = topTen.getPhonenumber();
                     phonenumberList.add(phonenumner);
-
                 }
                 break;
 
