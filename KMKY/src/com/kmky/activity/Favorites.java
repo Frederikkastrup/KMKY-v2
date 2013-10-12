@@ -11,7 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.kmky.R;
@@ -26,10 +29,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Favorites extends ListFragment
+public class Favorites extends ListFragment implements  AdapterView.OnItemSelectedListener
 {
     private OnRowSelectedListener mCallback;
     private DataModel mDM = DataModel.getInstance(getActivity());
+
+    private int m_intSpinnerInitiCount = 0;
+    private static final int NO_OF_EVENTS = 1;
+    private int mstate;
+    private Heart heart = new Heart(getActivity());
+
+
+    // Spinner listener
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        if (m_intSpinnerInitiCount < NO_OF_EVENTS) {
+            m_intSpinnerInitiCount++;
+        }
+        else {
+            mstate = pos;
+            Bundle bundle = new Bundle();
+            bundle.putInt("mstate", mstate);
+
+            Favorites fragment = new Favorites();
+            fragment.setArguments(bundle);
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.commit();
+        }
+    }
+
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
     /**
      *  Interface that can be implemented by the container activity and hereby allow the transfer of data from this fragment to the parent activity.
@@ -59,9 +91,26 @@ public class Favorites extends ListFragment
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        List<Relations> list = getRelations();
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            mstate = bundle.getInt("mstate");
+        }
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
+        Map<String,?> keys = preferences.getAll();
+        List<String> numberslist = new ArrayList<String>();
+
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+            numberslist.add(entry.getValue().toString().replace(" ", ""));
+            Log.d(Constants.TAG, "Favorites: onViewCreated: SharedPreferences indeholder: " + entry.getValue().toString().replace(" ", ""));
+        }
+
+        List<Relations> list = heart.HeartSizeFavorites(mstate, numberslist, getActivity());
 
         if (list.isEmpty()) {
             FavoritesEmpty fragment = new FavoritesEmpty();
@@ -72,6 +121,19 @@ public class Favorites extends ListFragment
         }
 
         else {
+
+            // Create and set spinner
+            Spinner spinner = (Spinner) getActivity().findViewById(R.id.favorites_spinner);
+
+            // Set listener to spinner
+            spinner.setOnItemSelectedListener(this);
+
+            ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(getActivity(),
+                    R.array.sort_array, android.R.layout.simple_spinner_item);
+
+            spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(spinneradapter);
+            spinner.setSelection(mstate);
 
             LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
@@ -85,7 +147,7 @@ public class Favorites extends ListFragment
         }
     }
 
-    @Override
+        @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.favorites, container, false);
@@ -93,41 +155,6 @@ public class Favorites extends ListFragment
         return v;
     }
 
-    private List<Relations> getRelations()
-    {
-        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
-        Map<String,?> keys = preferences.getAll();
-        List<String> numberslist = new ArrayList<String>();
-        List<Relations> relations = new ArrayList<Relations>();
-        Calculate cal = new Calculate(getActivity());
-        Drawable smsHeartMe, callHeartMe, smsHeartYou, callHeartYou;
-        LogEntry smsLog, callLog;
-        Heart heart = new Heart(getActivity());
-
-        for(Map.Entry<String,?> entry : keys.entrySet()){
-
-            Log.i(Constants.TAG, "Favorites: getRelations: This is in SharedPreferences when the list for the list adapter is created: " + entry.getValue().toString().replace(" ", ""));
-
-            numberslist.add(entry.getValue().toString().replace(" ", ""));
-        }
-
-        // Goes through the list with numbers to perform operations on them
-        for (String number : numberslist){
-
-
-            smsLog = mDM.getSmsLogsForPersonToDate(number, 0);
-            callLog = mDM.getCallLogsForPersonToDate(number, 0);
-
-
-            smsHeartMe = cal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, getActivity());
-            callHeartMe = cal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, getActivity());
-            smsHeartYou = cal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, getActivity());
-            callHeartYou = cal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,getActivity());
-            relations.add(new Relations(smsHeartMe, callHeartMe , heart.getContactNameFromNumber(number), smsHeartYou, callHeartYou));
-        }
-
-        return relations;
-    }
 
         /**
          * onListItemClick finds the TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.

@@ -86,6 +86,10 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onActivityCreated (Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
 
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinner);
 
@@ -98,10 +102,6 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinneradapter);
         spinner.setSelection(mstate);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {

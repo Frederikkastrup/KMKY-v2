@@ -319,7 +319,7 @@ public class Heart {
         return ret;
     }
 
-    public List<Relations> HeartSizeFavorites(int state, List<String> numbers)
+    public List<Relations> HeartSizeFavorites(int state, List<String> numbers, Context context)
     {
 
         List<Relations> relations = new ArrayList<Relations>();
@@ -338,10 +338,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
-                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
-                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
+                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, context);
+                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, context);
+                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, context);
+                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,context);
 
                         relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
@@ -360,10 +360,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
-                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
-                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
+                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, context);
+                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, context);
+                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, context);
+                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,context);
 
 
                         relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
@@ -383,10 +383,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
-                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
-                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
+                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, context);
+                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, context);
+                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, context);
+                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,context);
 
 
                         relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
@@ -406,10 +406,10 @@ public class Heart {
 
                     try {
 
-                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, mContext);
-                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, mContext);
-                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, mContext);
-                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,mContext);
+                        smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, context);
+                        callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, context);
+                        smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, context);
+                        callHeartYou = mCal.calculateHeart(callLog.getOutgoing(),callLog.getIncoming(),4,context);
                         relations.add(new Relations(smsHeartMe, callHeartMe , getContactNameFromNumber(number), smsHeartYou, callHeartYou));
                     }
                     catch (NullPointerException e){
