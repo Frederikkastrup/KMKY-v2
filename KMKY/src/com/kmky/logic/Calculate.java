@@ -29,36 +29,90 @@ public class Calculate {
      */
     private Drawable getCallHeart(int threshold, Context context)
     {
-        Log.d(Constants.TAG, "Calculate: getCallHeart: Threshold: " + threshold);
         Drawable callHeart = null;
 
         if (threshold == 0){
             callHeart = context.getResources().getDrawable(R.drawable.blank);
-            Log.d(Constants.TAG, "Calculate: getCallHeart: Blank");
         }
-        else if ((threshold > 1) && (threshold <= 20)) {
+
+        else if ((threshold > 1) && (threshold <= 5)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart5);
+        }
+
+        else if ((threshold > 5) && (threshold <= 10)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart10);
+        }
+
+        else if ((threshold > 10) && (threshold <= 15)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart15);
+        }
+
+        else if ((threshold > 15) && (threshold <= 20)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart20);
-            Log.d(Constants.TAG, "Calculate: getCallHeart: 20%");
         }
 
-        else if ((threshold > 20) && (threshold <= 40)) {
+        else if ((threshold > 20) && (threshold <= 25)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart25);
+        }
+
+        else if ((threshold > 25) && (threshold <= 30)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart30);
+        }
+
+        else if ((threshold > 30) && (threshold <= 35)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart35);
+        }
+
+        else if ((threshold > 35) && (threshold <= 40)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart40);
-            Log.d(Constants.TAG, "Calculate: getCallHeart: 40%");
         }
 
-        else if ((threshold > 40) && (threshold <= 60)) {
+        else if ((threshold > 40) && (threshold <= 45)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart45);
+        }
+
+        else if ((threshold > 45) && (threshold <= 50)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart50);
+        }
+
+        else if ((threshold > 50) && (threshold <= 55)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart55);
+        }
+
+        else if ((threshold > 55) && (threshold <= 60)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart60);
-            Log.d(Constants.TAG, "Calculate: getCallHeart: 60%");
         }
 
-        else if ((threshold > 60) && (threshold <= 80)) {
+        else if ((threshold > 60) && (threshold <= 65)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart65);
+        }
+
+        else if ((threshold > 65) && (threshold <= 70)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart70);
+        }
+
+        else if ((threshold > 70) && (threshold <= 75)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart75);
+        }
+
+        else if ((threshold > 75) && (threshold <= 80)) {
             callHeart = context.getResources().getDrawable(R.drawable.callheart80);
-            Log.d(Constants.TAG, "Calculate: getCallHeart: 80%");
+        }
+
+        else if ((threshold > 80) && (threshold <= 85)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart85);
+        }
+
+        else if ((threshold > 85) && (threshold <= 90)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart90);
+        }
+
+        else if ((threshold > 90) && (threshold <= 95)) {
+            callHeart = context.getResources().getDrawable(R.drawable.callheart95);
         }
 
         else {
             callHeart = context.getResources().getDrawable(R.drawable.callheart100);
-            Log.d(Constants.TAG, "Calculate: getCallHeart: 100%");
         }
         return callHeart;
     }
@@ -78,29 +132,84 @@ public class Calculate {
             smsHeart = context.getResources().getDrawable(R.drawable.blank);
 //            Log.d(Constants.TAG, "Calculate: getSmsHeart: Blank");
         }
-        else if ((threshold > 1) && (threshold <= 20)) {
+        else if ((threshold > 1) && (threshold <= 5)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart5);
+        }
+
+        else if ((threshold > 5) && (threshold <= 10)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart10);
+        }
+
+        else if ((threshold > 10) && (threshold <= 15)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart15);
+        }
+
+        else if ((threshold > 15) && (threshold <= 20)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart20);
-//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 20%");
         }
 
-        else if ((threshold > 20) && (threshold <= 40)) {
+        else if ((threshold > 20) && (threshold <= 25)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart25);
+        }
+
+        else if ((threshold > 25) && (threshold <= 30)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart30);
+        }
+
+        else if ((threshold > 30) && (threshold <= 35)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart35);
+        }
+
+        else if ((threshold > 35) && (threshold <= 40)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart40);
-//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 40%");
         }
 
-        else if ((threshold > 40) && (threshold <= 60)) {
+        else if ((threshold > 40) && (threshold <= 45)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart45);
+        }
+
+        else if ((threshold > 45) && (threshold <= 50)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart50);
+        }
+
+        else if ((threshold > 50) && (threshold <= 55)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart55);
+        }
+
+        else if ((threshold > 55) && (threshold <= 60)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart60);
-//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 60%");
         }
 
-        else if ((threshold > 60) && (threshold <= 80)) {
+        else if ((threshold > 60) && (threshold <= 65)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart65);
+        }
+
+        else if ((threshold > 65) && (threshold <= 70)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart70);
+        }
+
+        else if ((threshold > 70) && (threshold <= 75)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart75);
+        }
+
+        else if ((threshold > 75) && (threshold <= 80)) {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart80);
-//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 80%");
+        }
+
+        else if ((threshold > 80) && (threshold <= 85)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart85);
+        }
+
+        else if ((threshold > 85) && (threshold <= 90)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart90);
+        }
+
+        else if ((threshold > 90) && (threshold <= 95)) {
+            smsHeart = context.getResources().getDrawable(R.drawable.smsheart95);
         }
 
         else {
             smsHeart = context.getResources().getDrawable(R.drawable.smsheart100);
-//            Log.d(Constants.TAG, "Calculate: getSmsHeart: 100%");
         }
         return smsHeart;
     }

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidConfiguredLogFilters">
+    <filters>
+      <filter>
+        <option name="logLevel" value="verbose" />
+        <option name="logMessagePattern" value="" />
+        <option name="logTagPattern" value="KMKY" />
+        <option name="name" value="KMKY" />
+        <option name="packageNamePattern" value="" />
+        <option name="pid" value="" />
+      </filter>
+    </filters>
+  </component>
   <component name="AndroidLayoutPreviewToolWindow">
     <option name="state">
       <GlobalState />
@@ -15,7 +27,48 @@
     <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="2.0 (Mikkel)">
+    <list default="true" id="1fb486eb-450e-4d99-8287-9fd5ff23e576" name="Default" comment="Calculate refactored">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart25.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart35.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart45.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart50.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart55.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart65.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart70.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart75.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart85.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart90.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart95.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart10.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart15.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart25.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart30.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart35.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart45.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart50.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart55.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart65.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart70.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart75.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart85.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart90.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart95.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart100.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart20.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart20.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart40.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart60.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart60.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart80.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart80.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart100.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart100.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart20.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart20.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart40.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart40.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart60.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart60.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart80.png" afterPath="$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart80.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java" afterPath="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="KMKYAPP.iws" />
@@ -80,41 +133,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="310" column="83" selection-start="11447" selection-end="11447" vertical-scroll-proportion="0.0" vertical-offset="2302" max-vertical-offset="3298">
-              <folding>
-                <element signature="method#sendNameFromMyRelations#0;class#Main#0" expanded="false" />
-                <element signature="method#sendNameFromFavorites#0;class#Main#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#Main#0" expanded="false" />
-                <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
-                <element signature="method#findContact#0;class#Main#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Calculate.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Calculate.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="32" selection-start="3605" selection-end="3605" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2686">
+            <state line="118" column="0" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.6772152" vertical-offset="1352" max-vertical-offset="4947">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyRelationships.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="5" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.3457627" vertical-offset="714" max-vertical-offset="2261">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#onItemSelected#0;class#MyRelationships#0" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#MyRelationships#0" expanded="false" />
-                <element signature="e#3033#3044#0" expanded="true" />
-                <element signature="method#onCreateView#0;class#MyRelationships#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -138,30 +161,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/KMKY/res/layout/listview_header.xml" />
-        <option value="$PROJECT_DIR$/KMKY/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/data/Calculate.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/FavoritesEmpty.java" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/CustomListAdapter.java" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/data/Relations.java" />
-        <option value="$PROJECT_DIR$/KMKY/res/layout/find.xml" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java" />
-        <option value="$PROJECT_DIR$/KMKY/res/layout/favorites.xml" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java" />
         <option value="$PROJECT_DIR$/KMKY/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/listview_row.xml" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/favorites.xml" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/listview_header.xml" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/RelationshipZoom.java" />
         <option value="$PROJECT_DIR$/KMKY/res/layout/relationshipzoom.xml" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java" />
+        <option value="$PROJECT_DIR$/KMKY/res/layout/find.xml" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java" />
+        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java" />
         <option value="$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java" />
-        <option value="$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -190,7 +213,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -224,6 +246,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kmky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KMKY-v2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="KMKY" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kmky" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -321,30 +365,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KMKY-v2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="KMKY" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="drawable-mdpi" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -369,6 +396,7 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Development\GitHub\KMKY-v2\KMKY\res\drawable-mdpi" />
+      <recent name="D:\Development\GitHub\KMKY-v2\KMKY\res\drawable-hdpi" />
     </key>
   </component>
   <component name="RunManager" selected="Android Application.KMKY">
@@ -399,19 +427,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -437,6 +452,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -602,38 +630,78 @@
       <created>1381146298070</created>
       <updated>1381146298070</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Calculate refactored">
+      <created>1381146318073</created>
+      <updated>1381146318073</updated>
+    </task>
+    <task id="LOCAL-00015" summary="4.1">
+      <created>1381225194264</created>
+      <updated>1381225194264</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Backgrounds added">
+      <created>1381229760107</created>
+      <updated>1381229760107</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Calculate refactored">
+      <created>1381295076974</created>
+      <updated>1381295076974</updated>
+    </task>
+    <task id="LOCAL-00018" summary="5.2">
+      <created>1381303804713</created>
+      <updated>1381303804713</updated>
+    </task>
+    <task id="LOCAL-00019" summary="5.3">
+      <created>1381371997970</created>
+      <updated>1381371997970</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Calculate refactored">
+      <created>1381387482015</created>
+      <updated>1381387482015</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Spinner virker korrekt.">
+      <created>1381394031554</created>
+      <updated>1381394031555</updated>
+    </task>
+    <task id="LOCAL-00022" summary="7.1 Mikkel">
+      <created>1381491965156</created>
+      <updated>1381491965156</updated>
+    </task>
+    <task id="LOCAL-00023" summary="7.3 Mikkel">
+      <created>1381565892214</created>
+      <updated>1381565892214</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18541667" sideWeight="0.79545456" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18511905" sideWeight="0.94630873" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.16785714" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1409396" sideWeight="0.16785714" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07494407" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20454545" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.83214283" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5604027" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.087248325" sideWeight="0.83214283" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1625" sideWeight="0.98917747" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5378788" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1625" sideWeight="0.9127517" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24608502" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -641,13 +709,13 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.16785714" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.07494407" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22604166" sideWeight="0.8948546" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10514542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10514542" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -660,8 +728,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05704698" sideWeight="0.83214283" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -679,158 +747,144 @@
     <MESSAGE value="4.0 total refactoring." />
     <MESSAGE value="Milisec metode added" />
     <MESSAGE value="2.0 (Mikkel)" />
-    <option name="LAST_COMMIT_MESSAGE" value="2.0 (Mikkel)" />
+    <MESSAGE value="4.1" />
+    <MESSAGE value="Backgrounds added" />
+    <MESSAGE value="5.2" />
+    <MESSAGE value="5.3" />
+    <MESSAGE value="Calculate refactored" />
+    <MESSAGE value="Spinner virker korrekt." />
+    <MESSAGE value="7.1 Mikkel" />
+    <MESSAGE value="7.3 Mikkel" />
+    <option name="LAST_COMMIT_MESSAGE" value="7.3 Mikkel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/FavoritesEmpty.java">
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.17106918" vertical-offset="0" max-vertical-offset="795" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/listview_header.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="24" selection-start="431" selection-end="431" vertical-scroll-proportion="-7.48" vertical-offset="0" max-vertical-offset="323">
+        <state line="67" column="5" selection-start="2170" selection-end="2170" vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="2856">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/listview_row.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/service/SMSHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="42" selection-start="1491" selection-end="1491" vertical-scroll-proportion="-23.32" vertical-offset="182" max-vertical-offset="952">
+        <state line="109" column="24" selection-start="3418" selection-end="3703" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="3604">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/relationshipzoom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="18" selection-start="2400" selection-end="2400" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1921">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/res/layout/myrelationships.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="752">
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/sdk/platforms/android-17/android.jar!/java/util/Map.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="770">
-          <folding />
-        </state>
+        <state line="6" column="17" selection-start="156" selection-end="156" vertical-scroll-proportion="0.10939511" vertical-offset="0" max-vertical-offset="867" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/favoritesempty.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Heart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="757">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/datepicker.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="187">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/favorites.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="44" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="62" selection-start="4282" selection-end="4282" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/find.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="721" selection-end="721" vertical-scroll-proportion="0.4089347" vertical-offset="0" max-vertical-offset="873">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="0" selection-start="1789" selection-end="1789" vertical-scroll-proportion="0.7917595" vertical-offset="37" max-vertical-offset="935">
+        <state line="205" column="10" selection-start="7601" selection-end="7601" vertical-scroll-proportion="0.4967825" vertical-offset="2810" max-vertical-offset="3587">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="752">
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/find.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="44" selection-start="599" selection-end="599" vertical-scroll-proportion="0.29209623" vertical-offset="0" max-vertical-offset="873">
+        <state line="20" column="45" selection-start="750" selection-end="750" vertical-scroll-proportion="0.42767295" vertical-offset="0" max-vertical-offset="1224">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Favorites.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="0" selection-start="2925" selection-end="2925" vertical-scroll-proportion="-11.076923" vertical-offset="1225" max-vertical-offset="2669">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3285#3293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Find.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="59" column="61" selection-start="2188" selection-end="2188" vertical-scroll-proportion="-19.576923" vertical-offset="494" max-vertical-offset="1870">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2486#3438#0" expanded="true" />
+            <element signature="e#3419#3420#0" expanded="true" />
+            <element signature="e#3667#4254#0" expanded="true" />
+            <element signature="e#4235#4236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Datepicker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="22" selection-start="659" selection-end="659" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/RelationshipZoom.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="71" selection-start="1271" selection-end="1271" vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="1411">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/res/layout/relationshipzoom.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="33" selection-start="3395" selection-end="3395" vertical-scroll-proportion="-22.6" vertical-offset="1203" max-vertical-offset="1904">
+        <state line="161" column="9" selection-start="6450" selection-end="6450" vertical-scroll-proportion="0.8339768" vertical-offset="1494" max-vertical-offset="2295">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="310" column="83" selection-start="11447" selection-end="11447" vertical-scroll-proportion="0.0" vertical-offset="2302" max-vertical-offset="3298">
-          <folding>
-            <element signature="method#sendNameFromMyRelations#0;class#Main#0" expanded="false" />
-            <element signature="method#sendNameFromFavorites#0;class#Main#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#Main#0" expanded="false" />
-            <element signature="method#onActivityResult#0;class#Main#0" expanded="false" />
-            <element signature="method#findContact#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="32" selection-start="3605" selection-end="3605" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="2686">
+        <state line="313" column="24" selection-start="11415" selection-end="11424" vertical-scroll-proportion="0.13642214" vertical-offset="4569" max-vertical-offset="5865">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/activity/MyRelationships.java">
+    <entry file="file://$PROJECT_DIR$/KMKY/res/drawable-mdpi/smsheart40.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/res/drawable-mdpi/callheart20.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/KMKY/src/com/kmky/logic/Calculate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="5" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.3457627" vertical-offset="714" max-vertical-offset="2261">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onItemSelected#0;class#MyRelationships#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#MyRelationships#0" expanded="false" />
-            <element signature="e#3033#3044#0" expanded="true" />
-            <element signature="method#onCreateView#0;class#MyRelationships#0" expanded="false" />
-          </folding>
+        <state line="118" column="0" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.6772152" vertical-offset="1352" max-vertical-offset="4947">
+          <folding />
         </state>
       </provider>
     </entry>
