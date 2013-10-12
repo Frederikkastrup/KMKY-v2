@@ -121,6 +121,8 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
             getListView().addHeaderView(header);
 
             setListAdapter(adapter);
+
+
         }
     }
 

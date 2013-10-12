@@ -9,6 +9,7 @@
         android:layout_height="100dp"
         android:text="You currently do not have any relationships under Favorites. Please press the button to add a relationship to Favorites."
         android:id="@+id/favorites_textfield"
+        android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:background="@drawable/border"
         android:textAlignment="center"
@@ -19,7 +20,8 @@
         android:layout_height="wrap_content"
         android:text="Favorite a Relationship"
         android:textAlignment="center"
-        android:id="@+id/favorites_button"
+        android:id="@+id/favoritearelationship_button"
         android:layout_alignBottom="@id/favorites_textfield"
+        android:onClick="addFavoriteRelationship"
         />
 </RelativeLayout>
