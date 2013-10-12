@@ -62,7 +62,7 @@ public class Heart {
         {
             case 0:
 
-                mMostContacted = mDM.getNumbersForMostContacted(mDM.getUniquePhoneNumbers());
+                mMostContacted = mDM.getNumbersForMostContacted(mDM.getUniquePhoneNumbers(), 2);
 
                 for (String number : mMostContacted){
 
@@ -86,7 +86,7 @@ public class Heart {
                 break;
 
             case 1:
-                mLeastContacted = mDM.getNumbersForLeastContacted(mDM.getUniquePhoneNumbers());
+                mLeastContacted = mDM.getNumbersForLeastContacted(mDM.getUniquePhoneNumbers(), 2);
 
                 for (String number : mLeastContacted){
 
@@ -111,7 +111,7 @@ public class Heart {
 
             case 2:
 
-                mMostContactedYou = mDM.getNumbersForMostContactedYou(mDM.getUniquePhoneNumbers());
+                mMostContactedYou = mDM.getNumbersForMostContactedYou(mDM.getUniquePhoneNumbers(), 2);
 
                 for (String number : mMostContactedYou){
 
@@ -136,7 +136,7 @@ public class Heart {
 
             case 3:
 
-                mLeastContactedYou = mDM.getNumbersForLeastContactedYou(mDM.getUniquePhoneNumbers());
+                mLeastContactedYou = mDM.getNumbersForLeastContactedYou(mDM.getUniquePhoneNumbers(), 2);
 
                 for (String number : mLeastContactedYou){
 
@@ -331,6 +331,8 @@ public class Heart {
         {
             case 0:
 
+                mDM.getNumbersForMostContacted(numbers, 1);
+
                 for (String number : numbers){
 
                     smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
@@ -352,6 +354,8 @@ public class Heart {
                 break;
 
             case 1:
+
+                mDM.getNumbersForLeastContacted(numbers, 1);
 
                 for (String number : numbers){
 
@@ -376,6 +380,8 @@ public class Heart {
 
             case 2:
 
+                mDM.getNumbersForMostContactedYou(numbers, 1);
+
                 for (String number : numbers){
 
                     smsLog = mDM.getSmsLogsForPersonToDate(number, timeStamp);
@@ -398,6 +404,8 @@ public class Heart {
                 break;
 
             case 3:
+
+                mDM.getNumbersForLeastContactedYou(numbers, 1);
 
                 for (String number : numbers){
 

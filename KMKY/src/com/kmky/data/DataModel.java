@@ -228,7 +228,7 @@ public class DataModel{
      * Gets the top ten least contacted numbers
      * @return
      */
-    public List<String> getNumbersForLeastContacted(List<String> phonenumberlist){
+    public List<String> getNumbersForLeastContacted(List<String> phonenumberlist, int state){
 
         List<String> phonenumberList = phonenumberlist;
         List<TopTen> SortList = new ArrayList<TopTen>();
@@ -254,23 +254,42 @@ public class DataModel{
         // Clears phone number list
         phonenumberList.clear();
 
-        // Add the phone numbers to list
-        if (SortList.size() > 10){
+        switch (state)
+        {
+            case 1:
 
-            for (int i = 0; i < 10; i++){
-                String phonenumber = null;
-                TopTen topTen = SortList.get(i);
-                phonenumber = topTen.getPhonenumber();
-                phonenumberList.add(phonenumber);
-            }
-        }
-        else{
+                for (TopTen topTen : SortList){
+                    String phonenumner = null;
+                    phonenumberList.add(topTen.getPhonenumber());
 
-            for (TopTen topTen : SortList){
-                String phonenumner = null;
-                phonenumberList.add(topTen.getPhonenumber());
-            }
+                    phonenumberList.add(phonenumner);
+                }
+            break;
+
+            case 2:
+
+                // Add the phone numbers to list
+                if (SortList.size() > 10){
+
+                    for (int i = 0; i < 10; i++){
+                        String phonenumber = null;
+                        TopTen topTen = SortList.get(i);
+                        phonenumber = topTen.getPhonenumber();
+                        phonenumberList.add(phonenumber);
+                    }
+                }
+                else{
+
+                    for (TopTen topTen : SortList){
+                        String phonenumner = null;
+                        phonenumberList.add(topTen.getPhonenumber());
+                    }
+                }
+
+
+            break;
         }
+
         return phonenumberList;
     }
 
@@ -278,7 +297,7 @@ public class DataModel{
      * Get the top ten numbers for most contacted
      * @return
      */
-    public List<String> getNumbersForMostContacted(List<String> phonenumberlist){
+    public List<String> getNumbersForMostContacted(List<String> phonenumberlist, int state){
 
         List<String> phonenumberList = phonenumberlist;
         List<TopTen> SortList = new ArrayList<TopTen>();
@@ -304,24 +323,42 @@ public class DataModel{
         // Clears phone number list
         phonenumberList.clear();
 
-        // Add the phone numbers to list
-        if (SortList.size() > 10){
+        switch (state)
+        {
+            case 1:
 
-            for (int i = 0; i < 10; i++){
-                String phonenumber = null;
-                TopTen topTen = SortList.get(i);
-                phonenumber = topTen.getPhonenumber();
-                phonenumberList.add(phonenumber);
-            }
+                for (TopTen topTen : SortList){
+                    String phonenumner = null;
+                    phonenumberList.add(topTen.getPhonenumber());
+
+                    phonenumberList.add(phonenumner);
+                }
+                break;
+
+            case 2:
+
+                // Add the phone numbers to list
+                if (SortList.size() > 10){
+
+                    for (int i = 0; i < 10; i++){
+                        String phonenumber = null;
+                        TopTen topTen = SortList.get(i);
+                        phonenumber = topTen.getPhonenumber();
+                        phonenumberList.add(phonenumber);
+                    }
+                }
+                else{
+
+                    for (TopTen topTen : SortList){
+                        String phonenumner = null;
+                        phonenumberList.add(topTen.getPhonenumber());
+                    }
+                }
+
+
+                break;
         }
-        else{
 
-            for (TopTen topTen : SortList){
-
-                String phonenumner = null;
-                phonenumberList.add(topTen.getPhonenumber());
-            }
-        }
         return phonenumberList;
     }
 
@@ -329,7 +366,7 @@ public class DataModel{
      * Gets the top ten numbers for people who have contacted you the least
      * @return
      */
-    public List<String> getNumbersForLeastContactedYou(List<String> phonenumberlist){
+    public List<String> getNumbersForLeastContactedYou(List<String> phonenumberlist, int state){
 
         List<String> phonenumberList = phonenumberlist;
         List<TopTen> SortList = new ArrayList<TopTen>();
@@ -355,23 +392,42 @@ public class DataModel{
         // Clears phone number list
         phonenumberList.clear();
 
-        // Add the phone numbers to list
-        if (SortList.size() > 10){
+        switch (state)
+        {
+            case 1:
 
-            for (int i = 0; i < 10; i++){
-                String phonenumber = null;
-                TopTen topTen = SortList.get(i);
-                phonenumber = topTen.getPhonenumber();
-                phonenumberList.add(phonenumber);
-            }
-        }
-        else{
+                for (TopTen topTen : SortList){
+                    String phonenumner = null;
+                    phonenumberList.add(topTen.getPhonenumber());
 
-            for (TopTen topTen : SortList){
-                String phonenumner = null;
-                phonenumberList.add(topTen.getPhonenumber());
-            }
+                    phonenumberList.add(phonenumner);
+                }
+                break;
+
+            case 2:
+
+                // Add the phone numbers to list
+                if (SortList.size() > 10){
+
+                    for (int i = 0; i < 10; i++){
+                        String phonenumber = null;
+                        TopTen topTen = SortList.get(i);
+                        phonenumber = topTen.getPhonenumber();
+                        phonenumberList.add(phonenumber);
+                    }
+                }
+                else{
+
+                    for (TopTen topTen : SortList){
+                        String phonenumner = null;
+                        phonenumberList.add(topTen.getPhonenumber());
+                    }
+                }
+
+
+                break;
         }
+
         return phonenumberList;
     }
 
@@ -379,7 +435,7 @@ public class DataModel{
      *  Gets the top ten numbers for people who have contacted you the most
      * @return
      */
-    public List<String> getNumbersForMostContactedYou(List<String> phonenumberlist){
+    public List<String> getNumbersForMostContactedYou(List<String> phonenumberlist, int state){
 
         List<String> phonenumberList = phonenumberlist;
         List<TopTen> SortList = new ArrayList<TopTen>();
@@ -405,24 +461,42 @@ public class DataModel{
         // Clears phone number list
         phonenumberList.clear();
 
-        // Add the phone numbers to list
-        if (SortList.size() > 10){
+        switch (state)
+        {
+            case 1:
 
-            for (int i = 0; i < 10; i++){
+                for (TopTen topTen : SortList){
+                    String phonenumner = null;
+                    phonenumberList.add(topTen.getPhonenumber());
 
-                String phonenumber = null;
-                TopTen topTen = SortList.get(i);
-                phonenumber = topTen.getPhonenumber();
-                phonenumberList.add(phonenumber);
-            }
+                    phonenumberList.add(phonenumner);
+                }
+                break;
+
+            case 2:
+
+                // Add the phone numbers to list
+                if (SortList.size() > 10){
+
+                    for (int i = 0; i < 10; i++){
+                        String phonenumber = null;
+                        TopTen topTen = SortList.get(i);
+                        phonenumber = topTen.getPhonenumber();
+                        phonenumberList.add(phonenumber);
+                    }
+                }
+                else{
+
+                    for (TopTen topTen : SortList){
+                        String phonenumner = null;
+                        phonenumberList.add(topTen.getPhonenumber());
+                    }
+                }
+
+
+                break;
         }
-        else{
 
-            for (TopTen topTen : SortList){
-                String phonenumner = null;
-                phonenumberList.add(topTen.getPhonenumber());
-            }
-        }
         return phonenumberList;
     }
 
