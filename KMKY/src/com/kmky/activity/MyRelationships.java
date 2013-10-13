@@ -1,6 +1,5 @@
 package com.kmky.activity;
 
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;

@@ -3,12 +3,9 @@ package com.kmky.activity;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 /**
  * Created by W520 on 05-10-13.
@@ -69,11 +65,11 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
         Calendar c = Calendar.getInstance();
         int day = c.get(Calendar.DAY_OF_MONTH);
-        int month = c.get(Calendar.MONTH);
+        int month = c.get(Calendar.MONTH) + 1;
         int year = c.get(Calendar.YEAR);
 
-        date1.setText("" + day + "-" + month  + "-" + year);
-        date2.setText("" + day + "-" + month + "-" + year);
+        date1.setText("" + day + "-" + month +   "-" + year);
+        date2.setText("" + day + "-" + month +  "-" + year);
 
         date1.setOnClickListener(this);
         date2.setOnClickListener(this);
@@ -231,7 +227,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date1.setText("" + year+ "-" + month + "-" + day);
+                        date1.setText("" + day+ "-" + month + "-" + year);
                     }
                 };
 
@@ -247,7 +243,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date2.setText("" + year+ "-" + month + "-" + day);
+                        date2.setText("" + day+ "-" + month + "-" + year);
                     }
                 };
                 newFragment2.show(getFragmentManager(), "datepicker");

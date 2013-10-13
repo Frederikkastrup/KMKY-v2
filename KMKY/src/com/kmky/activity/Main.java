@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.analytics.tracking.android.EasyTracker;
 import com.kmky.R;
 import com.kmky.data.DataModel;
 import com.kmky.service.ListenerService;
@@ -26,8 +27,6 @@ import com.kmky.util.Constants;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.google.analytics.tracking.android.EasyTracker;
 
 
 /**
