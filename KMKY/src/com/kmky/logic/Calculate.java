@@ -267,24 +267,24 @@ public class Calculate {
     private int getIncomingThreshold(int incoming, int outgoing) {
         int incomingThreshold = 0;
 
-        Log.d(Constants.TAG, "Calculate: incomingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
+//        Log.d(Constants.TAG, "Calculate: incomingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
         if ((outgoing + incoming) * 100 != 0) {
                 int totalCommunication = incoming + outgoing;
                 incomingThreshold = (int) (((double)incoming/(double)totalCommunication) * 100);
-              Log.d(Constants.TAG, "Calculate: calculateHeart: incomingThreshold: " + incomingThreshold);
+//              Log.d(Constants.TAG, "Calculate: calculateHeart: incomingThreshold: " + incomingThreshold);
         }
         return incomingThreshold;
     }
 
     private int getOutgoingThreshold(int incoming, int outgoing) {
-        Log.d(Constants.TAG, "Calculate: outgoingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
+//        Log.d(Constants.TAG, "Calculate: outgoingThreshold: incoming: " + incoming + " outgoing: " + outgoing);
         int outgoingThreshold = 0;
 
         if ((outgoing + incoming) * 100 != 0) {
                 int totalCommunication = incoming + outgoing;
-                Log.d(Constants.TAG, "Calculate: outgoingThreshold: total communication: " + totalCommunication);
+//                Log.d(Constants.TAG, "Calculate: outgoingThreshold: total communication: " + totalCommunication);
                 outgoingThreshold = (int) (((double)outgoing/(double)totalCommunication) * 100);
-                Log.d(Constants.TAG, "Calculate: calculateHeart: outgoingThreshold: " + outgoingThreshold);
+//                Log.d(Constants.TAG, "Calculate: calculateHeart: outgoingThreshold: " + outgoingThreshold);
         }
         return outgoingThreshold;
     }

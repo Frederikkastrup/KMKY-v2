@@ -175,6 +175,9 @@ public class Heart {
         LogEntry smsLog = mDM.getSmsLogsForPeronOnSpecificDate(number, timestamp);
         LogEntry callLog = mDM.getCallLogsForPeronOnSpecificDate(number, timestamp);
 
+        Log.d(Constants.TAG, "Heart: HeartSizeSingleDay: incoming sms: " + smsLog.getIncoming() + " Outgoing sms: " + smsLog.getOutgoing());
+        Log.d(Constants.TAG, "Heart: HeartSizeSingleDay: incoming call: " + callLog.getIncoming() + " Outgoing call: " + callLog.getOutgoing());
+
         smsHeartMe = mCal.calculateHeart(smsLog.getOutgoing(), smsLog.getIncoming(),1, context);
         callHeartMe = mCal.calculateHeart(callLog.getOutgoing(), callLog.getIncoming(),2, context);
         smsHeartYou = mCal.calculateHeart(smsLog.getOutgoing(),smsLog.getIncoming(),3, context);

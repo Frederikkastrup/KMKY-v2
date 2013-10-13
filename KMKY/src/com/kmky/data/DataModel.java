@@ -153,32 +153,39 @@ public class DataModel{
         }
     }
 
-    public LogEntry getSmsLogsForPeronOnSpecificDate(String phonenumber, long date){
+    public LogEntry getSmsLogsForPeronOnSpecificDate(String phonenumber, long timestamp){
 
-        LogEntry emptyLog = new LogEntry(0, phonenumber, "sms", date, 0, 0);
+        LogEntry newLog = new LogEntry(0, phonenumber, "sms", timestamp, 0, 0);
+
+        Log.d(Constants.TAG, "Datamodel: getSmsLogsForPersonOnSpecificDate: phone number " + phonenumber);
 
         for (LogEntry log : mLogs)
         {
-            if (log.getPhonenumber().equals(phonenumber) && log.getTimestamp() == date && log.getType().equals("sms"))
+            if (log.getPhonenumber().equals(phonenumber) && log.getTimestamp() == timestamp && log.getType().equals("sms"))
             {
-                return log;
+                newLog.setIncoming(log.getIncoming());
+                newLog.setOutgoing(log.getOutgoing());
+
+                Log.d(Constants.TAG, "Datamodel: getSmsLogsForPersonOnSpecificDate: incoming " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
             }
         }
-        return emptyLog;
+        return newLog;
     }
 
-    public LogEntry getCallLogsForPeronOnSpecificDate(String phonenumber, long date)
+    public LogEntry getCallLogsForPeronOnSpecificDate(String phonenumber, long timestamp)
     {
-        LogEntry emptyLog = new LogEntry(0, phonenumber, "call", date, 0, 0);
-
+        LogEntry newLog = new LogEntry(0, phonenumber, "call", timestamp, 0, 0);
         for (LogEntry log : mLogs)
         {
-            if (log.getPhonenumber().equals(phonenumber) && log.getTimestamp() == date && log.getType().equals("sms"))
+            if (log.getPhonenumber().equals(phonenumber) && log.getTimestamp() == timestamp && log.getType().equals("call"))
             {
-                return log;
+                newLog.setIncoming(log.getIncoming());
+                newLog.setOutgoing(log.getOutgoing());
+
+                Log.d(Constants.TAG, "Datamodel: getCallLogsForPersonOnSpecificDate: incoming " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
             }
         }
-        return emptyLog;
+        return newLog;
     }
 
     public LogEntry getSmsLogsForPersonToDate(String phonenumber, long date){

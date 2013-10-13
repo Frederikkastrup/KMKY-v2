@@ -6,6 +6,8 @@ import android.app.Fragment;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,10 +58,10 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
         // ImageViews are instantiated so the appropriate mHeart sizes can be assigned to them.
         final ImageView smsHeartYou = (ImageView) v.findViewById(R.id.smsHeartMe);
-        final  ImageView callHeartYou = (ImageView) v.findViewById(R.id.callHeartMe);
+        final ImageView callHeartYou = (ImageView) v.findViewById(R.id.callHeartMe);
         final ImageView smsHeartMe = (ImageView) v.findViewById(R.id.smsHeartYou);
         final ImageView callHeartMe = (ImageView) v.findViewById(R.id.callHeartYou);
-        final  TextView text = (TextView) v.findViewById(R.id.yourname_textview);
+        final TextView text = (TextView) v.findViewById(R.id.yourname_textview);
 
         Calendar c = Calendar.getInstance();
         int day = c.get(Calendar.DAY_OF_MONTH);
@@ -78,35 +80,49 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
 
+
+
                 List<AnimationHearts> animationsovertime = getAnimationsOverTime(v);
-                final AnimationDrawable smsHeartMeAnimation  = new AnimationDrawable();
-                final AnimationDrawable callHeartmeAnimation =  new AnimationDrawable();
-                final AnimationDrawable smsHeartYouAnimation =  new AnimationDrawable();
-                final  AnimationDrawable callHeartYouAnimation  =  new AnimationDrawable();
+                AnimationDrawable smsHeartMeAnimation  = new AnimationDrawable();
+                AnimationDrawable callHeartmeAnimation =  new AnimationDrawable();
+                AnimationDrawable smsHeartYouAnimation =  new AnimationDrawable();
+                AnimationDrawable callHeartYouAnimation  =  new AnimationDrawable();
 
-                for (AnimationHearts animation : animationsovertime)
-                {
-                    smsHeartMeAnimation.addFrame(animation.getmSmsHeartMe(), 1);
-                    callHeartmeAnimation.addFrame(animation.getmCallHeartMe(), 1);
-                    smsHeartYouAnimation.addFrame(animation.getmSmsHeartYou(), 1);
-                    callHeartYouAnimation.addFrame(animation.getmCallHeartYou(), 1);
-                    Toast.makeText(getActivity().getApplicationContext(), "Time " + animation.getmTimestamp(), Toast.LENGTH_SHORT).show();
-                }
 
+
+//                for (AnimationHearts animation : animationsovertime)
+//                {
+//                    smsHeartMeAnimation.addFrame(animation.getmSmsHeartMe(), 10);
+//                    callHeartmeAnimation.addFrame(animation.getmCallHeartMe(), 10);
+//                    smsHeartYouAnimation.addFrame(animation.getmSmsHeartYou(), 10);
+//                    callHeartYouAnimation.addFrame(animation.getmCallHeartYou(), 10);
+//                    Toast.makeText(getActivity().getApplicationContext(), "Time " + animation.getmTimestamp(), Toast.LENGTH_SHORT).show();
+//                }
+
+                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.green), 1000);
+                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.red), 1000);
+                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.green), 1000);
+                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.red), 1000);
+
+                smsHeartMe.setImageDrawable(getResources().getDrawable(R.drawable.blank));
+//                callHeartMe.setImageDrawable(getResources().getDrawable(R.drawable.blank));
+//                smsHeartYou.setImageDrawable(getResources().getDrawable(R.drawable.blank));
+//                callHeartYou.setImageDrawable(getResources().getDrawable(R.drawable.blank));
+                smsHeartMe.setBackground(smsHeartMeAnimation);
                 smsHeartMeAnimation.setOneShot(true);
-                callHeartmeAnimation.setOneShot(true);
-                smsHeartYouAnimation.setOneShot(true);
-                callHeartYouAnimation.setOneShot(true);
+//                callHeartmeAnimation.setOneShot(true);
+//                smsHeartYouAnimation.setOneShot(true);
+//                callHeartYouAnimation.setOneShot(true);
 
-                smsHeartMe.setImageDrawable(smsHeartMeAnimation);
-                callHeartMe.setImageDrawable(callHeartmeAnimation);
-                smsHeartYou.setImageDrawable(smsHeartYouAnimation);
-                callHeartYou.setImageDrawable(callHeartYouAnimation);
+//                callHeartMe.setBackground(callHeartmeAnimation);
+//                smsHeartYou.setBackground(smsHeartYouAnimation);
+//                callHeartYou.setBackground(callHeartYouAnimation);
 
                 smsHeartMeAnimation.start();
-                callHeartmeAnimation.start();
-                smsHeartYouAnimation.start();
-                callHeartYouAnimation.start();
+//                callHeartmeAnimation.start();
+//                smsHeartYouAnimation.start();
+//                callHeartYouAnimation.start();
+
 
 
             }
@@ -245,21 +261,23 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
         List<AnimationHearts> animationhearts = new ArrayList<AnimationHearts>();
         List<Date> timestamps  = getTimestamps();
         TextView tw = (TextView)getView().findViewById(R.id.yourname_textview);
-        String number = mHeart.getPhoneNumberFromName(tw.toString(), getActivity());
+        String number = mHeart.getPhoneNumberFromName(tw.getText().toString(), getActivity());
+        number = number.replace(" ", "");
+        Drawable blank = getActivity().getResources().getDrawable(R.drawable.blank);
 
         for (Date timestamp : timestamps ){
 
             long milliseconds = timestamp.getTime();
             Relations newRelation = mHeart.HeartSizeSingleDay(number, milliseconds, getActivity());
-            Drawable blank = getActivity().getResources().getDrawable(R.drawable.blank);
 
-            if (newRelation.getSmsHeartMe() != blank || newRelation.getCallHeartMe() != blank || newRelation.getSmsHeartYou() != blank && newRelation.getCallHeartYou() != blank)
+            if (newRelation.getSmsHeartMe().getConstantState().equals(blank.getConstantState()) && newRelation.getCallHeartMe().getConstantState().equals(blank.getConstantState()) && newRelation.getSmsHeartYou().getConstantState().equals(blank.getConstantState()) && newRelation.getCallHeartYou().getConstantState().equals(blank.getConstantState()))
             {
-                animationhearts.add(new AnimationHearts(newRelation.getSmsHeartMe(), newRelation.getCallHeartMe(), newRelation.getSmsHeartYou(), newRelation.getCallHeartYou(), timestamp));
-                Log.d(Constants.TAG, "RelationshipZoom: getAnimationsOverTime: Data!");
+                Log.d(Constants.TAG, "RelationshipZoom: getAnimationsOverTime: all blanks");
             }
             else {
-                Log.d(Constants.TAG, "RelationshipZoom: getAnimationsOverTime: all blanks");
+
+                animationhearts.add(new AnimationHearts(newRelation.getSmsHeartMe(), newRelation.getCallHeartMe(), newRelation.getSmsHeartYou(), newRelation.getCallHeartYou(), timestamp));
+                Log.d(Constants.TAG, "RelationshipZoom: getAnimationsOverTime: Data!");
             }
         }
         return animationhearts;
