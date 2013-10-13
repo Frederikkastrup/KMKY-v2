@@ -1,9 +1,11 @@
 package com.kmky.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,9 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kmky.R;
 import com.kmky.data.DataModel;
@@ -114,49 +118,107 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
 
             LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService( Context.LAYOUT_INFLATER_SERVICE );
 
-            CustomListAdapter adapter = new CustomListAdapter(getActivity(), R.layout.listview_row, list);
+            final CustomListAdapter adapter = new CustomListAdapter(getActivity(), R.layout.listview_row, list);
 
             View header = (View)inflater.inflate(R.layout.listview_header, null);
             setListAdapter(null);
             getListView().addHeaderView(header);
 
             setListAdapter(adapter);
-        }
-    }
 
-        @Override
+            getListView().setLongClickable(true);
+            getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    TextView tv = (TextView) view.findViewById(R.id.rowname);
+                    final String name = tv.getText().toString();
+                    Log.d(Constants.TAG, "Favorites: OnLongClick: Name clicked: " + name);
+
+                    new AlertDialog.Builder(getActivity())
+                            .setTitle("Delete entry")
+                            .setMessage("Are you sure you want to delete this entry?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // continue with delete
+
+                                    Activity a = getActivity();
+
+                                        // Get number from name and remove it from SharedPreferences
+                                        String phonenumber = heart.getPhoneNumberFromName(name, getActivity());
+                                        phonenumber = phonenumber.replace(" ", "");
+                                        SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
+                                        preferences.edit().remove(phonenumber).commit();
+                                        Log.d(Constants.TAG, "Favorites: AlertDialog: Remove from SharedPreferences: " + phonenumber);
+
+                                        // Inflate Favorites again
+                                        Favorites fragment = new Favorites();
+                                        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                        transaction.replace(R.id.fragment_container, fragment);
+
+                                        transaction.commit();
+                                    }
+                            })
+                            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .setNeutralButton("Reset list", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    SharedPreferences preferences = getActivity().getSharedPreferences("FAVORITES", Activity.MODE_PRIVATE);
+                                    preferences.edit().clear().commit();
+
+                                    // Inflate Favorites again
+                                    Favorites fragment = new Favorites();
+                                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                                    transaction.replace(R.id.fragment_container, fragment);
+
+                                    transaction.commit();
+                                }
+                            })
+                            .show();
+
+                    return true;
+                }
+            });
+
+            }
+        }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.favorites, container, false);
         return v;
     }
 
+    /**
+     * Since this listener is shared between the headerview and the rowview - if the ListView header is clicked, the listener will also react.
+     * But View v won't match up with the view that we try to assign and this will cause and exception.
+     * Therefore, if this happens, a try catch handles the exception.
+     */
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        try{
+            TextView tv = (TextView) v.findViewById(R.id.rowname);
+            String name = tv.getText().toString();
 
-        /**
-         * Since this listener is shared between the headerview and the rowview - if the ListView header is clicked, the listener will also react.
-         * But View v won't match up with the view that we try to assign and this will cause and exception.
-         * Therefore, if this happens, a try catch handles the exception.
-         */
-        @Override
-        public void onListItemClick(ListView l, View v, int position, long id) {
-            try{
-                TextView tv = (TextView) v.findViewById(R.id.rowname);
-                String name = tv.getText().toString();
+            RelationshipZoom fragment = new RelationshipZoom();
+            Bundle bundle = new Bundle();
+            bundle.putString("name", name);
+            fragment.setArguments(bundle);
 
-                RelationshipZoom fragment = new RelationshipZoom();
-                Bundle bundle = new Bundle();
-                bundle.putString("name", name);
-                fragment.setArguments(bundle);
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.addToBackStack(null);
 
-                transaction.replace(R.id.fragment_container, fragment);
-                transaction.addToBackStack(null);
-
-                transaction.commit();
-            }
-            catch (NullPointerException e){
-                Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
-            }
+            transaction.commit();
+        }
+        catch (NullPointerException e){
+            Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
         }
     }
+}
