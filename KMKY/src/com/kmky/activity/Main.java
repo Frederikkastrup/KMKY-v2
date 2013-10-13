@@ -243,8 +243,6 @@ public class Main extends Activity {
 
     }
 
-
-
     /**
      * starts the native peoples activity when the button in 'view' is clicked and broadcasts the result (the name and number of the person clicked)
      * @param view
@@ -264,53 +262,6 @@ public class Main extends Activity {
         pickContactIntent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE); // Show user only contacts w/ phone numbers
         startActivityForResult(pickContactIntent, 2);
     }
-
-    public long getStartDate(){
-        EditText et = (EditText)this.findViewById(R.id.start_date);
-        String startdate = "0000-00-00";
-        long result = 0;
-
-        if (!et.getText().toString().equals("Start Date")) {
-            startdate = et.getText().toString();
-        }
-        else {
-            Log.i(Constants.TAG, "RelationshipZoom: getStartDate: The user has not picked a date yet!");
-        }
-
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = sdf.parse(startdate);
-            result = date.getTime();
-        }
-        catch (ParseException e){
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public long getEndDate(){
-        EditText et = (EditText)this.findViewById(R.id.end_date);
-        String startdate = "05.10.2011";
-        long result = 0;
-
-        if (!et.getText().toString().equals("Start Date")) {
-            startdate = et.getText().toString();
-        }
-        else {
-            Log.i(Constants.TAG, "RelationshipZoom: getStartDate: The user has not picked a date yet!");
-        }
-
-        try{
-            SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
-            Date date = sdf.parse(startdate);
-            result = date.getTime();
-        }
-        catch (ParseException e){
-            e.printStackTrace();
-        }
-        return result;
-    }
-
 
     public String getPhoneNumber(String name, Context context) {
         String ret = null;

@@ -227,7 +227,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date1.setText("" + day+ "-" + month + "-" + year);
+                        date1.setText("" + day+ "-" + (month + 1) + "-" + year);
                     }
                 };
 
@@ -243,7 +243,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                 {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        date2.setText("" + day+ "-" + month + "-" + year);
+                        date2.setText("" + day+ "-" + (month + 1) + "-" + year);
                     }
                 };
                 newFragment2.show(getFragmentManager(), "datepicker");
@@ -263,7 +263,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
         // Create List of dates
         ArrayList<Date> dates = new ArrayList<Date>();
-        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df1 = new SimpleDateFormat("dd-MM-yyyy");
 
         Date date1 = null;
         Date date2 = null;
