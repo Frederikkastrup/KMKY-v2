@@ -3,6 +3,7 @@ package com.kmky.activity;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by W520 on 05-10-13.
@@ -62,17 +65,19 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
         final ImageView smsHeartMe = (ImageView) v.findViewById(R.id.smsHeartYou);
         final ImageView callHeartMe = (ImageView) v.findViewById(R.id.callHeartYou);
         final TextView text = (TextView) v.findViewById(R.id.yourname_textview);
+        final TextView timestamp = (TextView) v.findViewById(R.id.timestamp);
 
         Calendar c = Calendar.getInstance();
         int day = c.get(Calendar.DAY_OF_MONTH);
         int month = c.get(Calendar.MONTH);
         int year = c.get(Calendar.YEAR);
 
-        date1.setText("" + year + "-" + month + "-" + day);
-        date2.setText("" + year + "-" + month + "-" + day);
+        date1.setText("" + day + "-" + month  + "-" + year);
+        date2.setText("" + day + "-" + month + "-" + year);
 
         date1.setOnClickListener(this);
         date2.setOnClickListener(this);
+
 
         Button button = (Button)v.findViewById(R.id.showchange_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -81,50 +86,84 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
             public void onClick(View view) {
 
 
-
                 List<AnimationHearts> animationsovertime = getAnimationsOverTime(v);
-                AnimationDrawable smsHeartMeAnimation  = new AnimationDrawable();
-                AnimationDrawable callHeartmeAnimation =  new AnimationDrawable();
-                AnimationDrawable smsHeartYouAnimation =  new AnimationDrawable();
-                AnimationDrawable callHeartYouAnimation  =  new AnimationDrawable();
+                List<Date> timestamps = new ArrayList<Date>();
+                final AnimationDrawable smsHeartMeAnimation  = new AnimationDrawable();
+                final AnimationDrawable callHeartmeAnimation =  new AnimationDrawable();
+                final AnimationDrawable smsHeartYouAnimation =  new AnimationDrawable();
+                final AnimationDrawable callHeartYouAnimation  =  new AnimationDrawable();
+
+                for (AnimationHearts animation : animationsovertime)
+                {
+                    smsHeartMeAnimation.addFrame(animation.getmSmsHeartMe(), 10);
+                    callHeartmeAnimation.addFrame(animation.getmCallHeartMe(), 10);
+                    smsHeartYouAnimation.addFrame(animation.getmSmsHeartYou(), 10);
+                    callHeartYouAnimation.addFrame(animation.getmCallHeartYou(), 10);
+                    timestamps.add(animation.getmTimestamp());
+                }
+
+                //Converts the list into an Array
+                final Date[] timestampsArray = timestamps.toArray(new Date[timestamps.size()]);
+
+                if (!animationsovertime.isEmpty()) {
+
+                    timestamp.post(new Runnable() {
+                        int j = 0;
+                        @Override
+                        public void run() {
+                            timestamp.setText((CharSequence) new SimpleDateFormat("dd-MM-yyyy").format(timestampsArray[j]).toString());
+                            if(j++ < timestampsArray.length - 1){
+                                timestamp.postDelayed(this, 3000);
+                            }
+                        }
+                    });
 
 
+                    smsHeartMe.post(new Runnable() {
+                        int j = 0;
+                        @Override
+                        public void run() {
+                            smsHeartMe.setImageDrawable(smsHeartMeAnimation.getFrame(j));
+                            if(j++ < smsHeartMeAnimation.getNumberOfFrames()){
+                                smsHeartMe.postDelayed(this, 3000);
+                            }
+                        }
+                    });
 
-//                for (AnimationHearts animation : animationsovertime)
-//                {
-//                    smsHeartMeAnimation.addFrame(animation.getmSmsHeartMe(), 10);
-//                    callHeartmeAnimation.addFrame(animation.getmCallHeartMe(), 10);
-//                    smsHeartYouAnimation.addFrame(animation.getmSmsHeartYou(), 10);
-//                    callHeartYouAnimation.addFrame(animation.getmCallHeartYou(), 10);
-//                    Toast.makeText(getActivity().getApplicationContext(), "Time " + animation.getmTimestamp(), Toast.LENGTH_SHORT).show();
-//                }
+                    callHeartMe.post(new Runnable() {
+                        int j = 0;
+                        @Override
+                        public void run() {
+                            callHeartMe.setImageDrawable(callHeartmeAnimation.getFrame(j));
+                            if(j++ < callHeartmeAnimation.getNumberOfFrames()){
+                                callHeartMe.postDelayed(this, 3000);
+                            }
+                        }
+                    });
 
-                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.green), 1000);
-                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.red), 1000);
-                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.green), 1000);
-                smsHeartMeAnimation.addFrame(getResources().getDrawable(R.drawable.red), 1000);
+                    smsHeartYou.post(new Runnable() {
+                        int j = 0;
+                        @Override
+                        public void run() {
+                            smsHeartYou.setImageDrawable(smsHeartYouAnimation.getFrame(j));
+                            if(j++ < smsHeartYouAnimation.getNumberOfFrames()){
+                                smsHeartYou.postDelayed(this, 3000);
+                            }
+                        }
+                    });
 
-                smsHeartMe.setImageDrawable(getResources().getDrawable(R.drawable.blank));
-//                callHeartMe.setImageDrawable(getResources().getDrawable(R.drawable.blank));
-//                smsHeartYou.setImageDrawable(getResources().getDrawable(R.drawable.blank));
-//                callHeartYou.setImageDrawable(getResources().getDrawable(R.drawable.blank));
-                smsHeartMe.setBackground(smsHeartMeAnimation);
-                smsHeartMeAnimation.setOneShot(true);
-//                callHeartmeAnimation.setOneShot(true);
-//                smsHeartYouAnimation.setOneShot(true);
-//                callHeartYouAnimation.setOneShot(true);
-
-//                callHeartMe.setBackground(callHeartmeAnimation);
-//                smsHeartYou.setBackground(smsHeartYouAnimation);
-//                callHeartYou.setBackground(callHeartYouAnimation);
-
-                smsHeartMeAnimation.start();
-//                callHeartmeAnimation.start();
-//                smsHeartYouAnimation.start();
-//                callHeartYouAnimation.start();
-
-
-
+                    callHeartYou.post(new Runnable() {
+                        int j = 0;
+                        @Override
+                        public void run() {
+                            callHeartYou.setImageDrawable(callHeartYouAnimation.getFrame(j));
+                            if(j++ < callHeartYouAnimation.getNumberOfFrames()){
+                                callHeartYou.postDelayed(this, 3000);
+                            }
+                        }
+                    });
+                }
+                else {timestamp.setText("No communications for that period"); }
             }
         });
 

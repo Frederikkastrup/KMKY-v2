@@ -10,5 +10,15 @@
     <!--Enable automatic exception tracking-->
     <bool name="ga_reportUncaughtExceptions">true</bool>
 
+    <string name="com.kmky.Find">Fragment activity</string>
+
+    <string name="com.kmky.MyRelationships">Fragment activity</string>
+
+    <string name="com.kmky.Favorites">Fragment activity</string>
+
+    <string name="com.kmky.RelationshipZoom">Fragment activity</string>
+
+    <integer name="ga_dispatchPeriod">20</integer>
+
 
 </resources>

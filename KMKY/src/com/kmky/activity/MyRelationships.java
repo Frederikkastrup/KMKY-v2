@@ -15,6 +15,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 import com.kmky.R;
 import com.kmky.data.Relations;
 import com.kmky.logic.Heart;
@@ -39,6 +42,10 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
             m_intSpinnerInitiCount++;
         }
         else {
+
+            EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+            easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choosen sorting in MyRelationships", Long.valueOf(pos)).build());
+
             mstate = pos;
             Bundle bundle = new Bundle();
             bundle.putInt("mstate", mstate);
@@ -113,6 +120,17 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         return v;
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        EasyTracker tracker = EasyTracker.getInstance(getActivity());
+        tracker.set(Fields.SCREEN_NAME, "MyRelationships");
+        tracker.send(MapBuilder.createAppView().build());
+    }
+
+
+
     /**
      * onListItemClick finds the TextView in the ListView row that gets clicked. Then sends the name  from this row to the fragment interface.
      * When this interface is implemented by the main activity, the name can be bundled and inflated into the RelationshipZoom fragment.
@@ -122,6 +140,11 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+
+
+        EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choose contact from MyRelationships", null).build());
+
         try{
             // Gets name from row
             TextView tv = (TextView) v.findViewById(R.id.rowname);

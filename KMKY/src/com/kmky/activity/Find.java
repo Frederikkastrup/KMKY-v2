@@ -13,10 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 import com.kmky.R;
 import com.kmky.util.Constants;
 
 import java.util.StringTokenizer;
+
 
 /**
  * Created by W520 on 18-09-13.
@@ -60,6 +64,9 @@ public class Find extends Fragment
                 @Override
                 public void onClick(View view) {
 
+                    EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+                    easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "See relationship with a contact without adding to Favorites", null).build());
+
                     RelationshipZoom fragment = new RelationshipZoom();
                     Bundle bundle = new Bundle();
                     bundle.putString("name", name);
@@ -84,6 +91,10 @@ public class Find extends Fragment
                 addtofavorites.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+                        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Added contact to Favorites", null).build());
+
                         // Gets name and number from EditText
                        String nameandnumber = edittext.getText().toString();
 
@@ -107,6 +118,10 @@ public class Find extends Fragment
                 removefromfravorites.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+
+                        EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+                        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Remove contact from Favorites", null).build());
+
                         String nameandnumber = edittext.getText().toString();
                         preferences.edit().remove(number).commit();
                         Toast.makeText(getActivity().getApplicationContext(), nameandnumber + " removed from favorites!", Toast.LENGTH_SHORT).show();
@@ -117,6 +132,15 @@ public class Find extends Fragment
             seerelationship.setVisibility(View.VISIBLE);
         }
         return v;
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        EasyTracker tracker = EasyTracker.getInstance(getActivity());
+        tracker.set(Fields.SCREEN_NAME, "Find");
+        tracker.send(MapBuilder.createAppView().build());
     }
 
 }

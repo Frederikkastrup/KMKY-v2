@@ -21,6 +21,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 import com.kmky.R;
 import com.kmky.data.DataModel;
 import com.kmky.data.LogEntry;
@@ -47,6 +50,10 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
             m_intSpinnerInitiCount++;
         }
         else {
+
+            EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+            easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choosen sorting in Favorites", Long.valueOf(pos)).build());
+
             mstate = pos;
             Bundle bundle = new Bundle();
             bundle.putInt("mstate", mstate);
@@ -201,6 +208,10 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
+
+        EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
+        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choose contact from Favorites", null).build());
+
         try{
             TextView tv = (TextView) v.findViewById(R.id.rowname);
             String name = tv.getText().toString();
@@ -220,5 +231,14 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
         catch (NullPointerException e){
             Log.i(Constants.TAG, "MyRelationship: HeaderOnClick", e);
         }
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        EasyTracker tracker = EasyTracker.getInstance(getActivity());
+        tracker.set(Fields.SCREEN_NAME, "Favorites");
+        tracker.send(MapBuilder.createAppView().build());
     }
 }
