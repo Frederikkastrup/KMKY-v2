@@ -73,6 +73,12 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            mstate = bundle.getInt("mstate");
+        }
+
+
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.myrelationships_spinner);
 
         // Set listener to spinner
@@ -84,11 +90,6 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinneradapter);
         spinner.setSelection(mstate);
-
-        Bundle bundle = this.getArguments();
-        if (bundle != null) {
-            mstate = bundle.getInt("mstate");
-        }
 
         Heart heart = new Heart(getActivity());
         List<Relations> list = heart.HeartSizesMyRelationships(mstate);
