@@ -187,7 +187,7 @@ public class SMSHelper{
                                     if (phonenumber != null ){
                                         long timeInMillisecond = getTime();
                                         DataModel.getInstance(mContext).addLog(phonenumber, "sms", timeInMillisecond, 0, 1);
-                                        Log.d(Constants.TAG, "SMSHelper: outgoingSMS: " + phonenumber);
+//                                        Log.d(Constants.TAG, "SMSHelper: outgoingSMS: " + phonenumber);
                                         cursor.close();
                                     }
                                 }

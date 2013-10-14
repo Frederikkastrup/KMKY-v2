@@ -43,7 +43,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
         else {
 
             EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
-            easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choosen sorting in MyRelationships", Long.valueOf(pos)).build());
+            easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Chosen sorting in MyRelationships", Long.valueOf(pos)).build());
 
             mstate = pos;
             Bundle bundle = new Bundle();
@@ -142,7 +142,7 @@ public class MyRelationships extends ListFragment implements  AdapterView.OnItem
 
 
         EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
-        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choose contact from MyRelationships", null).build());
+        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Chose contact from MyRelationships", null).build());
 
         try{
             // Gets name from row

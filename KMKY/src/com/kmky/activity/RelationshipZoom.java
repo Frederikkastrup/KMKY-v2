@@ -18,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.MapBuilder;
 import com.kmky.R;
 import com.kmky.data.Relations;
 import com.kmky.logic.AnimationHearts;
@@ -38,6 +41,7 @@ import java.util.List;
 public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
     private Heart mHeart = new Heart(getActivity());
+    private Drawable mSmsHeartMe, mCallHeartMe, mSmsHeartYou, mCallHeartYou;
 
 
     @Override
@@ -111,6 +115,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                             if(j++ < timestampsArray.length - 1){
                                 timestamp.postDelayed(this, 3000);
                             }
+//                            else {timestamp.setText("");}
                         }
                     });
 
@@ -120,9 +125,13 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                         @Override
                         public void run() {
                             smsHeartMe.setImageDrawable(smsHeartMeAnimation.getFrame(j));
-                            if(j++ < smsHeartMeAnimation.getNumberOfFrames()){
+
+                             if(j++ < smsHeartMeAnimation.getNumberOfFrames()){
                                 smsHeartMe.postDelayed(this, 3000);
                             }
+                            else {smsHeartMe.setImageDrawable(smsHeartMeAnimation.getFrame(smsHeartMeAnimation.getNumberOfFrames()));
+
+                             }
                         }
                     });
 
@@ -134,6 +143,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                             if(j++ < callHeartmeAnimation.getNumberOfFrames()){
                                 callHeartMe.postDelayed(this, 3000);
                             }
+                            else {callHeartMe.setImageDrawable(mCallHeartMe);}
                         }
                     });
 
@@ -145,6 +155,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                             if(j++ < smsHeartYouAnimation.getNumberOfFrames()){
                                 smsHeartYou.postDelayed(this, 3000);
                             }
+                            else {smsHeartYou.setImageDrawable(mCallHeartYou);}
                         }
                     });
 
@@ -156,6 +167,7 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
                             if(j++ < callHeartYouAnimation.getNumberOfFrames()){
                                 callHeartYou.postDelayed(this, 3000);
                             }
+                            else {callHeartYou.setImageDrawable(mCallHeartYou);}
                         }
                     });
                 }
@@ -181,14 +193,18 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
 
                 final int outgoingsms = mHeart.SmsAndCallCount(phonenumber, 1).getOutgoing();
                 final int outgoingcall = mHeart.SmsAndCallCount(phonenumber, 2).getOutgoing();
-
                 final int incomingsms = mHeart.SmsAndCallCount(phonenumber, 1).getIncoming();
                 final int incomingcall = mHeart.SmsAndCallCount(phonenumber, 2).getIncoming();
 
-                smsHeartMe.setImageDrawable(relation.getSmsHeartMe());
-                callHeartMe.setImageDrawable(relation.getCallHeartMe());
-                smsHeartYou.setImageDrawable(relation.getSmsHeartYou());
-                callHeartYou.setImageDrawable(relation.getCallHeartYou());
+                mSmsHeartMe = relation.getSmsHeartMe();
+                mCallHeartMe = relation.getCallHeartMe();
+                mSmsHeartYou = relation.getSmsHeartYou();
+                mCallHeartYou = relation.getCallHeartYou();
+
+                smsHeartMe.setImageDrawable(mSmsHeartMe);
+                callHeartMe.setImageDrawable(mCallHeartMe);
+                smsHeartYou.setImageDrawable(mSmsHeartYou);
+                callHeartYou.setImageDrawable(mCallHeartYou);
 
                 final FrameLayout framelayoutme = (FrameLayout) v.findViewById(R.id.frameLayoutMe);
                 final FrameLayout framelayoutyou = (FrameLayout) v.findViewById(R.id.frameLayoutYou);
@@ -272,7 +288,8 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
         try {
             date1 = df1.parse(startdate);
             date2 = df1.parse(enddate);
-        } catch (ParseException e) {
+        }
+        catch (ParseException e) {
             e.printStackTrace();
         }
 
@@ -316,5 +333,14 @@ public class RelationshipZoom extends Fragment implements View.OnClickListener {
             }
         }
         return animationhearts;
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        EasyTracker tracker = EasyTracker.getInstance(getActivity());
+        tracker.set(Fields.SCREEN_NAME, "RelationshipZoom");
+        tracker.send(MapBuilder.createAppView().build());
     }
 }

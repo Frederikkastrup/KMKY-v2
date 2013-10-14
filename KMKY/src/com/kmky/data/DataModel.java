@@ -30,10 +30,10 @@ public class DataModel{
         // load data into logs
         mLogs = mDbHelper.getLogs();
 
-        for (LogEntry logEntry : mLogs)
-        {
-            Log.i(Constants.TAG, "Datamodel: Constructor: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getTimestamp() + " Incoming " + logEntry.getIncoming() + " Outgoing " + logEntry.getOutgoing());
-        }
+//        for (LogEntry logEntry : mLogs)
+//        {
+//            Log.i(Constants.TAG, "Datamodel: Constructor: LogEntries in mLogs: Phone number = " + logEntry.getPhonenumber() + " Type = " + logEntry.getType() + " timeStamp = " + logEntry.getTimestamp() + " Incoming " + logEntry.getIncoming() + " Outgoing " + logEntry.getOutgoing());
+//        }
     }
 
     /**
@@ -87,7 +87,7 @@ public class DataModel{
         // Checks if logs is empty
         if (mLogs.size() == 0){
 
-            Log.d(Constants.TAG, "Datamodel: addLog: List is empty");
+//            Log.d(Constants.TAG, "Datamodel: addLog: List is empty");
             mDbHelper.addLog(phonenumber, type, timestamp, incoming, outgoing);
             reloadLog();
 
@@ -135,19 +135,19 @@ public class DataModel{
         int incoming = existingLog.getIncoming();
         int outgoing = existingLog.getOutgoing();
 
-        Log.d(Constants.TAG, "Datamodel: updateLog: newLog: incoming: " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
+//        Log.d(Constants.TAG, "Datamodel: updateLog: newLog: incoming: " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
 
         if (newLog.getIncoming() == 1){
 
             incoming++;
-            Log.d(Constants.TAG, "Datamodel: updateLog: updating incoming logEntry");
+//            Log.d(Constants.TAG, "Datamodel: updateLog: updating incoming logEntry");
             mDbHelper.updateLog(existingLog.getId(), 1, 0);
             reloadLog();
         }
         else if (newLog.getOutgoing() == 1){
 
             outgoing++;
-            Log.d(Constants.TAG, "Datamodel: updateLog: updating outgoing logEntry");
+//            Log.d(Constants.TAG, "Datamodel: updateLog: updating outgoing logEntry");
             mDbHelper.updateLog(existingLog.getId(), 0, 1);
             reloadLog();
         }
@@ -157,7 +157,7 @@ public class DataModel{
 
         LogEntry newLog = new LogEntry(0, phonenumber, "sms", timestamp, 0, 0);
 
-        Log.d(Constants.TAG, "Datamodel: getSmsLogsForPersonOnSpecificDate: phone number " + phonenumber);
+//        Log.d(Constants.TAG, "Datamodel: getSmsLogsForPersonOnSpecificDate: phone number " + phonenumber);
 
         for (LogEntry log : mLogs)
         {
@@ -166,7 +166,7 @@ public class DataModel{
                 newLog.setIncoming(log.getIncoming());
                 newLog.setOutgoing(log.getOutgoing());
 
-                Log.d(Constants.TAG, "Datamodel: getSmsLogsForPersonOnSpecificDate: incoming " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
+//                Log.d(Constants.TAG, "Datamodel: getSmsLogsForPersonOnSpecificDate: incoming " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
             }
         }
         return newLog;
@@ -182,7 +182,7 @@ public class DataModel{
                 newLog.setIncoming(log.getIncoming());
                 newLog.setOutgoing(log.getOutgoing());
 
-                Log.d(Constants.TAG, "Datamodel: getCallLogsForPersonOnSpecificDate: incoming " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
+//                Log.d(Constants.TAG, "Datamodel: getCallLogsForPersonOnSpecificDate: incoming " + newLog.getIncoming() + " outgoing: " + newLog.getOutgoing());
             }
         }
         return newLog;
@@ -252,7 +252,7 @@ public class DataModel{
             int totalCommunication = outgoingCall + outgoingSMS;
 
             SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-            Log.d(Constants.TAG, "Datamodel: getPhonenumbersForLeastContacted: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
+//            Log.d(Constants.TAG, "Datamodel: getPhonenumbersForLeastContacted: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
         }
 
         // Sort the list
@@ -290,11 +290,8 @@ public class DataModel{
                         phonenumberList.add(topTen.getPhonenumber());
                     }
                 }
-
-
             break;
         }
-
         return phonenumberList;
     }
 
@@ -318,7 +315,7 @@ public class DataModel{
             int totalCommunication = outgoingCall + outgoingSMS;
 
             SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
+//            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
 //            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContacted: totalCommunication for phone number " + phonenumber + " amount of communication "  +Integer.toString(totalCommunication));
         }
 
@@ -386,7 +383,7 @@ public class DataModel{
             int totalCommunication = incomingCall + incomingSMS;
 
             SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-            Log.d(Constants.TAG, "Datamodel: getNumbersForLeastContactedYou: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
+//            Log.d(Constants.TAG, "Datamodel: getNumbersForLeastContactedYou: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
         }
 
         // Sort the list
@@ -453,7 +450,7 @@ public class DataModel{
             int totalCommunication = incomingCall + incomingSMS;
 
             SortList.add(new TopTen(phonenumber, totalCommunication, 0));
-            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContactedYou: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
+//            Log.d(Constants.TAG, "Datamodel: getNumbersForMostContactedYou: totalCommunication for phone number " + phonenumber + " amount of communication " +Integer.toString(totalCommunication));
         }
 
         // Sort the list

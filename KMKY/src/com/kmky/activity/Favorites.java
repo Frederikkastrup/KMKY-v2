@@ -46,7 +46,7 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
         else {
 
             EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
-            easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choosen sorting in Favorites", Long.valueOf(pos)).build());
+            easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Chosen sorting in Favorites", Long.valueOf(pos)).build());
 
             mstate = pos;
             Bundle bundle = new Bundle();
@@ -204,7 +204,7 @@ public class Favorites extends ListFragment implements  AdapterView.OnItemSelect
     public void onListItemClick(ListView l, View v, int position, long id) {
 
         EasyTracker easyTracker = EasyTracker.getInstance(getActivity().getApplicationContext());
-        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Choose contact from Favorites", null).build());
+        easyTracker.send(MapBuilder.createEvent("ui_action", "button_press", "Chose contact from Favorites", null).build());
 
         try{
             TextView tv = (TextView) v.findViewById(R.id.rowname);
