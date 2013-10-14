@@ -52,7 +52,7 @@ public class Find extends Fragment
             final String name = bundle.getString("name");
             final String number = bundle.getString("number").replace(" ","");
             final EditText edittext = (EditText) v.findViewById(R.id.find_edittext);
-            edittext.setText(name + " - " + number);
+            edittext.setText(name + ":" + "\n" + number);
 
 
             Button addtofavorites = (Button)v.findViewById(R.id.addtofavorites_button);
@@ -99,7 +99,7 @@ public class Find extends Fragment
                        String nameandnumber = edittext.getText().toString();
 
                         // Splits name and number up into two strings
-                        StringTokenizer tokens = new StringTokenizer(nameandnumber, "-");
+                        StringTokenizer tokens = new StringTokenizer(nameandnumber, ":");
                         String name = tokens.nextToken();
                         String number = tokens.nextToken();
                         number = number.replace(" ", "");

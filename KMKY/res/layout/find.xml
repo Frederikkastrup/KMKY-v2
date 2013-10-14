@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:textSize="30dp"
         android:gravity="center"
-        android:inputType="textNoSuggestions"
+        android:inputType="textNoSuggestions|textMultiLine"
         />
 
     <Button
